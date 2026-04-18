@@ -24,7 +24,7 @@
                 @csrf
 
                 <label for="code">Verification Code</label>
-                <input type="text" name="code" id="code" maxlength="6" inputmode="numeric" placeholder="123456" required>
+                <input type="text" name="code" id="code" maxlength="6" pattern="[0-9]{6}" inputmode="numeric" autocomplete="one-time-code" placeholder="123456" required>
                 @error('code')
                     <div class="error-box">{{ $message }}</div>
                 @enderror

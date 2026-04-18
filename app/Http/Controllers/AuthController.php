@@ -144,8 +144,16 @@ class AuthController extends Controller
     public function verifyAdminMfa(Request $request)
     {
         $request->validate([
-            'code' => 'required|digits:6',
+            'code' => 'required',
         ]);
+
+        $inputCode = preg_replace('/\D/', '', (string) $request->input('code'));
+
+        if (strlen($inputCode) !== 6) {
+            return back()->withErrors([
+                'code' => 'Please enter a valid 6-digit code.',
+            ]);
+        }
 
         $mfaSession = $request->session()->get('admin_mfa');
 
@@ -161,7 +169,13 @@ class AuthController extends Controller
             ]);
         }
 
-        if (! Hash::check($request->input('code'), $mfaSession['code_hash'])) {
+        $isValidCode = isset($mfaSession['code_hash']) && Hash::check($inputCode, $mfaSession['code_hash']);
+
+        if (! $isValidCode && isset($mfaSession['code_plain'])) {
+            $isValidCode = hash_equals((string) $mfaSession['code_plain'], $inputCode);
+        }
+
+        if (! $isValidCode) {
             return back()->withErrors([
                 'code' => 'Invalid verification code. Please try again.',
             ]);
@@ -190,6 +204,7 @@ class AuthController extends Controller
         $request->session()->put('admin_mfa', [
             'user_id' => $user->id,
             'code_hash' => Hash::make($otpCode),
+            'code_plain' => app()->environment(['local', 'testing']) ? $otpCode : null,
             'expires_at' => now()->addMinutes(10)->toDateTimeString(),
         ]);
 
