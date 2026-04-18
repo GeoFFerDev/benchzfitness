@@ -5,16 +5,26 @@
     <main class="auth-page">
         <section class="auth-card">
             <div class="brand-pill">Benchz Fitness</div>
-            <h1 class="header-title">Choose your portal</h1>
-            <p class="auth-subtitle">Select how you want to sign in.</p>
+            <h1 class="header-title">Portal Access</h1>
+            <p class="auth-subtitle">
+                Continue to the correct portal based on your role. Members use mobile-first self-service,
+                while admins use desktop-first operations.
+            </p>
 
-            <div class="auth-form">
+            <div class="portal-actions">
                 <a href="{{ route('login.member') }}" class="click-btn">Member Login</a>
                 <a href="{{ route('login.admin') }}" class="click-btn">Admin Login</a>
                 <a href="{{ route('register') }}" class="click-btn">Create Member Account</a>
             </div>
 
-            <p class="auth-subtitle" style="margin-top: 14px;">Demo accounts after seeding:<br><strong>admin@benchzfitness.local / Admin12345!</strong><br><strong>member@benchzfitness.local / Member12345!</strong></p>
+            <div class="text-divider">Preview credentials (seeded demo)</div>
+            <div class="info-box">
+                <strong>Admin:</strong> admin@benchzfitness.local / Admin12345!<br>
+                <strong>Member:</strong> member@benchzfitness.local / Member12345!
+            </div>
+
+            <div class="text-divider">Need more information?</div>
+            <a href="{{ route('landing') }}" class="click-btn">View System Overview</a>
         </section>
     </main>
 @endsection

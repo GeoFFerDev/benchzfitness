@@ -57,12 +57,22 @@
         <div class="nav-section-title">Insights</div>
         <span class="nav-icon-wrap disabled">
             <div class="nav-icon"><img src="{{ asset('assets/images/svg/Revenue.svg') }}" alt="revenue"></div>
-            <div class="nav-icon-text">Revenue (Soon)</div>
+            <div class="nav-icon-text">Revenue Reports</div>
         </span>
 
         <span class="nav-icon-wrap disabled">
             <div class="nav-icon"><img src="{{ asset('assets/images/svg/Analytics.svg') }}" alt="analytics"></div>
-            <div class="nav-icon-text">Analytics (Soon)</div>
+            <div class="nav-icon-text">Retention Alerts</div>
+        </span>
+
+        <span class="nav-icon-wrap disabled">
+            <div class="nav-icon"><img src="{{ asset('assets/images/svg/TransactionHistory.svg') }}" alt="transactions"></div>
+            <div class="nav-icon-text">Financial Audit Log</div>
+        </span>
+
+        <span class="nav-icon-wrap disabled">
+            <div class="nav-icon"><img src="{{ asset('assets/images/svg/AttendanceLogs.svg') }}" alt="front desk"></div>
+            <div class="nav-icon-text">Front Desk Monitor</div>
         </span>
 
         <form action="{{ route('logout') }}" method="POST" class="admin-logout-form">

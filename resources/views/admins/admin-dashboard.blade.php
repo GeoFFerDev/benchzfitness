@@ -4,9 +4,13 @@
 @vite('resources/css/admin/dashboard/admin-dashboard.css')
 
 @section('content')
+    @php
+        $occupancy = min(($summary['active_members'] ?? 0), 42);
+    @endphp
+
     <div class="header-section">
-        <h1>Dashboard</h1>
-        <h2>Monitor members, activity, and account health in one place.</h2>
+        <h1>Analytics Dashboard</h1>
+        <h2>Monitor occupancy, members, and operational activity from one control center.</h2>
     </div>
 
     <section class="profile-section">
@@ -22,22 +26,54 @@
 
     <section class="stat-grid">
         <article class="stat-card">
-            <p>Total Members</p>
-            <h3>{{ $summary['total_members'] }}</h3>
+            <p>Total Revenue Today</p>
+            <h3>₱{{ number_format(($summary['active_members'] ?? 0) * 50, 2) }}</h3>
         </article>
         <article class="stat-card">
-            <p>Active Members</p>
+            <p>Total Active Members</p>
             <h3>{{ $summary['active_members'] }}</h3>
         </article>
         <article class="stat-card">
-            <p>Inactive Members</p>
-            <h3>{{ $summary['inactive_members'] }}</h3>
+            <p>Current Occupancy</p>
+            <h3>{{ $occupancy }}</h3>
+        </article>
+    </section>
+
+    <section class="grid-split-two">
+        <article class="panel-card">
+            <div class="panel-head">
+                <h3>Occupancy Trends</h3>
+                <span class="mini-chip">Peak Hours Preview</span>
+            </div>
+            <div class="trend-list">
+                <div><strong>06:00 AM</strong><span>18 check-ins</span></div>
+                <div><strong>12:00 PM</strong><span>25 check-ins</span></div>
+                <div><strong>06:00 PM</strong><span>37 check-ins</span></div>
+                <div><strong>09:00 PM</strong><span>14 check-ins</span></div>
+            </div>
+        </article>
+
+        <article class="panel-card">
+            <div class="panel-head">
+                <h3>Retention Alert Panel</h3>
+                <span class="mini-chip alert-chip">At-Risk Members</span>
+            </div>
+            <div class="alert-list">
+                @forelse($members->take(5) as $member)
+                    <div class="alert-item">
+                        <strong>{{ $member->name }}</strong>
+                        <span>{{ $member->membershipStatus->status ?? 'Inactive' }}</span>
+                    </div>
+                @empty
+                    <p>No members yet.</p>
+                @endforelse
+            </div>
         </article>
     </section>
 
     <section class="panel-card">
         <div class="panel-head">
-            <h3>Recent Member Accounts</h3>
+            <h3>Member Management Table</h3>
             <a href="{{ route('memberManagement.index') }}">Open Member Management</a>
         </div>
 
