@@ -6,6 +6,7 @@ use App\Models\MemberAttendanceLog;
 use App\Models\MembershipPlans;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class MemberPortalController extends Controller
 {
@@ -30,9 +31,15 @@ class MemberPortalController extends Controller
 
         return view('members.memberPortal', compact('user', 'tiers', 'status', 'daysRemaining', 'attendances'));
     }
-    
-    public function viewProfile(){
+
+    public function viewProfile()
+    {
         $user = Auth::user();
+
+        if (! $user || $user->role !== 'member') {
+            return redirect()->route('admin-portal');
+        }
+
         return view('members.profile-management.view-profile', compact('user'));
     }
 }
