@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('users.login-role-select');
 })->name('login.select');
 
+Route::get('/landing', function () {
+    return view('landingPage');
+})->name('landing');
+
 Route::get('/register', [AuthController::class, 'displayRegister'])->name('register');
 Route::post('/register', [AuthController::class, 'registerUser'])->name('register.store');
 
