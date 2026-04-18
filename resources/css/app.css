@@ -82,35 +82,6 @@ body {
     color: var(--muted-text);
 }
 
-
-.role-switcher {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-bottom: 16px;
-}
-
-.role-chip {
-    text-decoration: none;
-    text-align: center;
-    border: 1px solid rgba(174, 26, 22, 0.35);
-    color: var(--accent-dark);
-    padding: 8px 12px;
-    border-radius: 10px;
-    font-weight: 700;
-}
-
-.role-chip.active {
-    background: linear-gradient(135deg, var(--accent-color), var(--accent-dark));
-    color: white;
-    border-color: transparent;
-}
-
-.auth-form {
-    display: grid;
-    gap: 12px;
-}
-
 .auth-form {
     display: grid;
     gap: 12px;
@@ -186,4 +157,37 @@ input[type='submit']:hover {
 
 .click-btn:hover {
     background-color: rgba(174, 26, 22, 0.08);
+}
+
+.click-btn {
+    text-align: center;
+    display: block;
+    padding: 11px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(174, 26, 22, 0.4);
+    text-decoration: none;
+    color: var(--accent-dark);
+    font-weight: 700;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.info-box {
+    border: 1px solid rgba(174, 26, 22, 0.25);
+    background: rgba(174, 26, 22, 0.08);
+    color: #7a1a20;
+    border-radius: 10px;
+    padding: 10px 12px;
+    margin-bottom: 12px;
+    font-size: 0.88rem;
+}
+
+.compact-form {
+    margin-top: 12px;
+}
+
+.click-btn-solid {
+    background: var(--accent-color);
+    color: #fff;
+    border: none;
+    cursor: pointer;
 }

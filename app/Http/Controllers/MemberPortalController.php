@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\MemberAttendanceLog;
 use App\Models\MembershipPlans;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,7 +15,9 @@ class MemberPortalController extends Controller
         $user = Auth::user();
 
         if (! $user || $user->role !== 'member') {
-            return redirect()->route('admin-portal');
+            return redirect()->route('login.member')->withErrors([
+                'email' => 'Member account is required to access the member portal.',
+            ]);
         }
 
         $tiers = MembershipPlans::all();

@@ -1,59 +1,54 @@
 @extends('layouts.admin.admin-layout')
 
 @section('title', 'Admin Dashboard')
-
 @vite('resources/css/admin/dashboard/admin-dashboard.css')
 
 @section('content')
-    <div class="dashboard-header">
-        <div>
-            <h1>DASHBOARD</h1>
-            <p>Overview of members, statuses, and latest activity.</p>
-        </div>
-
-        <div class="profile-section">
-            <img src="{{ asset('storage/' . $user->profile_picture) }}" alt="{{ $user->name }} profile">
-            <div class="profile-section-info">
-                <h2>{{ $user->name }}</h2>
-                <span>{{ ucfirst($user->role) }}</span>
-            </div>
-        </div>
+    <div class="header-section">
+        <h1>Dashboard</h1>
+        <h2>Monitor members, activity, and account health in one place.</h2>
     </div>
 
-    <section class="summary-grid">
-        <article class="summary-card">
-            <h3>Total Members</h3>
-            <p>{{ $summary['total'] }}</p>
+    <section class="profile-section">
+        <img src="{{ asset('storage/' . $user->profile_picture) }}" alt="Admin profile">
+        <div class="profile-section-info">
+            <h1>{{ $user->name }}</h1>
+            <div class="profile-user-role">
+                <img src="{{ asset('assets/images/svg/user-role.svg') }}" alt="role icon">
+                <h2>{{ ucfirst($user->role) }}</h2>
+            </div>
+        </div>
+    </section>
+
+    <section class="stat-grid">
+        <article class="stat-card">
+            <p>Total Members</p>
+            <h3>{{ $summary['total_members'] }}</h3>
         </article>
-        <article class="summary-card">
-            <h3>Active</h3>
-            <p>{{ $summary['active'] }}</p>
+        <article class="stat-card">
+            <p>Active Members</p>
+            <h3>{{ $summary['active_members'] }}</h3>
         </article>
-        <article class="summary-card">
-            <h3>Inactive</h3>
-            <p>{{ $summary['inactive'] }}</p>
-        </article>
-        <article class="summary-card">
-            <h3>Suspended</h3>
-            <p>{{ $summary['suspended'] }}</p>
+        <article class="stat-card">
+            <p>Inactive Members</p>
+            <h3>{{ $summary['inactive_members'] }}</h3>
         </article>
     </section>
 
-    <section class="latest-members-panel">
+    <section class="panel-card">
         <div class="panel-head">
-            <h2>Latest Members</h2>
-            <a href="{{ route('memberManagement.index') }}">Open member management</a>
+            <h3>Recent Member Accounts</h3>
+            <a href="{{ route('memberManagement.index') }}">Open Member Management</a>
         </div>
 
-        <div class="member-table-div">
-            <table class="member-table">
+        <div class="member-mini-table-wrap">
+            <table class="member-mini-table">
                 <thead>
                     <tr>
                         <th>Name</th>
                         <th>Email</th>
                         <th>Plan</th>
                         <th>Status</th>
-                        <th>Expiry Date</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -63,15 +58,10 @@
                             <td>{{ $member->email }}</td>
                             <td>{{ $member->membershipStatus->planType ?? 'None' }}</td>
                             <td>{{ $member->membershipStatus->status ?? 'Inactive' }}</td>
-                            <td>
-                                {{ $member->membershipStatus && $member->membershipStatus->expiry_date
-                                    ? \Carbon\Carbon::parse($member->membershipStatus->expiry_date)->format('M d, Y')
-                                    : 'N/A' }}
-                            </td>
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="5" class="empty-row">No members found.</td>
+                            <td colspan="4">No members yet.</td>
                         </tr>
                     @endforelse
                 </tbody>
