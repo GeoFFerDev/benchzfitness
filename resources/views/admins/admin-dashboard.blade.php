@@ -6,6 +6,8 @@
 @section('content')
     @php
         $occupancy = min(($summary['active_members'] ?? 0), 42);
+        $chartPoints = [18, 25, 37, 14, 22, 31, 28];
+        $revenueBars = [500, 1200, 1800, 900, 1400, 2000, 1650];
     @endphp
 
     <div class="header-section">
@@ -45,14 +47,48 @@
                 <h3>Occupancy Trends</h3>
                 <span class="mini-chip">Peak Hours Preview</span>
             </div>
-            <div class="trend-list">
-                <div><strong>06:00 AM</strong><span>18 check-ins</span></div>
-                <div><strong>12:00 PM</strong><span>25 check-ins</span></div>
-                <div><strong>06:00 PM</strong><span>37 check-ins</span></div>
-                <div><strong>09:00 PM</strong><span>14 check-ins</span></div>
+
+            <div class="chart-box line-chart" aria-label="Occupancy trend line chart">
+                @foreach($chartPoints as $index => $value)
+                    <div class="line-point" style="left: {{ 10 + ($index * 13) }}%; bottom: {{ max(8, min(92, $value * 2)) }}%;"></div>
+                @endforeach
+                <svg viewBox="0 0 100 100" preserveAspectRatio="none" class="line-svg">
+                    <polyline points="
+                        10,64
+                        23,50
+                        36,26
+                        49,72
+                        62,56
+                        75,38
+                        88,44
+                    " />
+                </svg>
+            </div>
+
+            <div class="chart-label-row">
+                <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
             </div>
         </article>
 
+        <article class="panel-card">
+            <div class="panel-head">
+                <h3>Revenue Snapshot</h3>
+                <span class="mini-chip">Last 7 Days</span>
+            </div>
+
+            <div class="chart-box bar-chart" aria-label="Revenue bar chart">
+                @foreach($revenueBars as $bar)
+                    <div class="bar" style="height: {{ max(18, min(100, $bar / 22)) }}%;"></div>
+                @endforeach
+            </div>
+
+            <div class="chart-label-row">
+                <span>D1</span><span>D2</span><span>D3</span><span>D4</span><span>D5</span><span>D6</span><span>D7</span>
+            </div>
+        </article>
+    </section>
+
+    <section class="grid-split-two">
         <article class="panel-card">
             <div class="panel-head">
                 <h3>Retention Alert Panel</h3>
@@ -67,6 +103,23 @@
                 @empty
                     <p>No members yet.</p>
                 @endforelse
+            </div>
+        </article>
+
+        <article class="panel-card">
+            <div class="panel-head">
+                <h3>Live Front Desk Feed</h3>
+                <span class="mini-chip">Scan Status</span>
+            </div>
+            <div class="front-desk-feed">
+                <div class="feed-item approved">
+                    <strong>ENTRY APPROVED</strong>
+                    <span>Member QR validated</span>
+                </div>
+                <div class="feed-item denied">
+                    <strong>ENTRY DENIED</strong>
+                    <span>Expired or inactive account</span>
+                </div>
             </div>
         </article>
     </section>

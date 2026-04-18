@@ -25,6 +25,14 @@
     </nav>
 
     <div class="mobile-side-bar" id="mobileSidebar">
+        <div class="member-drawer-profile">
+            <img src="{{ asset('storage/' . Auth::user()->profile_picture) }}" alt="Member profile">
+            <div>
+                <h3>{{ Auth::user()->name }}</h3>
+                <p>{{ Auth::user()->email }}</p>
+            </div>
+        </div>
+
         <div class="member-sidebar-title">Member Menu</div>
 
         <a href="{{ route('member-portal') }}">

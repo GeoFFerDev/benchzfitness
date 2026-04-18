@@ -17,6 +17,10 @@
                 <div class="profile-name">
                     <h1>{{ $user->name }}</h1>
                     <h2>{{ $user->email }}</h2>
+                    <div class="profile-meta-chips">
+                        <span>{{ strtoupper($statusLabel) }}</span>
+                        <span>{{ $planName }}</span>
+                    </div>
                 </div>
             </div>
         </a>
