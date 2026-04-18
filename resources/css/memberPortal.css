@@ -911,3 +911,55 @@ nav img{
 .burger-button.toggle .line3 {
     transform: rotate(45deg) translate(-8px, -6px);
 }
+/* === UI polish updates === */
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    background: #ffffffd9;
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #ececec;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.portal-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 16px;
+}
+
+.profile-info,
+.membership-info,
+.attendance-logs,
+.membership-options,
+.no-membership-info {
+    border-radius: 14px;
+    border: 1px solid #e5e7eb;
+    background: #fff;
+}
+
+.membership-info,
+.attendance-logs,
+.membership-options,
+.no-membership-info {
+    padding: 14px;
+    margin-bottom: 18px;
+}
+
+.nav-logout {
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    background: var(--secondary-color);
+    color: #fff;
+    font-weight: 700;
+    padding: 10px 12px;
+    cursor: pointer;
+}
+
+.attendance-table th {
+    background: #f8fafc;
+}

@@ -82,6 +82,35 @@ body {
     color: var(--muted-text);
 }
 
+
+.role-switcher {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.role-chip {
+    text-decoration: none;
+    text-align: center;
+    border: 1px solid rgba(174, 26, 22, 0.35);
+    color: var(--accent-dark);
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-weight: 700;
+}
+
+.role-chip.active {
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-dark));
+    color: white;
+    border-color: transparent;
+}
+
+.auth-form {
+    display: grid;
+    gap: 12px;
+}
+
 .auth-form {
     display: grid;
     gap: 12px;

@@ -21,7 +21,7 @@
             </form>
 
             <div class="text-divider">Code expired?</div>
-            <a href="{{ route('login') }}" class="click-btn">Login again</a>
+            <a href="{{ route('admin.login') }}" class="click-btn">Login again</a>
         </section>
     </main>
 @endsection
