@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\MemberAttendanceLog;
 use App\Models\MembershipPlans;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class MemberPortalController extends Controller
 {
