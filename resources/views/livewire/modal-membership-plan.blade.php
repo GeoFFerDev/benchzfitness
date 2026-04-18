@@ -5,6 +5,8 @@ use App\Models\MembershipPlans;
 use Livewire\WithFileUploads;
 uses(WithFileUploads::class);
 
+$planOptions = ['Bronze', 'Silver', 'Gold', 'Platinum'];
+
 state([
     'planOptions' => ['Bronze', 'Silver', 'Gold', 'Platinum'],
     'mode' => 'add',
@@ -52,7 +54,7 @@ on(['membershipPlanCreate' => function () {
     $this->show = true;
 }]);
 
-$updatePlan = function () {
+$updatePlan = function () use ($planOptions) {
     $validatedData = $this->validate([
         'name' => "required|in:" . implode(',', $this->planOptions) . "|unique:membership_plans,name,{$this->id}",
         'tag' => 'required|string|max:100',
@@ -74,7 +76,7 @@ $updatePlan = function () {
     $this->js('window.location.reload()');
 };
 
-$storePlan = function () {
+$storePlan = function () use ($planOptions) {
     $validatedData = $this->validate([
         'name' => 'required|in:' . implode(',', $this->planOptions) . '|unique:membership_plans,name',
         'tag' => 'required|string|max:100',
