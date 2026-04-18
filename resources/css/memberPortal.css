@@ -1,913 +1,527 @@
-/* ==================================================
-    Global Resets & Variables
-    ================================================== */
-*,*::after, *::before{
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    font-family: var(--body-font);
+:root {
+    --member-bg: #f6f7fb;
+    --card-bg: #ffffff;
+    --line: #eceef4;
+    --muted: #6b7280;
 }
 
-body{
-    width: 100%;
-    margin-inline: auto;
-    overflow-x: hidden; /* Prevents horizontal scroll when sidebar is hidden */
+body {
+    background: var(--member-bg);
+    overflow-x: hidden;
 }
 
-/* ==================================================
-    Navigation & Header
-    ================================================== */
-
-
-.burger-button{
-    height: 50px;
-    width: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    flex-direction: column;
-    padding: 10px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    z-index: 1001;
-}
-
-.burger-button div{
-    height: 3px;
-    background-color: black;
-    width: 100%;
-    border-radius: 5px;
-}
-
-/* ==================================================
-    Sidebar Logic (New Functional Styles)
-    ================================================== */
-.mobile-side-bar {
-    position: fixed;
+/* Top nav + drawer */
+nav#mainNav {
+    position: sticky;
     top: 0;
-    right: -100%; /* Hidden off-screen */
-    width: 280px;
-    height: 100vh;
-    background-color: white;
-    z-index: 1000;
-    padding: 80px 20px 20px 20px;
-    transition: right 0.3s ease-in-out;
-    box-shadow: -5px 0px 15px rgba(0, 0, 0, 0.1);
+    z-index: 80;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+    background: #fff;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
 }
 
-/* Toggle class for JS */
-.mobile-side-bar.active {
-    right: 0;
+nav#mainNav img { max-height: 36px; }
+
+.burger-button {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 8px;
+    cursor: pointer;
 }
+
+.burger-button div {
+    width: 100%;
+    height: 3px;
+    background: var(--secondary-color);
+    border-radius: 4px;
+    transition: all .25s ease;
+}
+
+.burger-button.toggle .line1 { transform: rotate(-45deg) translate(-4px, 6px); }
+.burger-button.toggle .line2 { opacity: 0; }
+.burger-button.toggle .line3 { transform: rotate(45deg) translate(-5px, -7px); }
 
 .sidebar-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: none;
-    z-index: 999;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 79;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease;
 }
 
 .sidebar-overlay.active {
-    display: block;
+    opacity: 1;
+    pointer-events: auto;
 }
 
-.mobile-side-bar a{
-    display: block;
-    margin-bottom: 10px;
-    text-decoration: none;
-    color: inherit;
+.mobile-side-bar {
+    position: fixed;
+    right: -300px;
+    top: 0;
+    width: 280px;
+    max-width: 90%;
+    height: 100vh;
+    background: #fff;
+    padding: 76px 14px 14px;
+    z-index: 81;
+    border-left: 5px solid var(--secondary-color);
+    transition: right .25s ease;
+    overflow-y: auto;
 }
 
-.nav-wrap{
+.mobile-side-bar.active { right: 0; }
+
+.mobile-side-bar a { text-decoration: none; }
+
+.mobile-side-bar .nav-wrap {
     display: flex;
-    gap: 10px;
     align-items: center;
-}
-
-.nav-wrap h1{
-    font-family: "Bebas Neue", sans-serif!important;
-    font-weight: 400;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-.nav-wrap img{
-    width: 30px;
-    height: 30px;
-}
-
-/* ==================================================
-    Profile & Info Sections
-    ================================================== */
-
-.profile-info{
-    background: var(--secondary-color);
-    padding-inline: 10px;
-    padding-block: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 40px;
-    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, .3),
-                inset 0px -4px 4px rgba(0, 0, 0, .3);
-}
-
-.profile-info a{
-    height: max-content;
-}
-.profile-text{
-    display: flex;
     gap: 10px;
-}
-.profile-name h1{
-    color: white!important;
-    height: 25px;
-}
-.profile-name h2{
-    color: rgb(184, 184, 184)!important;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: #fff;
+    padding: 10px;
+    margin-bottom: 8px;
 }
 
-
-
-.status{
-    margin-bottom: 10px!important;
-}
-.membership-status,
-.purchased-at,
-.date-attended,
-.date-expired{
-    box-shadow: var(--light-shadow);
-}
-
-
-
-.membership-status{
-    grid-area: a; 
-    display: flex;
-    align-items: center; 
-    justify-content: center;
-    flex-direction: column;
-    border-radius: 5px;
-    gap: 5px;
-    padding: 5px;
-    border: 2px solid var(--secondary-color);
-}
-
-.membership-status img{
-    width: 50px;
-    height: 50px;
-    border-radius: 5px;
-}
-
-.membership-status h1{
+.mobile-side-bar .nav-wrap h1 {
     font-family: var(--header-font);
-    font-weight: 300;
-    color: var(--secondary-color) !important;
-}
-
-.purchased-at{
-    grid-area: b;
-    display: flex;
-    padding-block: 5px;
-    padding-inline: 10px;
-    border-radius: 5px;
-    flex-direction: column;
-    justify-content: center;
-    border: 2px solid var(--secondary-color);
-}
-
-.purchased-at > div{
-    display: flex;
-    align-items: center;
-    height: 21px;
-    justify-content: space-between;
-}
-
-.date-attended{
-    grid-area: c;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 5px;
-    padding-inline: 10px;
-    border-radius: 5px;
-    border: 2px solid var(--secondary-color);
-}
-.date-expired{
-    grid-area: d;
-    border-radius: 5px;
-    padding: 5px;
-     border: 2px solid var(--secondary-color);
-}
-
-
-.membership-status h1{
-    color: var(--accent-color);
-    font-weight: bold;
     font-size: 18px;
+    font-weight: 400;
+    color: #111827;
 }
 
-.purchased-at h1{
-    font-size: 10px;
-}
-.purchased-at h2{
-    font-size: 10px;
-    font-weight: normal;
+.mobile-side-bar .nav-wrap img {
+    width: 22px;
+    height: 22px;
 }
 
-.date-attended h1{
-    font-size: 10px;
-}
-.date-attended h2{
-    font-size: 10px;
-    font-weight: normal;
+.portal-container {
+    width: min(860px, 94%);
+    margin: 14px auto 40px;
 }
 
-
-
-.date-expired h1{
-    font-size: 10px;
-}
-
-.date-expired h2{
-    font-size: 10px;
-    font-weight: normal;
-}
-
-.profile-text > img{
-    width: 52px;
-    height: 52px;
-    border-radius: 100%;
-}
-
-.profile-name h1{
-    font-size: 24px;
-    width: 150px;
-    font-family: var(--header-font);
-    color: var(--black);
-}
-
-.profile-name h2{
-    font-size: 14px;
-    color: #4c4b4b;
-    max-width: 150px;
-    overflow: auto;
-    font-weight: normal;
-}
-
-.qr-div{
-    padding: 5px;
-    border-radius: 5px;
-    background-color: white;
-    box-shadow: var(--light-shadow);
-}
-
-.qr-div h1{
-    font-size: 16px;
-    width: max-content;
-    margin-inline: auto;
-    font-family: var(--header-font);
-    font-weight: 300;
-}
-
-.qr-div svg{
-    width: 50px;
-    height: 50px;
-    border-radius: 3px;
-}
-
-/* ==================================================
-    Membership Options & Cards
-    ================================================== */
-
-.membership-options h1{
-    width: 90%;
-    margin: 0 auto;
-    margin-bottom: 10px;
-    font-family: var(--header-font);
-    font-weight: 300;
-    font-size: 24px;
-}
-
-.membership-options{
-    margin-bottom: 40px;
-}
-
-.membership-info{
-    border-radius: 5px;
-    display: grid;
-    height: 300px;
-
-    grid-template-rows: repeat(12, 8px);
-    grid-template-columns: 50px 50px 50px 50px 50px 15px;
-    grid-template-areas: 
-    "a a b b b b"
-    "a a b b b b"
-    "a a b b b b"
-    "a a b b b b"
-    "a a c c c c"
-    "a a c c c c"
-    "a a c c c c"
-    "a a c c c c"
-    "d d d d d d"
-    "d d d d d d"
-    "d d d d d d"
-    "d d d d d d";
-    gap: 4px;
-}
-
-.no-membership-info{
-    width: 90%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    border: 1px solid black;
-    border-radius: 5px;
-    margin-bottom: 20px;
-
-    border: 1px solid var(--danger-color);
-    background-color: var(--danger-color);
-    color: white;
-
-    margin-bottom: 40px;
-
-}
-
-.no-membership-info h1{
-    font-size: 16px;
-    font-weight: normal;
-}
-
-.available-coupons{
-    margin-bottom: 14px;
-    padding: 10px;
-    box-shadow: var(--light-shadow);
-    border-radius: 5px;  
-}
-
-.coupon-text{
+/* Dashboard */
+.member-hero {
+    background: linear-gradient(135deg, var(--secondary-color), #a51a34);
+    border-radius: 16px;
+    padding: 14px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
 }
 
-.coupon-text h2{
+.profile-text { display: flex; gap: 10px; align-items: center; }
+.profile-text > img {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255,255,255,.45);
+}
+
+.profile-name h1 {
+    color: #fff;
+    font-size: 24px;
+    line-height: 1;
+    font-family: var(--header-font);
+    font-weight: 400;
+}
+
+.profile-name h2 {
+    color: #f3d9df;
+    font-size: 12px;
+    max-width: 180px;
+}
+
+.qr-main {
+    background: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    min-width: 108px;
+    text-align: center;
+}
+
+.qr-main svg { width: 86px; height: 86px; }
+.qr-main h1 {
+    font-family: var(--header-font);
     font-size: 16px;
-    font-weight: normal;
-        border-bottom: 1px solid bold;
-    
+    font-weight: 400;
 }
 
-.coupon-text h2 a{
-    color: black;
-    text-decoration: underline; 
+.member-quick-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 12px;
 }
 
-.coupon-card{
+.quick-stat-card {
+    background: var(--card-bg);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 12px;
+}
+
+.quick-stat-card span {
+    display: block;
+    font-size: 10px;
+    text-transform: uppercase;
+    color: var(--muted);
+    letter-spacing: .06em;
+}
+
+.quick-stat-card strong {
+    font-family: var(--header-font);
+    font-size: 24px;
+    color: var(--secondary-color);
+    font-weight: 400;
+}
+
+.member-status-panel {
+    background: var(--card-bg);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 12px;
     display: flex;
-    gap: 5px;
-    margin-top: 4px;
-    overflow-x: auto;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+    gap: 10px;
 }
 
-.coupon-card div{
-    padding-inline: 14px;
-    border: 1px solid;
-    font-size: 14px;
-    width: max-content;
+.section-title {
+    font-size: 22px;
+    font-family: var(--header-font);
+    font-weight: 400;
 }
 
-.coupon-card div:nth-child(odd){
-    background-color: #AE1A16;
-    color: white;
-    border: 1px solid #AE1A16;
+.plan-details { font-size: 13px; color: #4b5563; }
+
+.member-status-badge {
+    border-radius: 999px;
+    padding: 6px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .05em;
 }
 
-.coupon-card div:nth-child(even){
-   border-left: none;
-   border-right: none;
+.member-status-badge.status-active { background: #dcfce7; color: #166534; }
+.member-status-badge.status-inactive { background: #fee2e2; color: #991b1b; }
+
+/* Membership carousel */
+.membership-options,
+.attendance-logs {
+    background: var(--card-bg);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 12px;
 }
 
-/* --- NEW SCROLL SNAP & ARROW LOGIC START --- */
+.membership-title,
+.attendance-logs-title {
+    margin-bottom: 10px;
+    font-family: var(--header-font);
+    font-size: 24px;
+    font-weight: 400;
+}
+
 .membership-cards-wrapper {
     position: relative;
-    width: 100%;
-    /* Ensure the buttons stay vertically centered relative to the cards */
-    display: flex;
-    align-items: center;
 }
 
 .membership-cards {
     display: flex;
-    gap: 20px;
+    gap: 12px;
     overflow-x: auto;
-    padding: 30px 20px; /* Increased vertical padding to give space for the hover lift */
-    padding-left: 46px;
-    padding-right: 46px;
     scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    scrollbar-width: none; 
+    scrollbar-width: none;
     -ms-overflow-style: none;
-    background-color: var(--secondary-color);
+    padding: 6px 38px;
 }
 
-/* Card Hover Lift Effect */
+.membership-cards::-webkit-scrollbar { display: none; }
+
 .membership-card-link {
-    scroll-snap-align: center;
     text-decoration: none;
-    flex-shrink: 0;
-    transition: transform 0.3s ease; /* Smooth transition for the lift */
+    color: inherit;
+    min-width: 220px;
+    scroll-snap-align: start;
 }
 
-.membership-card-link:hover {
-    transform: translateY(-4px); /* Moves card up 10px on hover */
+.membership-card {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
 }
 
-/* Fixed Centering for Buttons */
+.card-accent {
+    background: var(--secondary-color);
+    min-height: 115px;
+    display: grid;
+    place-items: center;
+}
+
+.card-accent img {
+    width: 92%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.membership-card-info {
+    padding: 12px;
+    display: grid;
+    gap: 8px;
+}
+
+.membership-card-status-h1 {
+    font-size: 22px;
+    font-family: var(--header-font);
+    font-weight: 400;
+}
+
+.membership-card-info-duration {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: #374151;
+}
+
+.membership-card-info-duration img { width: 14px; height: 14px; }
+
+.membership-card-info-tag {
+    width: fit-content;
+    padding: 4px 8px;
+    border-radius: 999px;
+    background: rgba(129, 14, 37, .12);
+    color: var(--secondary-color);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.card-price {
+    font-size: 24px;
+    font-family: var(--header-font);
+    font-weight: 400;
+    color: var(--secondary-color);
+}
+
 .scroll-btn {
     position: absolute;
-    top: 50%; /* Changed from 40% to 50% */
-    transform: translateY(-50%); /* Perfectly centers the button anchor point */
-    z-index: 10;
-    background: rgba(255, 255, 255, 0.6); /* Slightly more opaque for visibility */
-    backdrop-filter: blur(4px);
-    border: none;
-    border-radius: 50%;
-    width: 44px;
-    height: 44px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: #fff;
+    color: #111827;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    color: rgba(0,0,0,0.8);
-    font-size: 20px;
+    z-index: 3;
 }
 
-/* Prevent the lift effect from getting cut off at the top */
-.membership-cards-wrapper {
-    overflow: visible; 
-}
+.scroll-btn.left { left: 0; }
+.scroll-btn.right { right: 0; }
 
-.scroll-btn:active {
-    scale: 0.95;
-}
-
-.scroll-btn.left { left: -5px; }
-.scroll-btn.right { right: -5px; }
-/* --- NEW SCROLL SNAP & ARROW LOGIC END --- */
-
-.member-card{
-    min-width: 84px;
-}
-
-.member-card > img{
-    width: 100%;
-    height: 100px;
-}
-
-.member-card-text h1,
-.member-card-text h3{
-    font-size: 16px;
-}
-
-.member-card-text h2{
-    font-size: 16px;
-    color: #4A4A4A;
-}
-
-/* ==================================================
-    Attendance & Profile Views
-    ================================================== */
-.attendance-logs{
-    min-height: 100px;
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, .5);
-    border-radius: 5px;
-    display: grid;
-    place-items: center;
-    font-weight: bold;
-    margin-bottom: 40px!important;
-}
-
-.attendance-logs-title{
-    width: 90%;
-    margin: 0 auto;
-    font-size: 24px;
-    font-family: var(--header-font);
-    font-weight: bold;
-    margin-bottom: 10px;
-    font-weight: 300;
-}
-
-.membership-title{
-    width: 90%;
-    margin: 0 auto;
-    font-size: 24px!important;
-    font-family: var(--header-font);
-    font-weight: bold;
-    margin-bottom: 10px;
-    font-weight: 300;
-}
-
-.profile-picture{
-   width: 100%;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   padding-block: 10px;
-}
-
-.profile-picture img{
-    width: 100px;
-    height: 100px;
-}
-
-/* ==================================================
-    Buttons & Actions
-    ================================================== */
-.back-btn{
-    display: block;
-    height: 44px;
-    background-color: #AE1A16;
-    width: max-content;
-    padding-inline: 10px;
-    display: grid;
-    place-items: center;
-    border-radius: 5px;
-    text-transform: uppercase;
-    color: white;
-    font-weight: bold;
-    margin-block: 10px;
-    text-decoration: none;
-}
-
-.profile-view-text{
-    box-shadow: var(--light-shadow);
-    border-radius: 5px;
-    padding-inline: 10px;
-    padding-block: 20px;
-    margin-top: 20px;
-}
-
-.profile-view-text h1{
-    font-weight: bold;
-    font-size: 18px;
-}
-
-.profile-view-text h2{
-    margin-bottom: 5px;
-}
-
-.edit-view-btn{
-    display: block;
-    height: 44px;
-    background-color: #AE1A16;
-    width: 100%;
-    padding-inline: 10px;
-    display: grid;
-    place-items: center;
-    border-radius: 5px;
-    text-transform: uppercase;
-    color: white;
-    font-weight: bold;
-    margin-block: 10px;
-    text-decoration: none;
-}
-
-.edit-view label{
-    font-weight: bold;
-    font-size: 18px;
-}
-
-.edit-view {
-    margin-bottom: 0px!important;
-}
-
-.click-btn{
-    display: block;
-    height: 44px;
-    border: 2px solid black;
-    color: black;
-    width: 100%!important;
-    border-radius: 5px;
-    display: grid;
-    place-items: center;
-    font-weight: bold;
-}
-
-.edit-pass-change{
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, .5);
-    border-radius: 5px;
-}
-
-.edit-pass-change h1{
-    font-family: var(--header-font);
-    font-weight: bold;
-    font-size: 20px;
-    margin-bottom: 20px;
-}
-
-.edit-pass-change a {
-    display: block;
-    background-color: var(--accent-color);
-    color: white;
-    font-weight: bold;
-    display: grid;
-    place-items: center;
-    height: 44px;
-    border-radius: 5px;
-    text-decoration: none;
-}
-
-.edit-cancel-btn{
-    width: 100%;
-    height: 44px;
-    background-color: white;
-    color: black;
-    border: 2px solid black ;
-    margin-bottom: 40px;
-    margin-top: 10px;
-    border-radius: 5px;
-    display: grid;
-    place-items: center;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-
-.head-title-status{
-    width: 90%;
-    margin: 0 auto;
-    font-family: var(--headbackup-font);
-    font-size: 24px;
-    margin-bottom: 10px;
-    font-weight: 300;
-}
-
-
-.membership-card h1{ 
-    font-family: var(--header-font);
-    font-size: 24px;
-    font-weight: 300;
-}
-.membership-card{
-    height: 136px;
-    width: 230px;
-    display: grid;
-    grid-template-rows: 14px 122px;
-    border-radius: 5px;
-    box-shadow: var(--light-shadow);
-}
-.membership-card > img{
-    width: 230px;
-    height: 14px;
-    object-fit: cover;
-    object-position: center;
-    overflow: hidden;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-}
-
-.membership-card-info{
-    height: 124px;
-    display: flex;
-    flex-direction: column;
-    padding: 8px;
-    color: var(--black);
-    background-color: white;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-}
-
-.membership-card-info h2{
-    display: block;
-    margin-top: auto;
-    margin-left: auto;
-    font-size: 18px;
-}
-
-.membership-card-info h1{
-    width: 180px;
-    overflow-y: auto;
-    white-space: nowrap;
-    height: 32px;
-    margin-bottom: 0px;
-}
-
-.membership-card-info-duration{
-    display: flex;
-    gap: 3px;
-    margin-bottom: 5px;
-}
-
-.membership-card-info-duration img{
-    width: 11.37px;
-}
-
-.membership-card-info-tag{
-    height: 21px;
-    border: 2px solid var(--secondary-color);
-    width: max-content;
-    padding-inline: 6px;
-    font-size: 14px;
-    text-transform: uppercase;
-    background-color: white;
-    color: var(--secondary-color);
-    font-weight: BOLD;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    border-radius: 3px;
-}
-
-.card-accent img{
-    object-fit: cover;
-    background-color: white;
-    width: 230px;
-}
-
-.membership-card-status-h1{
-    margin-inline: 0!important;
-}
-
-.card-accent{
-    overflow: hidden;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-}
-
-/* ==================================================
-    Progress Bar & Membership Grid Fixes
-   ================================================== */
-
-/* Allow the grid to expand for the progress bar */
-.membership-info {
-    width: 90%;
-    margin: 0 auto;
-    height: auto !important; /* Overrides the fixed 300px height */
-    min-height: 180px;
-    grid-template-rows: repeat(auto-fill, minmax(10px, auto));
-    padding-bottom: 15px;
-}
-
-/* Progress Bar Container */
-.progress-container {
-    margin-top: 10px;
-    width: 100%;
-}
-
-/* The Background Track */
-.progress-bar {
-    width: 100%;
-    height: 10px;
-    background-color: #e0e0e0;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: inset 0px 1px 2px rgba(0,0,0,0.1);
-}
-
-/* The Animated Fill */
-.progress-fill {
-    height: 100%;
-    background-color: #AE1A16; /* Your accent red */
-    border-radius: 10px;
-    transition: width 0.8s ease-in-out;
-}
-
-/* Remaining Days Text */
-.progress-text {
-    font-size: 11px;
-    font-weight: bold;
-    color: #4c4b4b;
-    display: block;
-    text-align: right;
-    margin-top: 5px;
-    font-family: var(--body-font);
-}
-
-/* Ensure date-expired area has enough room */
-.date-expired {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 10px 12px !important;
-}
-
-.date-expired h2 {
-    margin-bottom: 2px;
-}
-
-/* ==================================================
-    Attendance Table Styling
-   ================================================== */
-.attendance-logs {
-    width: 90%;
-    margin: 0 auto;
-    background: white;
-    padding: 10px;
-    box-shadow: var(--light-shadow);
-    border-radius: 5px;
-    overflow: hidden;
-    display: block; /* Overriding your grid place-items for the table */
-}
-
+/* Attendance */
+.attendance-logs { margin-top: 12px; }
 .attendance-table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 14px;
 }
 
-.attendance-table thead tr {
-    border-bottom: 2px solid #f0f0f0;
+.attendance-table th,
+.attendance-table td {
+    text-align: left;
+    padding: 10px;
+    border-bottom: 1px solid var(--line);
+    font-size: 13px;
 }
 
 .attendance-table th {
-    text-align: left;
-    padding: 12px 8px;
-    color: #888;
-    font-family: var(--header-font);
     text-transform: uppercase;
-    font-size: 12px;
-
+    font-size: 11px;
+    letter-spacing: .05em;
+    color: var(--muted);
 }
 
-.attendance-table td {
-    padding: 12px 8px;
-    border-bottom: 1px solid #f9f9f9;
-    color: var(--black);
-    font-weight: normal;
-}
-
-.attendance-table tr:last-child td {
-    border-bottom: none;
-}
-
-.day-text {
-    color: #666;
-}
-
-.time-text {
-    font-weight: bold;
-    color: #AE1A16; /* Using your accent red for the time */
-}
+.time-text { color: var(--secondary-color); font-weight: 700; }
 
 .no-logs {
-    padding: 40px;
+    padding: 18px;
     text-align: center;
-    color: #888;
-    font-weight: normal;
+    color: var(--muted);
 }
 
-/* --- Sticky Navigation --- */
-nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: fixed;
-    top: 0;
-    left: 0;
+/* Profile pages (reuse existing classes) */
+.back-btn,
+.edit-view-btn,
+.edit-cancel-btn {
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 10px;
+    min-height: 40px;
+    padding: 10px 14px;
+    font-weight: 700;
+    letter-spacing: .03em;
+}
+
+.back-btn,
+.edit-cancel-btn {
+    color: var(--secondary-color);
+    border: 1px solid rgba(129, 14, 37, .35);
+    background: #fff;
+}
+
+.edit-view-btn {
+    color: #fff;
+    background: var(--secondary-color);
+    border: 1px solid var(--secondary-color);
+}
+
+.profile-picture {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 14px auto;
+    border: 3px solid #fff;
+    box-shadow: 0 8px 20px rgba(0,0,0,.12);
+}
+
+.profile-picture img { width: 100%; height: 100%; object-fit: cover; }
+
+.profile-view-text {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 14px;
+    margin-bottom: 14px;
+}
+
+.profile-view-text h1 {
+    font-size: 11px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 8px;
+}
+
+.profile-view-text h2 {
+    font-size: 16px;
+    color: #111827;
+    font-weight: 600;
+}
+
+.edit-view {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 14px;
+    margin-bottom: 12px;
+}
+
+.edit-view input,
+.edit-view select,
+.edit-view textarea,
+form input[type='password'],
+form input[type='email'],
+form input[type='text'] {
     width: 100%;
-    background-color: white; /* Ensures content doesn't bleed through */
-    z-index: 1002; /* Higher than sidebar and overlay */
-    padding-inline: 5%; /* Matches your body width logic */
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 10px 12px;
+    margin-top: 6px;
 }
 
-nav img{
-    max-height: 40px;
+.edit-pass-change {
+    margin-top: 16px;
+    padding: 12px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: #fff;
 }
 
-/* Adjust main container so it doesn't hide under the sticky nav */
-.portal-container {
-     margin-top: 80px; 
+.edit-pass-change h1 {
+    font-family: var(--header-font);
+    font-weight: 400;
+    margin-bottom: 8px;
 }
 
-/* --- Burger to X Animation --- */
-.burger-button div {
-    transition: all 0.3s ease;
+.edit-pass-change a {
+    color: var(--secondary-color);
+    font-weight: 700;
 }
 
-.burger-button.toggle .line1 {
-    transform: rotate(-45deg) translate(-8px, 7px);
+@media (max-width: 768px) {
+    .portal-container { width: 94%; margin-top: 12px; }
+
+    .member-hero {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .qr-main {
+        align-self: center;
+    }
+
+    .member-quick-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .member-status-panel {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .membership-card-link {
+        min-width: 82%;
+    }
 }
 
-.burger-button.toggle .line2 {
-    opacity: 0;
-    transform: translateX(-20px);
+.member-sidebar-title {
+    font-family: var(--header-font);
+    font-size: 26px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    color: var(--secondary-color);
 }
 
-.burger-button.toggle .line3 {
-    transform: rotate(45deg) translate(-8px, -6px);
+.membership-cards.is-scrolling .membership-card,
+.membership-cards.is-scrolling .sample-plan-card {
+    transform: translateY(-3px);
+    transition: transform .25s ease;
 }
+
+.sample-plan-card {
+    min-width: 220px;
+}
+
+.sample-accent {
+    display: grid;
+    place-items: center;
+    color: #fff;
+    font-family: var(--header-font);
+    font-size: 24px;
+    letter-spacing: 0.04em;
+}
+
+.sample-bronze { background: linear-gradient(135deg, #8d5a3b, #b87333); }
+.sample-silver { background: linear-gradient(135deg, #9ca3af, #d1d5db); color: #1f2937; }
+.sample-gold { background: linear-gradient(135deg, #b8860b, #ffd700); color: #1f2937; }
+.sample-platinum { background: linear-gradient(135deg, #5f6673, #e5e7eb); color: #111827; }

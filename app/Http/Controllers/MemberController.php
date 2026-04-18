@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
-use App\Models\MembershipStatus;
 
 
 class MemberController extends Controller
@@ -28,7 +26,7 @@ class MemberController extends Controller
      */
     public function create()
     {
-        return view('admins.member-management.member-add');
+        abort(404);
     }
 
     /**
@@ -36,26 +34,7 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        $ValidatedData = $request->validate([
-            'name'=>'required|string|Max:255',
-            'email'=>'required|email|unique:users',
-            'password'=>'required|confirmed|min:8',
-        ]);
-
-        $ValidatedData['password'] = Hash::make($ValidatedData['password']);
-        $ValidatedData['role'] = 'member';
-        $ValidatedData['profile_picture'] = $request->profile_picture;
-
-        $user = User::create($ValidatedData);
-        
-        MembershipStatus::create([
-            'user_id' => $user->id,
-            'planType' => 'None',
-            'expiry_date' => null,
-            'status' => 'Inactive',
-        ]);
-
-        return redirect()->route('memberManagement.index');
+        abort(404);
     }
 
     /**
