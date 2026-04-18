@@ -3,15 +3,14 @@ use function Livewire\Volt\{state, on, computed, usesFileUploads, updated};
 use App\Models\User;
 use App\Models\MembershipStatus;
 use App\Models\MembershipPlans; 
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
 usesFileUploads();
 
 state([
-    'show' => false, 'mode' => 'create', 'memberId' => null,
-    'name' => '', 'email' => '', 'password' => '', 'password_confirmation' => '',
+    'show' => false, 'mode' => 'edit', 'memberId' => null,
+    'name' => '', 'email' => '',
     'profile_picture' => null, 'existing_picture' => null,
     'status' => 'Inactive', 'planType' => 'None', 'expiry_date' => '',
 ]);
@@ -31,12 +30,6 @@ updated(['planType' => function ($value) {
     }
 }]);
 
-on(['memberCreate' => function () {
-    $this->reset(); 
-    $this->resetValidation();
-    $this->mode = 'create'; $this->show = true;
-}]);
-
 on(['memberEdit' => function ($id) {
     $this->resetValidation();
     $user = User::findOrFail($id);
@@ -44,8 +37,6 @@ on(['memberEdit' => function ($id) {
     $this->name = $user->name; 
     $this->email = $user->email;
     $this->existing_picture = $user->profile_picture;
-    $this->password = '';
-    $this->password_confirmation = '';
     $this->mode = 'edit'; 
     $this->show = true;
 }]);
@@ -87,32 +78,17 @@ $save = function () {
         $rules = [
             'name' => 'required|string|max:255',
             'email' => ['required', 'email', Rule::unique('users')->ignore($this->memberId)],
-            'profile_picture' => ($this->mode === 'create' ? 'required' : 'nullable') . '|image|max:2048',
+            'profile_picture' => 'nullable|image|max:2048',
         ];
-
-        if ($this->mode === 'create') {
-            $rules['password'] = 'required|min:8|confirmed';
-        }
 
         $this->validate($rules);
 
-        if ($this->mode === 'create') {
-            $user = User::create([
-                'name' => $this->name, 
-                'email' => $this->email, 
-                'role' => 'member',
-                'password' => Hash::make($this->password),
-                'profile_picture' => $this->profile_picture ? $this->profile_picture->store('profile_pictures', 'public') : null,
-            ]);
-            MembershipStatus::create(['user_id' => $user->id, 'planType' => 'None', 'status' => 'Inactive']);
-        } else {
-            $user = User::findOrFail($this->memberId);
-            $user->update(['name' => $this->name, 'email' => $this->email]);
+        $user = User::findOrFail($this->memberId);
+        $user->update(['name' => $this->name, 'email' => $this->email]);
 
-            if ($this->profile_picture) {
-                if ($user->profile_picture) Storage::disk('public')->delete($user->profile_picture);
-                $user->update(['profile_picture' => $this->profile_picture->store('profile_pictures', 'public')]);
-            }
+        if ($this->profile_picture) {
+            if ($user->profile_picture) Storage::disk('public')->delete($user->profile_picture);
+            $user->update(['profile_picture' => $this->profile_picture->store('profile_pictures', 'public')]);
         }
     }
 
@@ -168,7 +144,7 @@ $deleteMember = function () {
                     </form>
 
                 @else
-                    <h2 class="header-title-form">{{ $mode === 'create' ? 'New Member' : 'Edit Profile' }}</h2>
+                    <h2 class="header-title-form">Edit Profile</h2>
                     <form wire:submit.prevent="save">
                         <div class="avatar-upload-container">
                             <label class="avatar-label">
@@ -196,18 +172,7 @@ $deleteMember = function () {
                             <input type="email" wire:model="email" class="form-input">
                             @error('email') <span class="error-text">{{ $message }}</span> @enderror
                         </div>
-                        @if($mode === 'create')
-                            <div class="form-group">
-                                <label class="form-label">PASSWORD</label>
-                                <input type="password" wire:model="password" class="form-input">
-                                @error('password') <span class="error-text">{{ $message }}</span> @enderror
-                            </div>
-                            <div class="form-group mb-4">
-                                <label class="form-label">CONFIRM PASSWORD</label>
-                                <input type="password" wire:model="password_confirmation" class="form-input">
-                            </div>
-                        @endif
-                        <button type="submit" class="btn-primary w-full">{{ $mode === 'create' ? 'Register' : 'Save' }}</button>
+                        <button type="submit" class="btn-primary w-full">Save</button>
                     </form>
                 @endif
                 <button wire:click="$set('show', false)" class="btn-dismiss">Cancel</button>
