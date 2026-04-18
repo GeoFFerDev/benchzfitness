@@ -1,0 +1,15 @@
+.member-table{
+    min-width: 800px;
+    gap: 20px;
+    border: 1px solid black;
+    margin-bottom: 20px;
+}
+
+.member-table-div{
+    overflow-x: auto;
+    width: 100%;
+}
+body {
+    background-color: red;
+}
+

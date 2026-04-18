@@ -1,0 +1,52 @@
+.header-section{
+    margin-bottom: 30px;
+}
+.header-section h1{
+    font-family: var(--header-font);
+    font-size: 32px;
+}
+.header-section h2{
+    font-size: 16px;
+    color: var(--black);
+    font-weight: normal;
+}
+.profile-section{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.profile-section > img{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    border: 1px solid black;
+}
+.profile-user-role{
+    display: flex;
+    gap: 5px;
+
+}
+.profile-user-role h2{
+    text-transform: capitalize;
+    font-size: 18px;
+    font-weight: normal;
+    color: #7E7E7E;
+}
+
+.profile-section-info{
+    height: 60px;
+}
+
+.profile-section-info h1{
+    font-size: 24px;
+}
+
+.dashboard-welcome-msg{
+    font-size: 16px;
+    font-weight: normal;
+}
+.dashboard-welcome-msg span{
+    text-transform: capitalize;
+}
+

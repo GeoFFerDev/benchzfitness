@@ -1,0 +1,415 @@
+:root{
+    /* font styles */
+    --body-font: "Open Sans", sans-serif;
+    --header-font: "Bebas Neue", sans-serif;
+    --headbackup-font: "Bebas Neue", sans-serif;
+    --inter-font: "Inter", sans-serif;
+    /* Colors */
+    --secondary-color:#810E25;
+    --danger-color: #EF4444;
+    --update-color: #3B82F6;
+    --black: #121212;
+
+    --primary-red: #e63946;
+    --primary-red-hover: #c12e3a;
+    --bg-light: #f9fafb;
+    --border-gray: #e5e7eb;
+    --text-dark: #111827;
+    --text-muted: #6b7280;
+
+    --light-shadow: 0px 0px 8px rgba(0,0,0,0.4);
+}
+
+/* Chrome, Edge, Safari */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+*, *::before, *::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--body-font);
+}
+
+/* error message */
+.error-message{
+    padding-inline: 10px;
+    padding-block: 20px;
+    color: var(--danger-color);
+}
+
+/* crud buttons */
+.edit-btn-crud{
+    display: flex;
+    height: 28px;
+    padding-inline: 10px;
+    align-items: center;
+    gap: 5px;
+    border-radius: 3px;
+    background-color: var(--update-color);
+    font-weight: bold;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.delete-btn-crud{
+    display: flex;
+    height: 28px;
+    padding-inline: 10px;
+    align-items: center;
+    gap: 5px;
+    border-radius: 3px;
+    background-color: var(--danger-color);
+    font-weight: bold;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* form */
+.input-wrap{
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+}
+
+.input-wrap input[type="file"]::file-selector-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  height: 30px!important;
+  border-radius: 3px;
+  background-color: var(--secondary-color);
+}
+
+
+.input-wrap label{
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #6b7280;
+    text-transform: uppercase;
+}
+
+.input-wrap label span{
+    color: var(--danger-color);
+}
+
+.input-wrap-two{
+    display: flex;
+    gap: 20px;
+    margin-bottom: 5px;
+}
+
+.input-wrap input{
+    padding-inline: 10px;
+    padding-block: 5px;
+    border-radius: 8px;
+    border: 1px solid #E5E7EB;
+    font-size: 16px;
+    height: 44px;
+}
+
+.input-wrap input:focus{
+    border: 1px solid var(--update-color);
+    outline-color: var(--update-color);
+}
+
+textarea{
+    resize: vertical;
+    margin-bottom: 20px;
+    padding: 5px;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+}
+
+.submit-form-btn,
+.cancel-form-btn{
+    width: 100%;
+    height: 36px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: none!important;
+    color: #6b7280;
+    cursor: pointer;
+}
+
+.submit-form-btn:hover{
+    background-color: #e63946;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.submit-form-btn{
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.cancel-form-btn{
+    background-color: transparent;
+    border: 1px solid var(--black);
+}
+
+.delete-from-btn{
+    width: 100%;
+    height: 36px;
+    font-size: 16px;
+    background-color: var(--danger-color);
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    border: none;
+    margin-bottom: 10px;
+}
+
+.delete-confirmation p{
+    max-width: 400px;
+    margin-bottom: 20px;
+    font-size: 32px;
+}
+
+/* Modal Title */
+.membership-plan-modal-overlay{
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    background-color: rgba(0, 0, 0, .5);
+    overflow-y: auto;
+}
+
+.modal-box{
+    min-width: 500px;
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, .5);
+    background-color: white;
+}
+
+.modal-title{
+    margin-bottom: 20px;
+}
+
+.modal-title h1{
+    font-size: 32px;
+    font-family: var(--header-font);
+    text-align: left;
+    font-weight: 300;
+}
+.delete-title{
+    color: red;
+}
+
+/*=========================
+    SIDE BAR
+=========================*/
+
+a{
+    display: block;
+    text-decoration: none;
+}
+
+.site-logo{
+    height: 41px;
+    display: flex;
+    align-items: center;
+    
+    margin: 0 auto;
+    justify-content: center;
+    transition: all 0.3s ease;
+    
+}
+.site-logo img:nth-child(2) {
+    width: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.3s ease; /* Matches your sidebar transition speed */
+}
+.side-bar:hover .site-logo {
+    justify-content: flex-start;
+    padding-left: 25px;
+    gap: 10px;
+}
+
+.side-bar:hover .site-logo img:nth-child(2) {
+    width: 100px; /* Adjust this width based on your logo's actual size */
+    opacity: 1;
+}
+
+.line-divider{
+    width: 80%;
+    height: 2px;
+    background-color: white;
+    margin: 0 auto;
+}
+
+.side-bar {
+    width: 100px;
+    background-color: var(--secondary-color);
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-block: 40px;
+    transition: width 0.3s ease;
+    z-index: 1000;
+}
+
+.nav-icon-wrap.active {
+    anchor-name: --active-link;
+}
+
+.nav-indicator {
+    position: fixed;
+    background: white;
+    border-radius: 5px 0 0 5px; 
+    z-index: 0; 
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+
+    position-anchor: --active-link;
+    top: anchor(top);
+    bottom: anchor(bottom);
+    left: anchor(left);
+    
+    right: calc(100% - 100px); 
+
+    margin-top: -5px;
+    margin-bottom: -5px;
+    margin-left: -15px; 
+}
+
+.side-bar:hover .nav-indicator {
+    right: calc(100% - 300px);
+}
+
+.nav-icon-wrap {
+    position: relative;
+    z-index: 1; 
+    display: flex;
+    margin-left: 30px;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.nav-icon{
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    display: flex;
+    gap: 25px;
+}
+
+.nav-icon-text{
+    color: white;
+    display: flex;
+    align-items: center;
+    font-family: var(--header-font);
+    font-size: 24px;
+    width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: width 0s;
+    margin-left: 0;
+}
+
+.nav-icon-wrap:hover {
+    transform: translateY(-4px);
+}
+
+.side-bar:hover .nav-icon-text{
+    width: 100%;
+    transition: width 0.3s ease;
+    margin-left: 20px;
+}
+
+/* --- ACTIVE STATE LOGIC --- */
+
+/* 1. Turn White Icons to Black (#121212) */
+/* We target only the img tags that DO NOT have the .profile-img class */
+.nav-icon-wrap.active .nav-icon img:not(.profile-img) {
+    /* brightness(0) turns white to black; invert(7%) adds a tiny bit of lightness to hit #121212 exactly */
+    filter: brightness(0) invert(7%);
+}
+
+/* 2. Selected Text Color */
+.nav-icon-wrap.active .nav-icon-text {
+    color: var(--black) !important;
+}
+
+/* Ensure Profile Image doesn't get distorted */
+.profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    object-fit: cover;
+}
+
+/* Sidebar Hover & Transitions */
+.side-bar-profile{
+    border-radius: 100%;
+}
+
+.side-bar:hover {
+    width: 300px;
+    align-items: flex-start;
+    border-right: 5px solid white;
+}
+
+/* Main Content */
+.main-content{
+    min-height: 60px;
+    max-width: 1000px;
+    margin-inline:auto;
+    margin-top: 60px;
+}
+
+.search-input {
+    border: 1px solid #D1D5DB!important;
+    background-color: white!important;
+    border-radius: 5px!important;
+    height: 40px!important;
+    padding: 5px!important;
+    max-width: 350px!important;
+    width: 100%!important;
+}
+
+.search-input:focus {
+    border-color: var(--primary-red)!important;
+    outline: var(--primary-red)!important;
+    box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.1);
+}
+
+.header-title-form{
+    font-size: 36px;
+    font-family: var(--header-font);
+}
+
+.portal-container{
+    margin-bottom: 60px;
+}
+
