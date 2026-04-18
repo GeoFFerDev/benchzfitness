@@ -106,6 +106,10 @@ body {
     border-color: transparent;
 }
 
+.auth-form {
+    display: grid;
+    gap: 12px;
+}
 
 .auth-form {
     display: grid;
