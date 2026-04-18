@@ -1,26 +1,29 @@
-@extends('layouts.app')
+@extends('layouts.member.member-layout')
 
-@section('title', 'Edit Profile')
-
-@vite('resources/css/memberPortal.css')
+@section('title', 'Change Password')
 
 @section('content')
-    <form action="{{route('member.profile.edit.password.update')}}" method="POST">
-        @csrf    
+<section class="member-page-shell">
+    <a href="{{ route('member.profile.edit') }}" class="member-back-btn">← Back to Edit Profile</a>
 
-        <label for="current_password">Current Password</label>
-        <input type="password" name="current_password" id="current_password">
-        <br><br>
+    <article class="member-card-panel profile-edit-panel">
+        <h1>Change Password</h1>
+        <p class="panel-subtitle">Set a stronger password to keep your account secure.</p>
 
-        <label for="new_password">New Password</label>
-        <input type="password" name="new_password" id="new_password">
-        <br><br>
+        <form action="{{ route('member.profile.edit.password.update') }}" method="POST" class="member-form-grid">
+            @csrf
 
-        <label for="new_password_confirmation">Confirm New Password</label>
-        <input type="password" name="new_password_confirmation" id="new_password_confirmation">
-        <br><br>
+            <label for="current_password">Current Password</label>
+            <input type="password" name="current_password" id="current_password">
 
-        <input type="submit" value="SAVE CHANGES">
-    </form>
+            <label for="new_password">New Password</label>
+            <input type="password" name="new_password" id="new_password">
 
+            <label for="new_password_confirmation">Confirm New Password</label>
+            <input type="password" name="new_password_confirmation" id="new_password_confirmation">
+
+            <button type="submit" class="profile-primary-btn">Save Password</button>
+        </form>
+    </article>
+</section>
 @endsection

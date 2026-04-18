@@ -17,6 +17,10 @@
                 <div class="profile-name">
                     <h1>{{ $user->name }}</h1>
                     <h2>{{ $user->email }}</h2>
+                    <div class="profile-meta-chips">
+                        <span>{{ strtoupper($statusLabel) }}</span>
+                        <span>{{ $planName }}</span>
+                    </div>
                 </div>
             </div>
         </a>
@@ -24,6 +28,7 @@
         <div class="qr-div qr-main">
             {!! QrCode::size(1000)->format('svg')->generate($user->id); !!}
             <h1>Entry QR</h1>
+            <p class="qr-helper">Use this code for Double Binding check-in.</p>
         </div>
     </section>
 
@@ -48,6 +53,16 @@
             <p class="plan-details">Plan: {{ $planName }} | Expires: {{ $expiryText }}</p>
         </div>
         <span class="member-status-badge {{ $statusClass }}">{{ strtoupper($statusLabel) }}</span>
+    </section>
+
+
+    <section class="member-payment-panel">
+        <h2 class="section-title">Quick Subscription</h2>
+        <p class="plan-details">Process cashless payments for the Daily Session (₱50) or Monthly Plan (₱600).</p>
+        <div class="payment-action-grid">
+            <a href="#membership-options" class="payment-action-btn">Buy Daily Pass (₱50)</a>
+            <a href="#membership-options" class="payment-action-btn">Subscribe Monthly (₱600)</a>
+        </div>
     </section>
 
     <section class="membership-options" id="membership-options">

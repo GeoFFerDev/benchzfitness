@@ -5,8 +5,8 @@
     <main class="auth-page">
         <section class="auth-card">
             <div class="brand-pill">Benchz Fitness</div>
-            <h1 class="header-title">Admin Verification</h1>
-            <p class="auth-subtitle">Enter the 6-digit code sent to your admin email.</p>
+            <h1 class="header-title">Admin MFA Verification</h1>
+            <p class="auth-subtitle">Enter the 6-digit verification code sent to your admin email.</p>
 
             @if(session('mfa_status'))
                 <div class="info-box">{{ session('mfa_status') }}</div>
@@ -14,8 +14,7 @@
 
             @if(session('admin_mfa_preview'))
                 <div class="info-box">
-                    <strong>Local/Test code:</strong> {{ session('admin_mfa_preview') }}
-                    <br>
+                    <strong>Local/Test code:</strong> {{ session('admin_mfa_preview') }}<br>
                     <small>Shown only in local/test or when mail driver is <code>log</code>.</small>
                 </div>
             @endif

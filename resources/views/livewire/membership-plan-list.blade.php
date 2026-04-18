@@ -13,28 +13,26 @@ $plans = computed(function () {
 
 <div class="view-membership-wrapper">
     <div class="view-membership-header">
-          <input type="text" placeholder="Search membership plan" class="search-input"
-                wire:model.live.debounce.300ms="search">
+        <input type="text" placeholder="Search membership plan" class="search-input" wire:model.live.debounce.300ms="search">
         <button type="button" onclick="Livewire.dispatch('membershipPlanCreate')">+ Add Plan</button>
-              
     </div>
 
     <div class="membership-card-wrapper" wire:target="search">
         @foreach($this->plans as $plan)
-        
-            <div class="membership-card">
-                @if($plan->image_path)
-                    <img src="{{ asset('storage/' . $plan->image_path) }}" alt="{{ $plan->name }}">
-                @else
-                    <img src="{{ asset('assets/images/svg/platinum.png') }}" alt="Default Plan Image">
-                @endif
+            @php
+                $planClass = 'plan-' . strtolower($plan->name);
+            @endphp
+            <div class="membership-card {{ $planClass }}">
+                <div class="plan-band">
+                    <span>{{ strtoupper($plan->name) }}</span>
+                </div>
 
                 <div class="membership-card-info">
                     <h1>{{ $plan->name }}</h1>
-                        
+
                     <div class="membership-card-info-duration">
                         <img src="{{ asset('assets/images/svg/duration.svg') }}" alt="">
-                        {{ $plan->duration }} 
+                        {{ $plan->duration }}
                         {{ $plan->duration == 1 ? 'Session' : 'Days' }}
                     </div>
 
@@ -46,15 +44,13 @@ $plans = computed(function () {
                 </div>
 
                 <div class="membership-card-actions">
-                    <button class="edit-btn-crud" type="button" 
-                        onclick="Livewire.dispatch('membershipPlanEdit', {id: {{ $plan->id }}})">
-                        <img src="{{ asset('assets/images/svg/edit.svg') }}" alt=""> 
+                    <button class="edit-btn-crud" type="button" onclick="Livewire.dispatch('membershipPlanEdit', {id: {{ $plan->id }}})">
+                        <img src="{{ asset('assets/images/svg/edit.svg') }}" alt="">
                         Edit
                     </button>
 
-                    <button class="delete-btn-crud" type="button" 
-                        onclick="Livewire.dispatch('membershipPlanDelete', {id: {{ $plan->id }}})">
-                        <img src="{{ asset('assets/images/svg/trash.svg') }}" alt=""> 
+                    <button class="delete-btn-crud" type="button" onclick="Livewire.dispatch('membershipPlanDelete', {id: {{ $plan->id }}})">
+                        <img src="{{ asset('assets/images/svg/trash.svg') }}" alt="">
                         Delete
                     </button>
                 </div>

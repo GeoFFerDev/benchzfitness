@@ -1,33 +1,39 @@
-@extends('layouts.app')
+@extends('layouts.member.member-layout')
 
 @section('title', 'Profile')
 
-@vite('resources/css/memberPortal.css')
-
 @section('content')
-<a href="{{ route('member-portal') }}" class="back-btn">go back</a>   
-    <div class="profile-picture">
-        <img src="{{asset('storage/' . $user->profile_picture)}}" alt="">
-    </div>
-    
-    <div class="profile-view-text">
-        <h1>Full name</h1>
-        <h2>{{$user->name}}</h2>
-        <h1>Email</h1>
-        <h2>{{$user->email}}</h2>
-    </div>
-    
+<section class="member-page-shell">
+    <a href="{{ route('member-portal') }}" class="member-back-btn">← Back to Dashboard</a>
 
-    <a href="{{route('member.profile.edit')}}" class="edit-view-btn">edit profile</a>
-    <form action="{{ route('logout') }}" method="POST" style="display: inline;">
-        @csrf
-        <button type="submit" 
-                class="edit-cancel-btn" 
-                onclick="return confirm('Are you sure you want to log out of the Benchz Portal?')">
-            Logout
-        </button>
-    </form>
-    <br><br>
-    
-    
+    <article class="member-card-panel profile-view-panel">
+        <div class="profile-header-row">
+            <img src="{{ asset('storage/' . $user->profile_picture) }}" alt="Profile photo">
+            <div>
+                <h1>{{ $user->name }}</h1>
+                <p>{{ $user->email }}</p>
+                <span class="profile-chip">Member Account</span>
+            </div>
+        </div>
+
+        <div class="profile-detail-grid">
+            <div>
+                <h2>Full name</h2>
+                <p>{{ $user->name }}</p>
+            </div>
+            <div>
+                <h2>Email</h2>
+                <p>{{ $user->email }}</p>
+            </div>
+        </div>
+
+        <div class="profile-action-row">
+            <a href="{{ route('member.profile.edit') }}" class="profile-primary-btn">Edit Profile</a>
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button type="submit" class="profile-secondary-btn" onclick="return confirm('Are you sure you want to log out of the Benchz Portal?')">Logout</button>
+            </form>
+        </div>
+    </article>
+</section>
 @endsection

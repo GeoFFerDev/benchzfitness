@@ -6,7 +6,7 @@
         <section class="auth-card">
             <div class="brand-pill">Benchz Fitness</div>
             <h1 class="header-title">{{ $loginTitle ?? 'Login' }}</h1>
-            <p class="auth-subtitle">Sign in to continue to your portal.</p>
+            <p class="auth-subtitle">Securely sign in to continue to your dashboard.</p>
 
             <form action="{{ route('login.perform') }}" method="POST" class="auth-form">
                 @csrf

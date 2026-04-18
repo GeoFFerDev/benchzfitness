@@ -1,34 +1,38 @@
-@extends('layouts.app')
+@extends('layouts.member.member-layout')
 
 @section('title', 'Edit Profile')
 
-@vite('resources/css/memberPortal.css')
-
 @section('content')
-    <form action="{{ route('member.profile.update') }}" method="POST" class="edit-view">
-        @csrf
-        
-        <label for="">Full Name</label>
-        <input type="text" name="name" value="{{$user->name}}"><br><br>
-        <label for="">Email</label>
-        <input type="email" name="email" value="{{$user->email}}"><br><br>
+<section class="member-page-shell">
+    <a href="{{ route('member.profile') }}" class="member-back-btn">← Back to Profile</a>
 
-        <label for="profile">Profile Picture</label>
-        <input type="file" name="profile_picture" id="profile" accept="image/*" >
+    <article class="member-card-panel profile-edit-panel">
+        <h1>Edit Profile</h1>
+        <p class="panel-subtitle">Update your account details and profile photo.</p>
 
-        <br><br>
-        @error('profile_picture')
-            <div class="error-box" >{{ $message }}</div>
-        @enderror
+        <form action="{{ route('member.profile.update') }}" method="POST" enctype="multipart/form-data" class="member-form-grid">
+            @csrf
 
-        <input type="submit" value="SAVE CHANGES">
+            <label for="name">Full Name</label>
+            <input type="text" name="name" id="name" value="{{ $user->name }}">
 
-    </form>
-    <a href="{{route('member.profile')}}" class="edit-cancel-btn"> CANCEL</a>
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" value="{{ $user->email }}">
 
-    <div class="edit-pass-change">
-        <h1>Password</h1>
-        <a href="{{route('member.profile.edit.password')}}">CHANGE PASSWORD</a>
-    </div>
+            <label for="profile">Profile Picture</label>
+            <input type="file" name="profile_picture" id="profile" accept="image/*">
 
+            @error('profile_picture')
+                <div class="error-box">{{ $message }}</div>
+            @enderror
+
+            <button type="submit" class="profile-primary-btn">Save Changes</button>
+        </form>
+
+        <div class="profile-action-row">
+            <a href="{{ route('member.profile.edit.password') }}" class="profile-secondary-btn">Change Password</a>
+            <a href="{{ route('member.profile') }}" class="profile-secondary-btn">Cancel</a>
+        </div>
+    </article>
+</section>
 @endsection
