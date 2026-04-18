@@ -8,8 +8,6 @@
 @section('content')
 
     <h1 class="head-title">Member List</h1>
-    <div class=""><a href="{{route ('memberManagement.create') }}">REGISTER</a></div>
-
     <div class="member-table-div">
         <table class="member-table">
                 <thead>

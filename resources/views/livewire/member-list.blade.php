@@ -75,9 +75,6 @@ $members = computed(function () {
     <div class="member-management-container">
         <div class="member-header">
             <input type="text" placeholder="Search members..." wire:model.live.debounce.300ms="search" class="search-input">
-            <button wire:click="$dispatch('memberCreate')" class="btn-primary">
-                + Add New Member
-            </button>
         </div>
 
         <div class="member-table-wrapper">

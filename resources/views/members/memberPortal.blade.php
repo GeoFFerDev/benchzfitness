@@ -18,14 +18,41 @@
         </div> 
     </div>
 
-    <h1 class="head-title-status">Membership Status</h1>
+    @php
+        $attendanceCount = $attendances->count();
+        $latestAttendance = $attendances->sortByDesc('created_at')->first();
+        $statusLabel = $status?->status ?? 'Inactive';
+    @endphp
 
-    @if(Auth::user()->membershipStatus?->status == 'Inactive')
+    <section class="member-quick-stats">
+        <article class="quick-stat-card">
+            <span>Membership</span>
+            <strong>{{ $statusLabel }}</strong>
+        </article>
+        <article class="quick-stat-card">
+            <span>Days Remaining</span>
+            <strong>{{ $daysRemaining !== null ? max($daysRemaining, 0) : 'N/A' }}</strong>
+        </article>
+        <article class="quick-stat-card">
+            <span>Total Check-ins</span>
+            <strong>{{ $attendanceCount }}</strong>
+        </article>
+    </section>
+
+    <section class="member-actions">
+        <a href="{{ route('member.profile') }}" class="member-action-btn">Manage Profile</a>
+        <a href="#membership-options" class="member-action-btn">Membership Options</a>
+        <a href="#attendance-record" class="member-action-btn">Attendance Record</a>
+    </section>
+
+
+    <h1 class="head-title-status">Membership Status</h1>
+    @if(Auth::user()->membershipStatus?->status !== 'Active')
         <div class="no-membership-info">
             <h1>No active membership.</h1>
         </div>
         
-        <div class="membership-options">
+        <div class="membership-options" id="membership-options">
             <h1>Membership Options</h1> 
             <div class="available-coupons">
                 <div class="coupon-text">
@@ -159,7 +186,7 @@
         </div> 
     @endif   
 
-    <h1 class="attendance-logs-title">Attendance Record</h1>
+    <h1 class="attendance-logs-title" id="attendance-record">Attendance Record</h1>
     <div class="attendance-logs">
         @if($attendances->isEmpty())
             <div class="no-logs">
