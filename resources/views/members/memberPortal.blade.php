@@ -76,7 +76,23 @@
                         </article>
                     </a>
                 @empty
-                    <p class="no-logs">No membership plans available yet.</p>
+                    @foreach([
+                        ['name' => 'Bronze', 'price' => '299.00', 'tag' => 'Starter Access'],
+                        ['name' => 'Silver', 'price' => '499.00', 'tag' => 'Most Popular'],
+                        ['name' => 'Gold', 'price' => '699.00', 'tag' => 'Unlimited Flex'],
+                        ['name' => 'Platinum', 'price' => '999.00', 'tag' => 'VIP + Perks'],
+                    ] as $sample)
+                        <article class="membership-card sample-plan-card">
+                            <div class="card-accent sample-accent sample-{{ strtolower($sample['name']) }}">
+                                <span>{{ $sample['name'] }} PLAN</span>
+                            </div>
+                            <div class="membership-card-info">
+                                <h1 class="membership-card-status-h1">{{ $sample['name'] }}</h1>
+                                <div class="membership-card-info-tag">{{ $sample['tag'] }}</div>
+                                <h2 class="card-price">₱{{ $sample['price'] }}</h2>
+                            </div>
+                        </article>
+                    @endforeach
                 @endforelse
             </div>
 
@@ -119,7 +135,11 @@
 
             const scrollAmount = 280;
             const offset = direction === 'left' ? -scrollAmount : scrollAmount;
+
+            container.classList.add('is-scrolling');
             container.scrollBy({ left: offset, behavior: 'smooth' });
+            clearTimeout(container._scrollTimeout);
+            container._scrollTimeout = setTimeout(() => container.classList.remove('is-scrolling'), 350);
         }
     </script>
 @endsection

@@ -25,34 +25,39 @@
     </nav>
 
     <div class="mobile-side-bar" id="mobileSidebar">
+        <div class="member-sidebar-title">Member Menu</div>
+
         <a href="{{ route('member-portal') }}">
             <div class="nav-wrap">
                 <img src="{{ asset('assets/images/svg/dashboard.svg') }}" alt="">
-                <h1>HOME</h1>
+                <h1>Dashboard</h1>
             </div>
         </a>
-        <a href="{{ route('member.profile') }}">
-            <div class="nav-wrap">
-                <img src="{{ asset('assets/images/svg/profile.svg') }}" alt="">
-                <h1>PROFILE SETTINGS</h1>
-            </div>
-        </a>
+
         <a href="{{ route('member-portal') }}#membership-options">
             <div class="nav-wrap">
                 <img src="{{ asset('assets/images/svg/membershipplan.svg') }}" alt="">
-                <h1>MEMBERSHIP OPTIONS</h1>
+                <h1>Membership Options</h1>
             </div>
         </a>
+
         <a href="{{ route('member-portal') }}#attendance-record">
             <div class="nav-wrap">
                 <img src="{{ asset('assets/images/svg/AttendanceLogs.svg') }}" alt="">
-                <h1>SESSION HISTORY</h1>
+                <h1>Attendance History</h1>
+            </div>
+        </a>
+
+        <a href="{{ route('member.profile') }}">
+            <div class="nav-wrap">
+                <img src="{{ asset('assets/images/svg/profile.svg') }}" alt="">
+                <h1>Profile Settings</h1>
             </div>
         </a>
 
         <form action="{{ route('logout') }}" method="POST">
             @csrf
-            <button class="member-logout-btn" type="submit">LOGOUT</button>
+            <button class="member-logout-btn" type="submit">Logout</button>
         </form>
     </div>
 

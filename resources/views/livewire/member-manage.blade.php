@@ -24,7 +24,7 @@ state([
 
 $plans = computed(fn() => MembershipPlans::all());
 
-updated(['planType' => function ($value): void {
+updated(['planType' => function ($value){
     if ($value === 'None') {
         $this->expiry_date = null;
         $this->status = 'Inactive';
@@ -40,7 +40,7 @@ updated(['planType' => function ($value): void {
     }
 }]);
 
-on(['memberEdit' => function ($id): void {
+on(['memberEdit' => function ($id){
     $this->resetValidation();
 
     $user = User::findOrFail($id);
@@ -53,7 +53,7 @@ on(['memberEdit' => function ($id): void {
     $this->show = true;
 }]);
 
-on(['memberEditStatus' => function ($id): void {
+on(['memberEditStatus' => function ($id){
     $this->resetValidation();
 
     $user = User::with('membershipStatus')->findOrFail($id);
@@ -66,7 +66,7 @@ on(['memberEditStatus' => function ($id): void {
     $this->show = true;
 }]);
 
-on(['confirmDelete' => function ($id): void {
+on(['confirmDelete' => function ($id){
     $user = User::find($id);
 
     if (! $user) {
@@ -80,7 +80,7 @@ on(['confirmDelete' => function ($id): void {
     $this->show = true;
 }]);
 
-$save = function (): void {
+$save = function (){
     if ($this->mode === 'status') {
         $this->validate([
             'status' => 'required|in:Active,Inactive,Suspended,Expired',
@@ -126,7 +126,7 @@ $save = function (): void {
     $this->dispatch('member-updated');
 };
 
-$deleteMember = function (): void {
+$deleteMember = function (){
     User::find($this->memberId)?->delete();
     $this->show = false;
     $this->dispatch('member-updated');
