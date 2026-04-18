@@ -22,7 +22,10 @@ $plans = computed(function () {
     <div class="membership-card-wrapper" wire:target="search">
         @foreach($this->plans as $plan)
         
-            <div class="membership-card">
+            @php
+                $planClass = 'plan-' . strtolower($plan->name);
+            @endphp
+            <div class="membership-card {{ $planClass }}">
                 @if($plan->image_path)
                     <img src="{{ asset('storage/' . $plan->image_path) }}" alt="{{ $plan->name }}">
                 @else
