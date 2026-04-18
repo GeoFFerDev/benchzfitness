@@ -2,43 +2,45 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MembershipStatus;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-use App\models\User;
-use App\models\MembershipStatus;
-use GuzzleHttp\Psr7\Query;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
-
-    public function index(){
+    public function index()
+    {
         $user = Auth::user();
 
+        return $user;
     }
 
-    public function displayRegister(){
+    public function displayRegister()
+    {
         return view('users.register');
     }
-    
-    public function registerUser(Request $request){
 
-        $ValidatedData = $request->validate([
-            'name'=>'required|string|Max:255',
-            'email'=>'required|email|unique:users',
-            'password'=>'required|confirmed|min:8',
+    public function registerUser(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|confirmed|min:8',
             'profile_picture' => 'required|image|mimes:jpeg,png,gif,svg|max:2048',
         ]);
 
-        $ValidatedData['password'] = Hash::make($ValidatedData['password']);
-        $ValidatedData['role'] = 'member';
+        $validatedData['password'] = Hash::make($validatedData['password']);
+        $validatedData['role'] = 'member';
 
         $path = $request->file('profile_picture')->store('profile_picture', 'public');
-        $ValidatedData['profile_picture'] = $path;
+        $validatedData['profile_picture'] = $path;
 
-        $user = User::create($ValidatedData);
-        
+        $user = User::create($validatedData);
+
         MembershipStatus::create([
             'user_id' => $user->id,
             'planType' => 'None',
@@ -49,27 +51,89 @@ class AuthController extends Controller
         return redirect()->route('login');
     }
 
-    public function displayLogin(){
+    public function displayLogin()
+    {
         return view('users.login');
     }
 
-    public function loginUser(Request $request){
-        $ValidatedData = $request->validate([
+    public function loginUser(Request $request)
+    {
+        $validatedData = $request->validate([
             'email' => 'required|email',
-            'password' => 'required'
+            'password' => 'required',
         ]);
 
-        if(Auth::attempt($ValidatedData)){
-            $request->session()->regenerate();
+        $user = User::where('email', $validatedData['email'])->first();
 
-            if(Auth::user()->role == "admin"){
-                return redirect()->route('admin-portal');
-            }
-
-            return redirect()->route('member-portal');
-        
-            //redirect na sa portal
+        if (! $user || ! Hash::check($validatedData['password'], $user->password)) {
+            return back()
+                ->withErrors(['email' => 'Invalid credentials provided.'])
+                ->withInput($request->only('email'));
         }
+
+        if ($user->role === 'admin') {
+            $otpCode = (string) random_int(100000, 999999);
+
+            $request->session()->put('admin_mfa', [
+                'user_id' => $user->id,
+                'code_hash' => Hash::make($otpCode),
+                'expires_at' => now()->addMinutes(10)->toDateTimeString(),
+            ]);
+
+            Mail::raw("Your Benchz Fitness admin login code is: {$otpCode}. This code expires in 10 minutes.", function ($message) use ($user): void {
+                $message->to($user->email)
+                    ->subject('Benchz Fitness Admin MFA Code');
+            });
+
+            return redirect()->route('admin.mfa.show');
+        }
+
+        Auth::login($user);
+        $request->session()->regenerate();
+
+        return redirect()->route('member-portal');
+    }
+
+    public function showAdminMfa(Request $request)
+    {
+        if (! $request->session()->has('admin_mfa')) {
+            return redirect()->route('login');
+        }
+
+        return view('users.admin-mfa');
+    }
+
+    public function verifyAdminMfa(Request $request)
+    {
+        $request->validate([
+            'code' => 'required|digits:6',
+        ]);
+
+        $mfaSession = $request->session()->get('admin_mfa');
+
+        if (! $mfaSession) {
+            return redirect()->route('login');
+        }
+
+        if (Carbon::parse($mfaSession['expires_at'])->isPast()) {
+            $request->session()->forget('admin_mfa');
+
+            return redirect()->route('login')->withErrors([
+                'code' => 'Your verification code has expired. Please log in again.',
+            ]);
+        }
+
+        if (! Hash::check($request->input('code'), $mfaSession['code_hash'])) {
+            return back()->withErrors([
+                'code' => 'Invalid verification code. Please try again.',
+            ]);
+        }
+
+        Auth::loginUsingId($mfaSession['user_id']);
+        $request->session()->regenerate();
+        $request->session()->forget('admin_mfa');
+
+        return redirect()->route('admin-portal');
     }
 
     public function logout(Request $request)
@@ -82,5 +146,4 @@ class AuthController extends Controller
 
         return redirect()->route('login');
     }
-
 }
