@@ -7,9 +7,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-    
+
     @vite(['resources/css/global.css', 'resources/css/memberPortal.css', 'resources/js/app.js'])
-    
+
     @livewire('wire-elements-modal')
 </head>
 <body>
@@ -25,30 +25,35 @@
     </nav>
 
     <div class="mobile-side-bar" id="mobileSidebar">
-        <a href="#">
+        <a href="{{ route('member-portal') }}">
             <div class="nav-wrap">
-                <img src="{{ asset('assets/images/svg/profile-icon.svg') }}" alt="">
-                <h1>PROFILE</h1>
+                <img src="{{ asset('assets/images/svg/dashboard.svg') }}" alt="">
+                <h1>HOME</h1>
             </div>
         </a>
-        <a href="#">
+        <a href="{{ route('member.profile') }}">
             <div class="nav-wrap">
-                <img src="{{ asset('assets/images/svg/status-icon.svg') }}" alt="">
-                <h1>MEMBERSHIP STATUS</h1>
+                <img src="{{ asset('assets/images/svg/profile.svg') }}" alt="">
+                <h1>PROFILE SETTINGS</h1>
             </div>
         </a>
-        <a href="#">
+        <a href="{{ route('member-portal') }}#membership-options">
             <div class="nav-wrap">
-                <img src="{{ asset('assets/images/svg/history-icon.svg') }}" alt="">
-                <h1>SESSION HISTORY</h1>
-            </div>
-        </a>
-        <a href="#">
-            <div class="nav-wrap">
-                <img src="{{ asset('assets/images/svg/options-icon.svg') }}" alt="">
+                <img src="{{ asset('assets/images/svg/membershipplan.svg') }}" alt="">
                 <h1>MEMBERSHIP OPTIONS</h1>
             </div>
         </a>
+        <a href="{{ route('member-portal') }}#attendance-record">
+            <div class="nav-wrap">
+                <img src="{{ asset('assets/images/svg/AttendanceLogs.svg') }}" alt="">
+                <h1>SESSION HISTORY</h1>
+            </div>
+        </a>
+
+        <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button class="member-logout-btn" type="submit">LOGOUT</button>
+        </form>
     </div>
 
     <main class="portal-container">
@@ -60,24 +65,18 @@
             const burgerBtn = document.getElementById('burgerBtn');
             const sidebar = document.getElementById('mobileSidebar');
             const overlay = document.getElementById('sidebarOverlay');
-            const nav = document.getElementById('mainNav');
 
             function toggleMenu() {
                 sidebar.classList.toggle('active');
                 overlay.classList.toggle('active');
-                burgerBtn.classList.toggle('toggle'); // For the X animation
-                
-                if (sidebar.classList.contains('active')) {
-                    document.body.style.overflow = 'hidden';
-                } else {
-                    document.body.style.overflow = 'auto';
-                }
+                burgerBtn.classList.toggle('toggle');
+                document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : 'auto';
             }
 
             burgerBtn.addEventListener('click', toggleMenu);
             overlay.addEventListener('click', toggleMenu);
         });
     </script>
-   
+
 </body>
 </html>

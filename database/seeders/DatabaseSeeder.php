@@ -2,9 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\MembershipStatus;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,11 +17,33 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        $admin = User::updateOrCreate(
+            ['email' => 'admin@benchzfitness.local'],
+            [
+                'name' => 'Benchz Admin',
+                'role' => 'admin',
+                'profile_picture' => 'profile_picture/default-profile.png',
+                'password' => Hash::make('Admin12345!'),
+            ]
+        );
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        $member = User::updateOrCreate(
+            ['email' => 'member@benchzfitness.local'],
+            [
+                'name' => 'Demo Member',
+                'role' => 'member',
+                'profile_picture' => 'profile_picture/default-profile.png',
+                'password' => Hash::make('Member12345!'),
+            ]
+        );
+
+        MembershipStatus::updateOrCreate(
+            ['user_id' => $member->id],
+            [
+                'planType' => 'None',
+                'status' => 'Inactive',
+                'expiry_date' => null,
+            ]
+        );
     }
 }
