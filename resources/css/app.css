@@ -159,6 +159,15 @@ input[type='submit']:hover {
     background-color: rgba(174, 26, 22, 0.08);
 }
 
+.info-box {
+    border: 1px solid rgba(174, 26, 22, 0.25);
+    background: rgba(174, 26, 22, 0.08);
+    color: #7a1a20;
+    border-radius: 10px;
+    padding: 10px 12px;
+    margin-bottom: 12px;
+    font-size: 0.88rem;
+}
 
 .info-box {
     border: 1px solid rgba(174, 26, 22, 0.25);
