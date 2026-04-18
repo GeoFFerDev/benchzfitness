@@ -1,0 +1,2033 @@
+**A DATA-DRIVEN CROSS-PLATFORM WEB APPLICATION FOR GYM MEMBERSHIP,
+CASHLESS PAYMENT, AND MEMBERSHIP ANALYTICS MANAGEMENT**
+
+![](media/image1.png){width=\"2.5416666666666665in\"
+height=\"2.5729166666666665in\"}![](media/image2.png){width=\"2.3333333333333335in\"
+height=\"2.4583333333333335in\"}
+
+**A CAPSTONE AND RESEARCH PROJECT**
+
+**BY:**
+
+**NESTOR ADRIAN L. CANLAS**
+
+**JOFFER GEORGE I. ESCOTO**
+
+**KEANNE ANDREI B. MADIA**
+
+**ALDRICH G. CALUNGCAGIN**
+
+**APRIL 2026**
+
+**A DATA-DRIVEN CROSS-PLATFORM WEB APPLICATION FOR GYM MEMBERSHIP,
+CASHLESS PAYMENT, AND MEMBERSHIP ANALYTICS MANAGEMENT**
+
+A Capstone and Research Project
+
+Presented to the Faculty of
+
+College of Information and Communications Technology
+
+Nueva Ecija University of Science and Technology
+
+Cabanatuan City, Nueva Ecija
+
+In Partial Fulfillment of the
+
+Requirements for the Degree
+
+Bachelor of Science in Information Technology
+
+With Specialization in Web Systems Technology
+
+By:
+
+**Nestor Adrian L. Canlas**
+
+**Joffer George I. Escoto**
+
+**Keanne Andrei B. Madia**
+
+**Aldrich G. Calungcagin**
+
+**APRIL 2026**
+
+![](media/image3.png){width=\"0.75in\"
+height=\"0.71875in\"}![](media/image4.png){width=\"0.6979166666666666in\"
+height=\"0.75in\"}Republic of the Philippines
+
+Nueva Ecija University of Science and Technology
+
+College of Information and Communications Technology
+
+**\[E N D O R S E M E N T\]{.underline}**
+
+This is to formally endorse the capstone and research project entitled
+\"A Data-Driven Cross-Platform Web Application for Gym Membership,
+Cashless Payment, and Membership Analytics Management,\" prepared and
+submitted by Nestor Adrian L. Canlas, Joffer George I. Escoto, Keanne
+Andrei B. Madia, and Aldrich G. Calungcagin in partial fulfillment of
+the requirements for the degree of Bachelor of Science in Information
+Technology, with a specialization in Web Systems Technology. The
+undersigned hereby certifies that the project has been reviewed and is
+recommended for Capstone Proposal Defense.
+
+System and Manuscript Readiness:
+
+**RODIBELLE F. LEONA, MIT**
+
+Capstone Adviser
+
+Manuscript Review and Editing:
+
+**RODIBELLE F. LEONA, MIT**
+
+Research Editor
+
+Completeness of Deliverables:
+
+**CRIS NORMAN P. OLIPAS, Ed.D.**
+
+Faculty-in-Charge, ITCAP01 3F
+
+**TABLE OF CONTENTS**
+
+```{=html}
+<table>
+<colgroup>
+<col style="width: 93%" />
+<col style="width: 6%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>Chapter I</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>The Problem and Its Background</p>
+</blockquote></td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>Introduction</p>
+</blockquote></td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>Review of Related Literature</p>
+</blockquote></td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>Synthesis</p>
+</blockquote></td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>Conceptual Framework</p>
+</blockquote></td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>Statement of the Problem</p>
+</blockquote></td>
+<td>13</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>Scope and Delimitations</p>
+</blockquote></td>
+<td>15</td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>Significance of the Study</p>
+</blockquote></td>
+<td>16</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>Definition of Terms</p>
+</blockquote></td>
+<td>18</td>
+</tr>
+<tr class="odd">
+<td>Chapter II</td>
+<td>24</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>Methodology</p>
+</blockquote></td>
+<td>24</td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>Research Design </p>
+</blockquote></td>
+<td>24</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>Research Locale</p>
+</blockquote></td>
+<td>27</td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>Research Respondents</p>
+</blockquote></td>
+<td>28</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>Research Instruments</p>
+</blockquote></td>
+<td>31</td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>Data Gathering Procedure</p>
+</blockquote></td>
+<td>33</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>Data Analysis Techniques</p>
+</blockquote></td>
+<td>36</td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>Ethical Considerations</p>
+</blockquote></td>
+<td>49</td>
+</tr>
+</tbody>
+</table>
+```
+```{=html}
+<table>
+<colgroup>
+<col style="width: 93%" />
+<col style="width: 6%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><p><strong>Appendices</strong></p>
+<p>1.  Request Letter for Adviser</p>
+<p>2. Survey Instrument for the Technical Assessment of the Developed Gym Management System</p>
+<p>3. Survey Instrument for Assessing the User Experience of the Developed Gym Management System</p>
+<p>4. WCAG-Based Accessibility Evaluation Instrument</p>
+<p>5. Proposed Use Case Diagram</p>
+<p>6. Proposed Data Flow Diagram</p>
+<p>I. Context Diagram</p>
+<p>II. Level 1 – Data Flow Diagram</p>
+<p>III. Register Member Level 2 – Data Flow Diagram</p>
+<p>IV. Retrieve Plan &amp; Compute Total Level 2 – Data Flow Diagram</p>
+<blockquote>
+<p>V. Validate Access Credentials Level 2– Data Flow Diagram</p>
+<p>VI. Authenticate Admin Session Level 2 – Data Flow Diagram</p>
+</blockquote>
+<p>7. Proposed Class Diagram</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+```
+**LIST OF TABLES**
+
+  --------------- --------------------------------------------------------- --------------
+  **Table No.**   **Table Title**                                           **Page No.**
+  Table 1         Distribution of respondent                                30
+  Table 2         Scoring Rubric for Functional Suitability                 37
+  Table 3         Scoring Rubric for Performance Efficiency                 38
+  Table 4         Scoring Rubric for Compatibility                          40
+  Table 5         Scoring Rubric for Capability                             41
+  Table 6         Scoring Rubric for Usability                              42
+  Table 7         Scoring Rubric for Reliability                            43
+  Table 8         Scoring Rubric for Security                               45
+  Table 9         Scoring Rubric for Maintainability                        46
+  Table 10        Scoring Rubric for Safety                                 47
+  Table 11        Scoring Rubric for Web Content Accessibility Guidelines   48
+  --------------- --------------------------------------------------------- --------------
+
+**LIST OF FIGURES**
+
+  ---------------- --------------------------------------------------------------------------------------------------------------- --------------
+  **Figure No.**   **Figure Title**                                                                                                **Page No.**
+  Figure 1         Conceptual Framework for the Development of the Bench-Z Fitness Gym Application Using Agile Scrum Methodology   11
+  Figure 2         Geographical Location of Benchz Fitness Gym, Cabanatuan City, Nueva Ecija                                       27
+  Figure 3         Flowchart of the Data Gathering Procedures                                                                      33
+  ---------------- --------------------------------------------------------------------------------------------------------------- --------------
+
+**Chapter 1**
+
+**\[THE PROBLEM AND ITS BACKGROUND\]{.smallcaps}**
+
+**Introduction**
+
+In the modern fitness industry, the efficient management of membership
+tracking, attendance validation, and payment processing is critical for
+operational success. However, many facilities still rely on traditional
+manual workflows. These outdated methods are highly prone to data
+errors, slow transactions, and limited accessibility, which create
+severe administrative bottlenecks during peak hours. Consequently, these
+manual inefficiencies lead to a poor overall user experience, directly
+resulting in reduced member satisfaction and lower retention rates.
+
+To combat these challenges, the fitness sector is increasingly adopting
+digital solutions such as automated membership systems, cashless payment
+gateways, and basic analytics dashboards. Despite these initial
+technological advancements, critical gaps remain. Current gym systems
+frequently suffer from fragmented platforms, weak data security
+protocols, a lack of real-time operational analytics, and limited
+integration of robust identification methods. Because existing systems
+often treat these functions as isolated modules rather than a unified
+ecosystem, facilities are left vulnerable to security risks,
+unauthorized access, and incomplete business data.
+
+This study provides a novel contribution to the field by developing a
+cohesive, data-driven, cross-platform web application that centralizes
+these operational pillars. What makes this system uniquely innovative is
+its \"Double Binding\" approach, which seamlessly integrates a hybrid
+physical RFID and digital QR-based identification system into a unified
+profile alongside automated cashless payment processing. Unlike existing
+fragmented applications, this secure, all-in-one ecosystem ensures
+redundant facility access while equipping administrators with
+predictive, real-time analytics for member retention and revenue
+tracking.
+
+The core features of this system are deeply embedded with global
+sustainability objectives. By streamlining facility access and improving
+the user experience, the system actively encourages regular physical
+participation, directly advancing Sustainable Development Goal (SDG) 3:
+Good Health and Well-being. Furthermore, deploying a secure,
+cross-platform infrastructure with integrated digital finance and hybrid
+identification directly supports the technological innovation targets of
+SDG 9: Industry, Innovation, and Infrastructure.
+
+Ultimately, this study aims to design, develop, and evaluate a
+comprehensive, data-driven cross-platform web application that
+seamlessly integrates gym membership validation, cashless payment
+processing, and advanced analytics management.
+
+**Review of Related Literature**
+
+This section presents the literature reviewed by the researchers to gain
+better insights into the concepts covered in this study.
+
+**Digital Transformation in Fitness Facility Operations**
+
+The digital transformation of the fitness industry has fundamentally
+shifted how facilities handle their daily operations, moving away from
+error-prone manual logbooks toward automated, cloud-based
+infrastructures. Recent literature firmly establishes that digitizing
+gym operations significantly improves efficiency and user satisfaction.
+Studies by Hussain et al. (2025) and Alboneh & Snae (2025) demonstrated
+that web-based platforms for registration and management directly
+enhance administrative productivity and member engagement. By automating
+data entry, these systems reduce the administrative burden on gym staff,
+allowing them to focus on customer service rather than tedious
+paperwork.
+
+**Identification Systems and Access Control**
+
+A critical limitation in these existing systems is their reliance on a
+single method of identification, utilizing either a digital log or a
+manual check, which creates operational loopholes. This disconnection
+between physical tracking and web databases often results in inaccurate
+attendance records or allows for \"buddy punching,\" where members share
+credentials to bypass entry fees.
+
+QR code generation for member access has been demonstrated as a fast and
+cost-effective alternative to physical credentials in gym management
+contexts, enabling seamless member verification without specialized
+hardware beyond a standard camera scanner (Villanueva et al., 2025).
+However, systems that rely exclusively on digital QR credentials expose
+a critical single point of failure, as members without functional
+smartphones or with depleted device batteries are entirely denied
+facility access (Villanueva et al., 2025). The Bench-Z Fitness Gym
+application resolves this gap by employing a \"Double Binding\" approach
+that simultaneously assigns a physical RFID keychain and a digital QR
+token to every verified member profile, ensuring that a redundant
+fallback credential is always available regardless of device
+availability.
+
+RFID-based attendance automation has been shown to significantly reduce
+human error and shorten entry wait times in web-based gym management
+systems compared to manual logbook methods (Suryawanshi et al., 2024).
+However, deploying RFID as a standalone access credential introduces a
+security vulnerability, as single-token systems remain susceptible to
+card cloning and relay-attack exploits in the absence of a secondary
+server-side verification layer (Suryawanshi et al., 2024). The Bench-Z
+Fitness Gym application resolves this limitation through a
+dual-credential architecture where each scanned RFID Unique Identifier
+(UID) is matched against a server-verified member profile in real time,
+ensuring that a cloned or stolen card cannot independently grant
+unauthorized facility access.
+
+**Modernization of Financial Transactions and Security**
+
+The financial modernization of fitness facilities has heavily leaned
+toward digital transactions, especially with the widespread adoption of
+e-wallets. Bulaclac et al. (2025) proved that integrating QR-enabled
+cashless payments reduced transaction times by 80% and error rates to
+just 2%. This is particularly relevant when standardizing payments
+through APIs like PayMongo, which ensure interoperability and seamless
+transaction logging. Furthermore, Adegbite (2025) noted the importance
+of standard data protection in digital finance. Without robust
+encryption like AES-256, digital payment systems remain vulnerable to
+interception. Despite these advancements, many small-scale gym
+applications documented in current research function without unified
+validation mechanisms. These systems often treat software management and
+payment processing separately, creating a fragmented user experience
+where financial data is not smoothly tied to physical facility access.
+
+Mobile wallet adoption among Filipino consumers, particularly Generation
+X, is primarily driven by perceived ease of use, embedded security
+features, and peer social influence, establishing GCash-based digital
+payment as a mainstream transaction method in the Philippine market
+(Cacas et al., 2022). However, existing adoption literature evaluates
+cashless behavior primarily in general retail contexts, leaving a
+significant gap in how digital payment systems integrate specifically
+into membership-based service platforms where payment must directly
+trigger account access and subscription renewal (Cacas et al., 2022).
+The Bench-Z Fitness Gym application bridges this gap by embedding the
+PayMongo API natively into the membership lifecycle, ensuring that QR
+Ph-standard digital payments function as a fully integrated trigger for
+member account status updates rather than a standalone external checkout
+process.
+
+The sustained adoption of digital payment tools among micro-business
+owners in the Philippines is primarily contingent on perceived security,
+with merchants who trust their payment provider\'s fraud detection and
+data protection capabilities being significantly more committed to
+long-term cashless operations (Pleno, 2024). However, most
+micro-businesses lack the internal technical capacity to independently
+implement compliant payment security protocols, creating a structural
+dependence on the security posture of their chosen third-party payment
+aggregator (Pleno, 2024). The Bench-Z Fitness Gym application addresses
+this structural reality by leveraging PayMongo\'s PCI DSS Level
+1-certified and SOC 2 Type 2-audited infrastructure, delegating all
+transaction-layer cryptographic security to a nationally recognized
+compliant gateway without requiring the gym to independently maintain a
+dedicated secure payment server.
+
+**Data Analytics for Proactive Gym Management**
+
+Data utilization has evolved into a cornerstone of modern business
+management, enabling a shift from reactive to proactive decision-making.
+Acepcion et al. (2025) demonstrated that predictive analytics are
+essential for high-level decision-making, noting that technical experts
+favor these systems for their high degree of accuracy. While such
+systems allow administrators to identify profitable membership tiers
+through attendance and payment logs, a significant gap remains regarding
+operational granularity. Previous research primarily emphasizes general
+data accuracy, leaving a practical need for integrated systems that
+specifically track real-time retention metrics and staff allocation.
+Most existing platforms fail to visualize peak-hour congestion or
+automatically flag \"at-risk\" members with declining attendance,
+features that are critical for sustaining gym profitability and central
+to the current study\'s analytics framework.
+
+**Cross-Platform Accessibility in Management Systems**
+
+Cross-platform accessibility has emerged as a fundamental requirement
+for modern management systems, primarily through the use of unified
+codebases. Jošt & Taneski (2025) confirmed that cross-platform
+development provides a cost-effective strategy for delivering functional
+features across diverse devices while maintaining high performance. This
+architecture ensures a consistent user experience, whether the portal is
+accessed via a mobile browser or a desktop terminal. However, current
+literature frequently treats these accessibility features as isolated
+modules rather than a fully integrated ecosystem. A significant
+technological gap remains in the simultaneous deployment of physical and
+digital credentials to ensure identification reliability. Unlike
+existing systems that separate software management from payment
+processing, the current industry lacks a cohesive framework that binds a
+physical RFID keychain and a digital QR code to a unified member
+profile. This redundancy is critical; it ensures that if a physical tag
+is misplaced, the digital alternative allows for uninterrupted facility
+access and operational continuity.
+
+**Software Quality Evaluation (ISO 25010)**
+
+The ISO/IEC 25010:2023 standard defines eight core product quality
+characteristics Functional Suitability, Performance Efficiency,
+Compatibility, Interaction Capability, Reliability, Security,
+Maintainability, and Flexibility that collectively measure the degree to
+which a software system meets its stakeholders\' stated and implied
+needs, with research on the standard reaching its highest recorded
+publication volume in 2023 and its most critical applications found in
+business management tools across public administration, finance, and
+healthcare (Rojas et al., 2025). Security and Interaction Capability
+were identified as the two characteristics most consistently deficient
+in existing business-facing web applications, as these systems handle
+sensitive personal and financial data demanding robust access control
+and intuitive usability simultaneously (Rojas et al., 2025). The Bench-Z
+Fitness Gym application is evaluated against ISO/IEC 25010:2023 with
+primary emphasis on Security validated through its AES-encrypted data
+layer and PayMongo-compliant payment processing and Interaction
+Capability, ensuring both gym administrators and members can navigate
+the system efficiently without requiring prior technical expertise.
+
+Among the ISO/IEC 25010:2023 characteristics, Functional Suitability,
+Reliability, Interaction Capability, and Security have been identified
+as the most practically critical dimensions for business-facing web
+applications, with Security enhancements such as two-factor
+authentication and data encryption consistently ranking as the most
+recommended improvements by end users in post-evaluation assessments
+(Nugraha & Rachman, 2024). However, applying ISO/IEC 25010:2023
+retrospectively to an already-deployed application constrains the
+utility of the evaluation, as identified security gaps can only be
+flagged as post-deployment recommendations rather than resolved during
+the active development cycle (Nugraha & Rachman, 2024). The Bench-Z
+Fitness Gym application addresses this limitation by treating ISO/IEC
+25010:2023 quality criteria as prospective design benchmarks from the
+earliest Agile sprint, embedding Security and Interaction Capability
+requirements directly into the feature backlog to ensure they are
+resolved during development rather than after deployment.
+
+**Agile Scrum in Web Development**
+
+Agile Scrum has been established as the preferred development
+methodology for responsive, multi-module web systems because its
+iterative sprint structure enables continuous validation of inter-module
+integration and stakeholder requirements across short development
+cycles, significantly reducing the compounding risk of late-stage
+defects that are characteristic of sequential Waterfall-based approaches
+(Jošt & Taneski, 2025). Agile methodologies record a project failure
+rate of 10% compared to 30% for Waterfall, and successful completion
+rates of 40% versus only 15% for Waterfall in comparable software
+environments, a disparity attributed to Agile\'s capacity to identify
+and resolve integration issues within sprints rather than after months
+of irreversible sequential development (Almajali et al., 2023). The
+Bench-Z Fitness Gym application is built using the Agile Scrum framework
+precisely because its three integrated subsystems the hybrid RFID/QR
+access module, the PayMongo cashless payment module, and the membership
+analytics dashboard each require continuous incremental testing against
+actual gym staff workflows, a degree of adaptive validation that a rigid
+Waterfall sequence cannot accommodate without incurring costly
+late-stage rework.
+
+Agile-based iterative development cycles are uniquely suited to
+cross-platform management systems because short sprint-feedback loops
+allow developers to continuously validate feature parity and interface
+consistency across different device classes before the system is
+committed to a production release (Jošt & Taneski, 2025). However,
+existing cross-platform Agile research focuses primarily on rendering
+and performance dimensions without examining how Scrum\'s sprint
+structure specifically accommodates hardware-dependent features such as
+RFID readers and QR code scanners within a web-based environment (Jošt &
+Taneski, 2025). The Bench-Z Fitness Gym application addresses this gap
+by allocating dedicated Agile sprints to the hardware-interfacing
+modules specifically the RFID reader communication layer and the
+camera-based QR scanner integration ensuring that physical device
+compatibility is treated as a first-class sprint deliverable rather than
+a last-mile implementation concern.
+
+**Synthesis**
+
+This comprehensive review justifies the focus of the present study. The
+literature confirms that while automation, cashless payments, and
+analytics are individually beneficial, there is a clear necessity for a
+unified solution that connects these distinct functions. Existing
+systems successfully handle payments or registrations independently but
+fail to provide a unified ecosystem that secures facility access against
+credential sharing while simultaneously generating specialized retention
+and allocation data. The proposed system aims to fill this gap by
+creating a data-driven ecosystem that centralizes membership validation
+and operational management, addressing the practical needs of modern
+fitness centers. By introducing a cohesive hybrid multi-modal
+identification system, this project resolves the operational loopholes
+left by previous single-method applications.
+
+**Conceptual Framework**
+
+The conceptual framework of this study is structured using the Agile
+Scrum Methodology, illustrating the logical progression from
+foundational gym requirements to the realized software solution. The
+Scrum framework supports iterative development, enabling the system to
+evolve through continuous stakeholder feedback, modular feature
+delivery, and regular quality evaluation.
+
+The Agile Scrum Model consists of the Requirements Analysis, Design,
+Development, Testing, and Deployment Phases. Monitoring and maintenance
+will occur after the system is deployed.
+
+**Figure 1**
+
+*Conceptual Framework for the Development of the Bench-Z Fitness Gym
+Application Using Agile Scrum Methodology*
+
+![D:\\Download\\Untitled
+Diagram.drawio.png](media/image5.png){width=\"5.033333333333333in\"
+height=\"4.774820647419072in\"}
+
+The development process begins with Requirements Analysis. During this
+phase, the proponents analyzed the operational bottlenecks of
+traditional fitness facilities, specifically focusing on the
+inefficiencies of manual logbooks and the security loopholes of
+single-method identification, such as \"buddy punching.\" From this
+analysis, functional requirements were established, including a member
+self-service portal, a cashless payment module utilizing the PayMongo
+API (Tier 1), and a membership analytics dashboard. Crucially, the
+non-functional requirements were also defined, emphasizing data
+protection through AES-256 encryption, Multi-Factor Authentication (MFA)
+for administrative access, and cross-platform accessibility. Through
+continuous Product Backlog Refinement, these requirements were detailed
+and prioritized to ensure strict alignment with the project\'s
+objectives.
+
+Following this, the project enters the Design and Development (Sprints)
+phases. The system architecture was constructed using the Laravel
+Framework (PHP) for robust backend routing and a MySQL database for
+centralized data storage. Development will be executed in iterative
+sprints, with a heavy focus on hardware-software interfacing. Rather
+than relying on motorized gates or electronic door strikes, the system
+will interface RFID readers and camera-enabled QR scanners directly with
+the web application to serve as an automated attendance and verification
+kiosk. This will ensure the \"double binding\" authentication logic
+successfully links a physical RFID Unique Identifier (UID) and a digital
+QR token to a single, secure member profile.
+
+Once the functional modules are built, the system will undergo rigorous
+testing. IT experts will be tapped to evaluate the technical
+architecture against the ISO 25010:2023 Software Quality Standards,
+specifically assessing Functional Suitability, Performance Efficiency,
+Compatibility, Interaction Capability, Reliability, Security,
+Maintainability, and Portability. Simultaneously, end-users, comprising
+Gym Owners and Members, will be asked to evaluate the practical
+application, focusing on Functional Suitability, Interaction Capability,
+Reliability, and Security. Feedback that will be obtained during these
+evaluations will be incorporated into sprint retrospectives to resolve
+any software defects or usability issues.
+
+Upon successful validation, the system will advance to Deployment. The
+culmination of this methodological cycle is the Gym web-based
+application: a secure, data-driven, cross-platform web application that
+effectively centralizes membership validation, automates QR Ph standard
+payments, and equips gym administrators with predictive analytics for
+retention and revenue tracking.
+
+Following the system\'s deployment, the project transitions into the
+Monitoring and Maintenance phase. During this stage, the deployed web
+application undergoes continuous observation to ensure server stability,
+database integrity, and the smooth execution of the PayMongo cashless
+transactions and hybrid identification hardware. Furthermore, feedback
+from gym members and administrators is actively gathered to identify any
+post-deployment usability issues or emerging operational bottlenecks.
+Because the system follows the Agile framework, any required bug fixes,
+security patches, or feature enhancements identified during maintenance
+are continuously fed back into the Product Backlog to be addressed in
+future development sprints.
+
+**Statement of the Problem**
+
+This study aims to design, develop, and assess a Data-Driven
+Cross-Platform Web Application for Gym Membership, Cashless Payment, and
+Membership Analytics Management. Specifically, it seeks to answer the
+following:
+
+1.  How may the system be designed and developed following the stages of
+    the Agile Scrum Model in terms of:
+
+> 1.1. Requirements Analysis;
+>
+> 1.2. Design;
+>
+> 1.3. Development (Sprints);
+>
+> 1.4. Testing; and
+>
+> 1.5. Deployment?
+
+2.  How may IT experts assess the technical features of the application
+    using the ISO/IEC 25010:2023 Software Standards in terms of:      
+
+> 2.1. Functional Suitability;      
+>
+> 2.2. Performance Efficiency;      
+>
+> 2.3. Compatibility;      
+>
+> 2.4. Interaction Capability;      
+>
+> 2.5. Reliability;      
+>
+> 2.6. Security;      
+>
+> 2.7. Maintainability;      
+>
+> 2.8. Flexibility; and     
+>
+> 2.9. Safety?
+
+3.  How may the end-users (Gym Owners and Members) assess the
+    application in terms of:      
+
+> 3.1. Functional Suitability;      
+>
+> 3.2. Interaction Capability;      
+>
+> 3.3. Reliability; and      
+>
+> 3.4. Security?
+
+4.  How may the accessibility of the web application be assessed based
+    on the Web Content Accessibility Guidelines (WCAG) standards in
+    terms of:
+
+> 4.1. Perceivable;
+>
+> 4.2. Operable;
+>
+> 4.3. Understandable; and
+>
+> 4.4. Robust?
+
+**Scope and Delimitations**
+
+The primary focus of this study is to develop a specialized management
+system for gym operations that emphasizes data integrity, security, and
+cross-platform accessibility. The scope centers on the development of a
+hybrid multimodal identification system that implements a double-binding
+check-in process. In this setup, members will be issued both a unique
+QR-based digital ID and a physical RFID-enabled keychain, both of which
+are bound to a single member profile to ensure redundant and flexible
+facility access. This will be supported by hardware-software
+interfacing, with the system integrating RFID readers and camera-based
+QR code scanners that communicate directly with the Laravel-based web
+application for real-time verification.
+
+Functionally, the system will include a comprehensive membership
+management module capable of digital registration and real-time status
+tracking across tiers, including full membership, monthly passes, and
+walk-in or day passes. This module will automatically manage active,
+expired, and suspended statuses based on validation logic. To empower
+end-users, the system will include a member self-service portal that
+allows clients to access session history, view discounts, and manage
+profile information. Financial operations will be streamlined through a
+cashless payment module utilizing the PayMongo API (Tier 1). This
+integration will facilitate automated transactions via QR Ph standards
+and maintain a detailed transaction history specifically designed for
+administrative auditing. Furthermore, the system will aid
+decision-making through an advanced membership analytics dashboard,
+which provides visual summaries of occupancy trends, retention metrics
+to identify at-risk members, and insights into the revenue contribution
+of different membership plans. All these features will be protected by a
+strict security framework that uses AES-256 encryption for sensitive
+data and multi-factor authentication (MFA) for administrative functions.
+
+Despite these capabilities, the study will observe specific technical
+boundaries to maintain its focus on web and systems technologies. The
+research excludes the integration of heavy physical hardware, such as
+automated turnstiles, electronic door strikes, or motorized gates, and
+focuses strictly on software-side validation of RFID and QR credentials.
+Furthermore, the system does not incorporate biometric authentication
+technologies, such as fingerprint, iris, or facial recognition. In terms
+of financial integration, the study is limited to e-wallet and QR Ph
+verification via PayMongo; it will not directly interface with bank
+accounts or credit card processors. Additionally, as a cloud-hosted web
+application, it requires a stable internet connection and does not
+support offline data entry or local database synchronization. Finally,
+the study does not cover ancillary management systems, such as employee
+payroll processing, inventory management for gym merchandise, or
+point-of-sale (POS) systems for physical products.
+
+**Significance of the Study**
+
+The development of this data-driven, cross-platform web application has
+significant value for stakeholders in the fitness and technology sectors
+by modernizing gym membership management with secure, efficient
+technologies. Specifically, the output and methodology of this study
+will benefit the following groups:
+
+**Gym Owners and Administrators.** Through the output of this study, a
+centralized, automated web platform, this group will gain an efficient
+tool for managing memberships, attendance, and payments of gym members.
+In practice, by using a hybrid RFID and QR-based identification system,
+they will significantly reduce manual administrative errors and prevent
+unauthorized facility access. Furthermore, they will gain practical
+decision-making tools through the integrated analytics dashboard, which
+provides data-driven insights into gym occupancy and revenue trends to
+support strategic business growth.
+
+**Gym Members.** This group will benefit practically by experiencing a
+more convenient and secure fitness environment. Through the system\'s
+flexible access options, members can utilize either physical RFID
+keychains or digital QR IDs to enter the facility. Additionally, they
+will gain the practical advantage of using the cashless payment module,
+which reduces queues and eliminates the risks of manual cash handling.
+Ultimately, members will be assured of accurate attendance tracking and
+the strict protection of their personal and financial data through the
+system\'s robust security protocols.
+
+**Information Technology Professionals and Developers.** This group will
+acquire significant methodological and practical benefits by using this
+study as a technical reference. The output demonstrates best practices
+in developing cross-platform applications that successfully integrate
+hardware-software interfacing alongside secure payment gateways.
+Methodologically, the study provides a clear, replicable model for
+executing the Agile Scrum Methodology and evaluating software
+architecture against rigorous ISO 25010:2023 standards, specifically
+regarding system security and maintainability.
+
+**Future Researchers.** This group will benefit from the foundational
+output and methodological framework established by this research. By
+analyzing the system\'s design and identifying delimitations, future
+researchers can practically extend this work. They are provided with a
+proven baseline that they can enhance by incorporating more advanced
+technologies, such as biometric authentication, deeper predictive
+analytics, or offline database functionality, to further advance gym
+management systems.
+
+**Definition of Terms**
+
+The following terms are conceptually and operationally defined to
+provide the meaning of the terms used in this study.
+
+**Agile Scrum Methodology.** An iterative and incremental software
+development framework is employed to manage complex product development
+processes, promoting adaptability, collaboration, and continuous
+improvement (Hussain et al., 2025). In this study, the term refers to
+the structured development phases, known as sprints, that guided the
+creation of the gym management system, emphasizing continuous
+stakeholder feedback, modular feature delivery, and regular quality
+evaluation.
+
+**AES-256 Encryption.** A robust encryption method employing a 256-bit
+cryptographic key to securely encode and decode digital data, thereby
+safeguarding sensitive information against cyber threats (Adegbite,
+2025). In this study, the term refers to the specific security protocol
+implemented within the system to protect the personal, financial, and
+authentication data of gym members from unauthorized access or potential
+breaches.
+
+**Cashless Payment Module.** A digital financial system, often
+QR-enabled, that facilitates electronic monetary transactions and
+tracking without the need for physical currency, enhancing convenience
+and transaction security (Bulaclac et al., 2025). In this study, the
+term refers to the system component that integrates the PayMongo API
+(Tier 1) to enable secure QR PH-enabled e-wallet payments for gym
+services, while simultaneously recording transactions for administrative
+auditing and accountability.
+
+**Cross-Platform Web Application.** A software application designed to
+function across multiple computing platforms or operating systems using
+a single, unified codebase, while maintaining near-native performance
+(Jošt & Taneski, 2025). In this study, the term refers to the
+browser-based gym management system developed to operate consistently
+across both desktop and mobile web environments, ensuring seamless
+access and usability for staff and members.
+
+**Data-Driven Management System.** An administrative framework that
+leverages predictive analytics and continuous data analysis to enhance
+operational efficiency and inform business decision-making (Acepcion et
+al., 2025). In this study, the term refers to the web-based system
+developed for the gym, which processes operational and membership data
+to generate real-time predictive metrics and support informed
+administrative decision-making.
+
+**Double Binding (Hybrid Multi-Modal Identification).** A redundant
+authentication mechanism that requires two distinct and parallel forms
+of identification linked to a single entity, enhancing security and
+access control (El-Rahman & Alluhaidan, 2024). In this study, the term
+refers to the core authentication logic that simultaneously binds a
+physical RFID Unique Identifier (UID) and a digitally generated QR token
+to a single member profile, ensuring secure and continuous facility
+access.
+
+**Functional Modules.** Distinct, independently executable software
+components that collectively form a larger and more comprehensive system
+architecture, enabling modularity, scalability, and maintainability
+within software systems (Kolhe & Sharma, 2021). In this study, the term
+refers to the core system components developed during the Agile sprints,
+specifically including the Membership Management module, Hybrid Identity
+Binding module, Cashless Payment Integration module, Analytics
+Dashboard, and the Security Framework.
+
+**Gym Membership Management System.** A specialized web-based software
+system designed to support fitness facilities in the remote management
+of member information, digital payment transactions, and routine
+operational processes, thereby enhancing administrative efficiency and
+service delivery (Alboneh & Snae, 2025). In this study, the term refers
+to the integrated, cross-platform web application developed as the
+primary system output, which automates key functions such as member
+registration, data validation, attendance tracking, and payment
+processing within the fitness facility.
+
+**Hardware-Software Interfacing.** The point of communication and
+automated data exchange between physical hardware devices and programmed
+software applications (Kolhe & Sharma, 2021). In this study, the term
+refers to the integration process that enables the gym\'s RFID readers
+and camera-based QR scanners to communicate in real time with the
+Laravel-based web application for membership verification.
+
+**Hybrid Multi-Modal Identification System.** A security access system
+that utilizes multiple types of credentials (e.g., physical tokens and
+digital codes) to ensure strict user verification (El-Rahman &
+Alluhaidan, 2024). In this study, the term refers to the primary system
+output that combines physical RFID-based access and digital QR-based
+verification, preventing unauthorized entry and eliminating credential
+sharing (buddy punching).
+
+**ISO 25010:2023 Software Quality Standards.** An internationally
+recognized framework that provides comprehensive quality models for
+software product evaluation, specifically assessing reliability,
+efficiency, and security (International Organization for
+Standardization, 2023). In this study, the term refers to the specific
+evaluation model employed by IT experts to assess the application across
+functional suitability, performance efficiency, security, and other key
+technical characteristics.
+
+**Laravel Framework.** A free, open-source PHP web application framework
+designed for developing web applications following the
+model-view-controller (MVC) architectural pattern (Kolhe & Sharma,
+2021). In this study, the term refers to the backend software
+architecture used to manage routing, authentication, database
+interactions, and secure API integrations for the gym management system.
+
+**Membership Analytics Dashboard.** A visual user interface that
+consolidates and provides real-time access to financial information and
+member data for management purposes (Alboneh & Snae, 2025). In this
+study, the term refers to the system component that provides
+administrators with graphical summaries of occupancy trends, revenue
+performance, and member retention metrics.
+
+**QR Code (Quick Response Code).** A machine-readable, two-dimensional
+matrix barcode used to accelerate tracking and digital payment processes
+(Bulaclac et al., 2025). In this study, the term refers to the unique
+digital barcode generated by the application, serving as a gym member\'s
+digital identifier and payment verification tool.
+
+**QR Ph Standard.** The national Quick Response (QR) code standard in
+the Philippines, designed to unify payment solutions and ensure
+interoperability among financial service providers (Bangko Sentral ng
+Pilipinas, 2019). In this study, the term refers to the payment standard
+integrated into the system via the PayMongo API, enabling gym members to
+make payments using various interoperable e-wallet providers.
+
+**RFID (Radio Frequency Identification).** A wireless technology that
+employs electromagnetic fields to automatically identify and track tags
+attached to objects or individuals (Huang et al., 2022). In this study,
+the term refers to the specific wireless technology utilized for
+automated recognition of gym members and the logging of their
+attendance.
+
+**RFID Unique Identifier (UID).** A distinct, immutable alphanumeric
+code programmed into an RFID tag during the manufacturing process (Huang
+et al., 2022). In this study, the term refers to the specific
+alphanumeric string permanently assigned to a registered gym member\'s
+keychain for secure identification within the system\'s database.
+
+**Retention Metrics.** Quantitative data and predictive indicators are
+used by organizations to measure customer retention and monitor activity
+over a specified period (Acepcion et al., 2025). In this study, the term
+refers to the system-generated indicators displayed on the gym\'s
+dashboard that identify patterns of declining attendance and enable
+proactive follow-up with at-risk members.
+
+**Chapter 2**
+
+**\[METHODOLOGY\]{.smallcaps}**
+
+This chapter discusses the research design, research locale, research
+respondents, research instruments, data collection procedures, data
+analysis methods, and the ethical considerations involved in conducting
+the proposed study.
+
+**Research Design**
+
+This study will utilize a Developmental Research Design combined with a
+Quantitative Descriptive Approach to design, develop, and evaluate a
+data-driven gym management system.
+
+Developmental research is appropriate for this study because it focuses
+on the systematic design, development, and evaluation of technological
+solutions intended to address real-world problems. In this case, the
+study aims to develop a cross-platform web application that integrates
+gym membership management, cashless payment processing, and membership
+analytics.
+
+The choice of developmental research is justified by the project\'s
+nature, which will involve multiple phases, including system planning,
+design, implementation, testing, and refinement. Unlike purely
+descriptive or experimental research, this approach will emphasize the
+creation of a functional system and the assessment of its effectiveness
+in improving existing manual processes. The gym\'s current operations,
+which rely on logbooks, manual payment tracking, and CCTV verification,
+suffer from inefficiencies that require a structured system solution.
+
+Furthermore, the study will employ a quantitative descriptive method to
+evaluate the Bench-Z Fitness Gym Cross-platform App against ISO/IEC
+25010 software quality standards, including functionality, usability,
+reliability, and performance efficiency. Data will be collected from gym
+staff and members through structured questionnaires to determine the
+system\'s level of acceptability.
+
+By combining developmental and quantitative approaches, the study
+ensures that the proposed system is not only properly developed but also
+objectively evaluated based on measurable criteria, making the research
+both practical and evidence-based.
+
+**Software Development Methodology**
+
+The development of the system will follow the Agile Scrum cycle, which
+emphasizes iterative development, continuous feedback, and incremental
+delivery of system components. This approach will be selected to ensure
+flexibility and adaptability throughout the development process,
+allowing the researchers to refine system features based on evolving
+requirements and identified issues.
+
+The process will begin with the requirements and logic mapping phase,
+during which the proponents will identify the essential technical and
+theoretical foundations of the system. In this stage, the concept of
+\"Double Binding\" will be established, referring to the relational
+mapping of RFID UIDs and QR tokens to a single member account within the
+database. The technical stack will also be finalized, including the
+selection of the Laravel framework and MySQL for backend development,
+along with the integration of the PayMongo API to support automated,
+secure financial transactions.
+
+Following this, the development will progress through iterative cycles
+known as sprints, each focusing on specific functional components of the
+system. The implementation will include the Hybrid Identity Binding
+feature, which will enable communication between RFID readers and
+camera-enabled devices with the web application for real-time membership
+verification. In addition, a cashless payment module will be developed
+by integrating the PayMongo API, enabling secure QR PH transactions and
+automatic payment confirmation. The system will also include a data
+analytics dashboard to display retention metrics and membership plan
+insights, while security measures such as AES-256 encryption and
+Multi-Factor Authentication (MFA) will be implemented to protect
+sensitive data and restrict administrative access.
+
+At the end of each development cycle, evaluative feedback and testing
+will be conducted to assess the functionality and performance of the
+implemented features. The system will be evaluated against ISO/IEC 25010
+standards, focusing on functional suitability, performance efficiency,
+compatibility, usability, reliability, security, maintainability, and
+portability. This will ensure that the system is consistently aligned
+with recognized software quality benchmarks throughout the development
+process.
+
+Finally, the system will undergo deployment, resulting in a fully
+functional cross-platform web application. The completed system will
+serve as an integrated solution that transforms manual gym operations
+into an automated environment, highlighted by the Hybrid Multi-Modal
+Identification System, which will provide members with flexible and
+reliable access to the facility.
+
+**Research Locale**
+
+The study will be conducted at Benchz Fitness Gym, located at 441
+Champaca St., Brgy. D.S. Garcia, Cabanatuan City, Nueva Ecija. Figure 2
+shows the geographical location of the research locale.
+
+**Figure 2**
+
+*Geographical Location of Benchz Fitness Gym, Cabanatuan City, Nueva
+Ecija*
+
+![](media/image6.png){width=\"4.847916666666666in\"
+height=\"2.8749114173228345in\"}
+
+Benchz Fitness Gym was selected as the research locale due to its
+reliance on manual operational processes, making it a suitable
+environment for evaluating the effectiveness of a data-driven system.
+Currently, the gym uses handwritten logbooks for attendance tracking,
+whiteboards to monitor membership validity, and cash-based transactions
+for payments. These practices have resulted in operational
+inefficiencies, including inaccurate record-keeping, delays during peak
+hours, difficulty verifying active memberships, and reliance on CCTV
+footage for transaction validation.
+
+The locale is particularly appropriate for this study because it
+exhibits real-world challenges that align with the objectives of the
+proposed system. The presence of issues such as payment discrepancies,
+manual computation of revenue, and lack of automated monitoring provides
+a practical basis for implementing and testing the proposed
+cross-platform web application. Furthermore, the gym has existing
+technological readiness, including computers and internet connectivity,
+which supports the feasibility of deploying a digital solution.
+
+Selecting Benchz Fitness Gym enables the researchers to conduct a direct
+comparison between the existing manual workflow and the proposed
+automated system. This enables measuring improvements in operational
+efficiency, record accuracy, transaction transparency, and overall user
+experience. Therefore, the locale is deemed highly suitable for
+assessing the effectiveness and acceptability of the Bench-Z Fitness Gym
+Cross-Platform App within an actual gym management environment.
+
+**Research Respondents**
+
+The respondents of this study are categorized into three distinct groups
+to ensure a comprehensive evaluation of the system\'s functionality,
+usability, and technical quality.
+
+The first group consists of Web Developers, who will serve as the
+system\'s technical evaluators. These respondents will be selected
+through purposive sampling based on their expertise in web development.
+To qualify, they must have more than 5 years of experience in web
+development projects and an evident web development portfolio to
+demonstrate their exposure to industry-standard web system technologies.
+Their primary role is to assess the system\'s technical architecture
+against ISO 25010:2023 Software Quality Standards. Their expert feedback
+is essential to validate that the system\'s codebase is secure,
+scalable, and adheres to industry standards for cross-platform
+interoperability.
+
+The second group comprises Gym Owners and Administrators, who are the
+primary system administrators. These respondents were selected using
+Purposive Sampling because they possess specific knowledge of the gym\'s
+daily operations, revenue management, and administrative bottlenecks. In
+this study, they are tasked with evaluating the Admin Dashboard,
+specifically focusing on the accuracy of the Membership Analytics, the
+reliability of the PayMongo cashless payment integration, and the
+efficiency of the Hybrid Multi-Modal Identification (RFID and QR)
+system. Their feedback is critical in determining if the system
+successfully reduces the workload associated with manual tracking and
+improves decision-making through data visualization.
+
+The third group consists of the Gym Members, representing the
+facility\'s active clientele. The proponents will use random sampling to
+select participants for testing the user-facing features. These
+respondents will assess the Member Self-Service Portal, evaluating the
+ease of registration, the convenience of the cashless payment module via
+e-wallets, and the responsiveness of the mobile-accessible interface.
+Their evaluation is essential for determining the system\'s Usability
+and Functional Suitability from a consumer perspective, specifically
+establishing whether the shift to digital identification and payments
+enhances the overall gym experience.
+
+The selection of respondents in this study is guided by specific
+inclusion and exclusion criteria to ensure the reliability and relevance
+of the collected data.
+
+For IT Professionals and Web Developers, the inclusion criteria require
+that respondents have a background in web development, software
+engineering, or database management, and prior experience evaluating or
+developing information systems. Individuals without technical expertise
+in system development were excluded from this group.
+
+For the Gym Owners and Administrators, respondents must be directly
+involved in the daily operations and management of Benchz Fitness Gym.
+Those who are not actively participating in administrative tasks or
+decision-making processes were excluded.
+
+For the Gym Members, respondents must be active gym members and have
+interacted with or tested the Bench-Z Fitness Gym Cross-Platform App,
+particularly its self-service and payment features. Members who had not
+used the system or were under 18 years old were excluded from
+participation. Additionally, respondents who failed to complete the
+evaluation questionnaire were also excluded from the final data
+analysis.
+
+**Table 1**
+
+*Distribution of Respondents*
+
+  **Respondents Group**   **Number of Respondents**   **Percentage**
+  ----------------------- --------------------------- ----------------
+  Web Developers          5                           8.62%
+  Gym Owners              3                           5.17%
+  Gym Members             50                          86.21%
+  **Total**               **58**                      **100.00%**
+
+The table above presents the distribution of the 58 respondents involved
+in the study. The Web Developers (8.62%) and Gym Owners/Administrators
+(5.17%) were selected using purposive sampling based on their specific
+technical expertise and administrative roles. Meanwhile, the Gym Members
+(86.21%), who represent the primary end-users of the application, were
+selected through random sampling to ensure a fair representation of the
+facility\'s active clientele.
+
+**Research Instruments**
+
+To quantitatively evaluate the quality and performance of the Bench-Z
+Fitness Gym Cross-Platform Application, this study employs a structured
+survey questionnaire as its primary research instrument. The instrument
+is developed in accordance with ISO/IEC 25010:2023, the Software Quality
+Model, ensuring that the evaluation remains objective, systematic, and
+aligned with internationally recognized software engineering standards.
+It comprises three distinct sets of questionnaires, each tailored to the
+expertise and roles of the identified respondent groups.
+
+The first instrument, the Technical Assessment Questionnaire, is
+intended for IT professionals and web developers with relevant
+subject-matter expertise. This instrument assesses the system based on
+the nine software quality characteristics defined in ISO/IEC 25010:
+Functional Suitability, Performance Efficiency, Compatibility,
+Interaction Capability, Reliability, Security, Maintainability,
+Flexibility, and Safety. These criteria determine the extent to which
+the system satisfies functional requirements, performs efficiently under
+expected workloads, supports cross-platform operation, and ensures data
+protection through security mechanisms such as AES-256 encryption and
+multi-factor authentication. Furthermore, it evaluates the system\'s
+modularity and capacity for future enhancements.
+
+The second instrument, the User Experience Questionnaire, is designed
+for gym owners and members. It focuses on the practical and
+interactional aspects of the application and evaluates four key quality
+characteristics relevant to end users: Functional Suitability,
+Usability, Reliability, and Security. Specifically, it examines whether
+the system effectively supports routine gym operations, such as
+attendance monitoring and payment processing; whether it is
+user-friendly for individuals with limited technical expertise; whether
+it operates consistently with minimal errors; and whether users perceive
+their personal and financial data as secure.
+
+The third instrument, the WCAG-Based Accessibility Evaluation Tool, is
+adapted from Olipas (2026) and used to assess the web application\'s
+accessibility. This instrument is grounded in the four core principles
+of the Web Content Accessibility Guidelines (WCAG): Perceivable,
+Operable, Understandable, and Robust. It ensures the application is
+inclusive, accessible, and functional for users with diverse needs,
+including those who use assistive technologies.
+
+To address Research Question 4, which focuses on the application\'s
+accessibility in relation to WCAG standards, data will be gathered using
+both an automated web accessibility evaluation tool and a standardized
+WCAG compliance checklist to ensure a comprehensive evaluation.
+
+All instruments utilize a 5-point Likert scale to measure respondents\'
+level of agreement with each quality indicator. Responses are assigned
+corresponding numerical values ranging from 1 to 5, thereby enabling
+quantitative analysis and supporting the derivation of statistically
+grounded conclusions.
+
+**Data Gathering Procedures**
+
+The data-gathering process of this study follows a structured,
+systematic approach to ensure the validity, reliability, and ethical
+integrity of the collected data. The process is divided into several
+phases, namely: preparation, orientation, administration, retrieval, and
+data organization.
+
+**Figure 3**
+
+*Flowchart of the Data Gathering Procedures*
+
+![](media/image7.jpg){width=\"4.59375in\"
+height=\"6.208333333333333in\"}
+
+The first phase is the preparation and approval stage. The researchers
+will prepare a formal letter of request addressed to the management of
+Benchz Fitness Gym, seeking permission to conduct the study within the
+premises and to involve the gym owners, administrators, and members as
+respondents. A separate request will also be sent to selected IT
+professionals and web developers, inviting them to participate as
+technical evaluators of the system. These letters will clearly state the
+study\'s purpose, the procedures involved, and the expected
+participation of the respondents. Upon approval, the researchers will
+coordinate with gym management to schedule data collection at a
+convenient time that does not disrupt regular gym operations.
+
+The second phase involves the orientation and system demonstration.
+Before administering the research instruments, the researchers will
+conduct a brief orientation session for all respondents. During this
+session, the study\'s purpose will be explained, and respondents will be
+informed of their rights, including the option to participate
+voluntarily, confidentiality, and the right to withdraw at any time.
+Following the orientation, the researchers will demonstrate the
+developed Cross-Platform Web Application. This includes showcasing key
+system features such as the Hybrid Multi-Modal Identification System
+(RFID and QR Code), the Cashless Payment Module integrated with
+PayMongo, and the Membership Analytics Dashboard. This step ensures that
+respondents have sufficient understanding of the system\'s
+functionalities before providing their evaluation.
+
+The third phase is the administration of the research instruments. The
+appropriate questionnaire will be distributed to each group of
+respondents based on their role. The Technical Assessment Questionnaire
+will be given to IT professionals and web developers, while the User
+Experience Questionnaire will be administered to gym owners and members.
+The researchers will be present during the evaluation to clarify any
+questions and ensure that the respondents complete the questionnaire
+independently, without external influence.
+
+The fourth phase is the retrieval of the instruments. To ensure a high
+retrieval rate and data completeness, the researchers will collect
+completed questionnaires immediately upon respondents\' completion. Each
+questionnaire will be checked for completeness to avoid missing data.
+Incomplete responses, if any, will be politely verified with the
+respondents before final collection.
+
+The fifth phase is the data organization and preparation for analysis.
+The collected data will be systematically encoded, tallied, and
+organized into tabular form. The responses will then be subjected to
+appropriate statistical treatment, such as the computation of weighted
+means, to facilitate analysis and interpretation. All collected data
+will be handled with strict confidentiality and will be used solely for
+academic purposes.
+
+**Data Analysis Techniques**
+
+To determine the demographic profile and distribution of the
+respondents, Frequency Count and Percentage Distribution will be
+utilized.
+
+To address each research question systematically, the study employs
+specific data analysis techniques aligned with the nature of the data
+gathered from each respondent group.
+
+For the first research question, which asks how the system may be
+designed and developed following the stages of the Agile Scrum Model in
+terms of Requirements Analysis, Design, Development (Sprints), Testing,
+and Deployment, no statistical treatment is applied. This question will
+be answered through process documentation and narrative description,
+where the researchers will document each sprint\'s objectives, outputs,
+and outcomes to present a chronological account of the system\'s
+construction as qualitative evidence of the methodology\'s proper
+execution.
+
+For second research question, which asks how IT experts may assess the
+technical features of the application using the ISO 25010:2023 Software
+Standards in terms of Functional Suitability, Performance Efficiency,
+Compatibility, Interaction Capability, Reliability, Security,
+Maintainability, Flexibility, and Safety, data that will be gathered
+from the IT professionals using the Technical Assessment Questionnaire
+will be analyzed using the Percentage, Frequency, and Weighted Mean to
+determine the central tendency of their ratings per quality
+characteristic. The formula is as follows:
+
+![](media/image8.png){width=\"2.09375in\"
+height=\"0.9270833333333334in\"}
+
+The following scoring rubrics present the qualitative interpretation
+scale used for each ISO/IEC 25010:2023 quality characteristic evaluated
+in this study. These rubrics provide standardized verbal descriptions
+corresponding to the weighted mean scores derived from the respondents\'
+assessments.
+
+**Table 2**\
+*Scoring Rubric for Functional Suitability*
+
+  Range           Qualitative Remarks   Verbal Description
+  --------------- --------------------- -----------------------------------------------------------------------------------------------------------------------------------------------------------
+  4.21 \-- 5.00   Highly Suitable       The Bench-Z Fitness Gym Cross-Platform App meets or exceeds all functional requirements with high accuracy, completeness, and efficiency.
+  3.41 \-- 4.20   Suitable              The Bench-Z Fitness Gym Cross-Platform App meets most functional requirements, with satisfactory levels of accuracy, completeness, and efficiency.
+  2.61 \-- 3.40   Somewhat Suitable     The Bench-Z Fitness Gym Cross-Platform App meets some functional requirements but demonstrates low levels of accuracy, completeness, or efficiency.
+  1.81 \-- 2.60   Unsuitable            The Bench-Z Fitness Gym Cross-Platform App meets very few functional requirements, with low accuracy, completeness, and efficiency.
+  1.00 \-- 1.80   Highly Unsuitable     The Bench-Z Fitness Gym Cross-Platform App fails to meet most, if not all, functional requirements, with very low accuracy, completeness, and efficiency.
+
+The table 2 presents the scoring rubric used to interpret the functional
+suitability evaluation results.
+
+**Table 3**\
+*Scoring Rubric for Performance Efficiency*
+
+  Range           Qualitative Remarks   Verbal Description
+  --------------- --------------------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  4.21 \-- 5.00   Highly Efficient      The Bench-Z Fitness Gym Cross-Platform App\'s performance is exceptional, meeting or exceeding all efficiency requirements. Users experience no delays or errors, and the system performs consistently well under all operating conditions.
+  3.41 \-- 4.20   Efficient             The Bench-Z Fitness Gym Cross-Platform App\'s performance is above average and meets most efficiency requirements. Users experience minimal delays or errors, and the system performs well under normal operating conditions.
+  2.61 \-- 3.40   Less Efficient        The Bench-Z Fitness Gym Cross-Platform App\'s performance is average, with room for improvement. Users may experience occasional delays or errors, but overall, the system functions adequately.
+  1.81 \-- 2.60   Inefficient           The Bench-Z Fitness Gym Cross-Platform App\'s performance is below average and fails to fully meet efficiency requirements. Users may experience delays or errors that affect productivity.
+  1.00 \-- 1.80   Highly Inefficient    The Bench-Z Fitness Gym Cross-Platform App\'s performance is significantly below expectations, frequently causing delays, errors, or failures that disrupt normal operation.
+
+The table 3 presents the scoring rubric used to interpret performance
+efficiency evaluation results.
+
+**Table 4**\
+*Scoring Rubric for Compatibility*
+
+  Range           Qualitative Remarks   Verbal Description
+  --------------- --------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+  4.21 \-- 5.00   Highly Compatible     The Bench-Z Fitness Gym Cross-Platform App is fully compatible with other hardware and software and seamlessly integrates without any issues or modifications.
+  3.41 \-- 4.20   Compatible            The Bench-Z Fitness Gym Cross-Platform App can work with other hardware or software with minor adjustments or configurations.
+  2.61 \-- 3.40   Somewhat Compatible   The Bench-Z Fitness Gym Cross-Platform App can work with other hardware or software, but requires significant adjustments or configurations.
+  1.81 \-- 2.60   Less Compatible       The Bench-Z Fitness Gym Cross-Platform App struggles to work with other hardware or software and needs major adjustments.
+  1.00 \-- 1.80   Not Compatible        The Bench-Z Fitness Gym Cross-Platform App cannot work with other hardware or software and requires a complete redesign or replacement.
+
+The table 4 presents the scoring rubric used to interpret the evaluation
+results for compatibility.
+
+**Table 5**\
+*Scoring Rubric for Interaction Capability*
+
+  Range           Qualitative Remarks   Verbal Description
+  --------------- --------------------- -----------------------------------------------------------------------------------------------------------------------
+  4.21 \-- 5.00   Highly Interactive    Users can perform tasks intuitively and efficiently, with smooth system responses and clear, immediate feedback.
+  3.41 \-- 4.20   Interactive           Users can perform tasks with some guidance or minor delays; system feedback is generally adequate.
+  2.61 \-- 3.40   Less Interactive      Users face difficulties interacting with the system, with delays or unclear feedback reducing task efficiency.
+  1.81 \-- 2.60   Poorly Interactive    Users experience significant difficulties, with delayed responses and confusing feedback.
+  1.00 \-- 1.80   Non-Interactive       Users cannot effectively interact with the system due to poor responsiveness, unclear instructions, or system errors.
+
+The table 5 presents the scoring rubric used to interpret the evaluation
+results for interaction capability.
+
+**Table 6**\
+*Scoring Rubric for Reliability*
+
+  Range           Qualitative Remarks   Verbal Description
+  --------------- --------------------- --------------------------------------------------------------------------------------------------------------------------------------------------
+  4.21 \-- 5.00   Highly Reliable       The Bench-Z Fitness Gym Cross-Platform App performs consistently without failures, delivering accurate, dependable results under all conditions.
+  3.41 \-- 4.20   Reliable              The Bench-Z Fitness Gym Cross-Platform App generally operates as expected, with only minor or occasional errors.
+  2.61 \-- 3.40   Slightly Reliable     The Bench-Z Fitness Gym Cross-Platform App is prone to errors or interruptions, affecting performance and dependability.
+  1.81 \-- 2.60   Unreliable            The Bench-Z Fitness Gym Cross-Platform App frequently experiences errors or interruptions, reducing overall dependability.
+  1.00 \-- 1.80   Non-Reliable          The Bench-Z Fitness Gym Cross-Platform App frequently fails or produces inaccurate results, making it unreliable for its intended use.
+
+The table 6 presents the scoring rubric used to interpret the
+reliability evaluation results.
+
+**Table 7**\
+*Scoring Rubric for Security*
+
+  Range           Qualitative Remarks   Verbal Description
+  --------------- --------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  4.21 \-- 5.00   Strong Security       The Bench-Z Fitness Gym Cross-Platform App has multiple layers of security measures that provide comprehensive protection against unauthorized access, data breaches, and other threats. Security features are regularly updated and tested to ensure effectiveness.
+  3.41 \-- 4.20   Adequate Security     The Bench-Z Fitness Gym Cross-Platform App has basic security measures that prevent the most common threats; however, some vulnerabilities may exist and require improvement.
+  2.61 \-- 3.40   Weak Security         The Bench-Z Fitness Gym Cross-Platform App has significant security vulnerabilities, with gaps that may allow unauthorized access, data breaches, or other threats. Immediate improvements are needed.
+  1.81 \-- 2.60   Very Weak Security    The Bench-Z Fitness Gym Cross-Platform App\'s security measures are largely ineffective, leaving it vulnerable to breaches or data loss.
+  1.00 \-- 1.80   No Security           The Bench-Z Fitness Gym Cross-Platform App has no effective security measures and is highly vulnerable to breaches and data loss. Urgent action is required.
+
+The table 7 presents the scoring rubric used to interpret security
+evaluation results.
+
+**Table 8**\
+*Scoring Rubric for Maintainability*
+
+  Range           Qualitative Remarks   Verbal Description
+  --------------- --------------------- --------------------------------------------------------------------------------------------------------------------------------------------
+  4.21 \-- 5.00   Highly Maintainable   The Bench-Z Fitness Gym Cross-Platform App easily adapts to new requirements, environments, or user needs without affecting performance.
+  3.41 \-- 4.20   Maintainable          The Bench-Z Fitness Gym Cross-Platform App can adapt to most changes with minor adjustments while maintaining acceptable performance.
+  2.61 \-- 3.40   Less Maintainable     The Bench-Z Fitness Gym Cross-Platform App adapts poorly to changes, requiring major adjustments that may affect performance.
+  1.81 \-- 2.60   Hardly Maintainable   The Bench-Z Fitness Gym Cross-Platform App struggles to adapt to changes, limiting usability and requiring significant effort to maintain.
+  1.00 \-- 1.80   Not Maintainable      The Bench-Z Fitness Gym Cross-Platform App cannot adapt to changes, severely limiting usability and overall functionality.
+
+The table 8 presents the scoring rubric used to interpret
+maintainability evaluation results.
+
+**Table 9**\
+*Scoring Rubric for Flexibility*
+
+  Range           Qualitative Remarks   Verbal Description
+  --------------- --------------------- ------------------------------------------------------------------------------------------------------------------------------------------
+  4.21 \-- 5.00   Highly Flexible       The Bench-Z Fitness Gym Cross-Platform App easily adapts to new requirements, environments, or user needs without affecting performance.
+  3.41 \-- 4.20   Flexible              The Bench-Z Fitness Gym Cross-Platform App can adapt to most changes with minor adjustments while maintaining acceptable performance.
+  2.61 \-- 3.40   Less Flexible         The Bench-Z Fitness Gym Cross-Platform App adapts poorly to changes, requiring major adjustments that may affect performance.
+  1.81 \-- 2.60   Hardly Flexible       The Bench-Z Fitness Gym Cross-Platform App struggles to adapt to changes, limiting usability and requiring significant effort to modify.
+  1.00 \-- 1.80   Not Flexible          The Bench-Z Fitness Gym Cross-Platform App cannot adapt to changes, severely limiting usability and overall functionality.
+
+The table 9 presents the scoring rubric used to interpret the evaluation
+results for flexibility.
+
+**Table 10**\
+*Scoring Rubric for Safety*
+
+  Range           Qualitative Remarks   Verbal Description
+  --------------- --------------------- ------------------------------------------------------------------------------------------------------------------------------------------------
+  4.21 \-- 5.00   Highly Safe           The Bench-Z Fitness Gym Cross-Platform App effectively prevents hazards, protects users and data, and functions securely under all conditions.
+  3.41 \-- 4.20   Safe                  The Bench-Z Fitness Gym Cross-Platform App is generally safe, with only minor risks that do not significantly affect users or data
+  2.61 \-- 3.40   Slightly Unsafe       The Bench-Z Fitness Gym Cross-Platform App poses significant safety risks to users and their data.
+  1.81 \-- 2.60   Unsafe                The Bench-Z Fitness Gym Cross-Platform App exposes users and data to significant risks, affecting reliability and functionality.
+  1.00 \-- 1.80   Highly Unsafe         The Bench-Z Fitness Gym Cross-Platform App is unsafe and poses serious risks to users and their data. Urgent corrective actions are required.
+
+The table 10 presents the scoring rubric used to interpret safety
+evaluation results.
+
+For the third research question, the same rubrics presented above will
+be used, but in the context of the evaluation to be conducted by
+end-users. Frequency, percentage, and weighted means will also be
+computed.
+
+For the fourth research question, which focused on web accessibility
+assessment, frequency, percentage, and weighted mean will be used. Also,
+Table 11 will be used as the scoring rubric.
+
+**Table 11**\
+*Scoring Rubric for Web Content Accessibility Guidelines*
+
+  **Range**       **Qualitative Remarks**   **Verbal Description**
+  --------------- ------------------------- -------------------------------------------------------------------------------------------------
+  4.21 \-- 5.00   Highly Accessible         The Bench-Z Fitness App is considered fully compliant with web content accessibility standards.
+  3.41 \-- 4.20   Accessible                The Bench-Z Fitness is perceived to have minor issues, but is generally accessible.
+  2.61 \-- 3.40   Moderately Accessible     The Bench-Z Fitness is perceived to have accessibility barriers.
+  1.81 \-- 2.60   Slightly Accessible       The Bench-Z Fitness is perceived to have major accessibility issues.
+  1.00 \-- 1.80   Not Accessible            The Bench-Z Fitness is perceived not usable for users with disabilities.
+
+**Ethical Considerations**
+
+This study strictly adhered to established ethical principles governing
+research involving human participants, grounded in the fundamental
+principles of respect for persons, beneficence, and justice, as
+articulated in the Belmont Report (National Commission for the
+Protection of Human Subjects of Biomedical and Behavioral Research,
+1979). These principles ensured that all respondents were treated with
+dignity, protected from harm, and provided equal opportunity to
+participate without coercion or discrimination.
+
+Informed Consent\*\*.\*\* Prior to system evaluation, informed consent
+was explicitly obtained from all respondents. Participants were provided
+with an introductory letter detailing the study\'s purpose, the
+estimated time required to complete the questionnaire, and their exact
+rights as research participants.
+
+Voluntary Participation. Participation in this study was entirely
+voluntary. Respondents were explicitly informed of their right to
+withdraw from the evaluation at any time without facing any penalties,
+coercion, or negative consequences regarding their gym membership or
+professional standing.
+
+Confidentiality and Data Privacy. In strict compliance with the Data
+Privacy Act of 2012 (Republic Act No. 10173), both the researchers and
+the developed system adhered to rigorous data protection standards. All
+evaluation data gathered from IT experts and gym end-users was treated
+with strict confidentiality and anonymized to prevent personal
+identification.
+
+Fair Selection of Respondents. Following the principle of justice,
+respondents were selected impartially and without discrimination. IT
+professionals, gym administrators, and active gym members were chosen
+solely based on their direct relevance to the study\'s objectives to
+ensure valid and reliable evaluations.
+
+Researcher Integrity. The researchers guarantee that all collected
+survey data was reported truthfully and accurately, free from
+fabrication or alteration. The data will be stored securely, used
+exclusively for academic research purposes, and safely disposed of upon
+the conclusion and approval of the study.
+
+**\[REFERENCES\]{.smallcaps}**
+
+Acepcion, R., Jr., Bautista, J. V. P., Espartinez, R. A., Mancera, F.
+W., Magdael, A. J., & Sabado, S. C. (2025). Fit Track: A gym member
+monitoring system with predictive analytics for Almo Fitness Gym.
+*International Journal of Latest Technology in Engineering, Management &
+Applied Science (IJLTEMAS), XIV*(X), 162\--171.
+\[<https://doi.org/10.51583/IJLTEMAS.2025.1410000022>2\]{.underline}
+
+Adegbite, M. A. (2025). Data privacy and data security challenges in
+digital finance. *Journal of Digital Security and Forensics, 2*(1),
+6\--19.
+\[\[[https://doi.org/10.29121/digisecforensics.v2.i1.2025.40\]{.underline}\](https://doi.org/10.29121/digisecforensics.v2.i1.2025.40)](https://doi.org/10.29121/digisecforensics.v2.i1.2025.40]{.underline}](https://doi.org/10.29121/digisecforensics.v2.i1.2025.40))
+
+Alboneh, A. F. A., & Snae, M. (2025). Development of a web-based gym
+information system at Nahaga Sabu Seba. *Journal of Artificial
+Intelligence and Engineering Applications (JAIEA), 4*(3), 1907\--1914.
+\[\[[https://doi.org/10.59934/jaiea.v4i3.1080\]{.underline}\](https://doi.org/10.59934/jaiea.v4i3.1080)](https://doi.org/10.59934/jaiea.v4i3.1080]{.underline}](https://doi.org/10.59934/jaiea.v4i3.1080))
+
+Almajali, D. A., Al-Okaily, M., Alsakarneh, A., & Al-Omoush, K. (2023).
+Structured software development versus agile software development: A
+comparative analysis. *International Journal of System Assurance
+Engineering and Management, 14*(6), 2370\--2380.
+\[[https://doi.org/10.1007/s13198-023-01958-5\]{.underline}](https://doi.org/10.1007/s13198-023-01958-5]{.underline})
+
+Bangko Sentral ng Pilipinas. (2019). *Circular No. 1055: Adoption of the
+national quick response (QR) code standard*. BSP Official Circular.
+\[\[[https://www.bsp.gov.ph\]{.underline}\](https://www.bsp.gov.ph)](https://www.bsp.gov.ph]{.underline}](https://www.bsp.gov.ph))
+
+Bulaclac, J. R., Pastorfide, J. M. V., Herrera, N. G., & Tambio, C. N.
+C. (2025). Revolutionizing gym management: A QR-enabled cashless system
+for smarter payments and tracking. *Interdisciplinary Journal of
+Information, Knowledge, and Management, 20*, Article 35.
+\[\[[https://doi.org/10.28945/5650\]{.underline}\](https://doi.org/10.28945/5650)](https://doi.org/10.28945/5650]{.underline}](https://doi.org/10.28945/5650))
+
+Cacas, A., Diongson, M. B. A., Olita, G. M., & Perkins, R. (2022).
+Influencing factors on mobile wallet adoption in the Philippines:
+Generation X\'s behavioral intention to use GCash services. *Journal of
+Business and Management Studies, 4*(1), 149\--156.
+\[[https://doi.org/10.32996/jbms.2022.4.1.18\]{.underline}](https://doi.org/10.32996/jbms.2022.4.1.18]{.underline})
+
+El-Rahman, S. A., & Alluhaidan, A. S. (2024). Enhanced multimodal
+biometric recognition systems based on deep learning and traditional
+methods in smart environments. *PLOS ONE, 19*(2), e0291084.
+\[\[[https://doi.org/10.1371/journal.pone.0291084\]{.underline}\](https://doi.org/10.1371/journal.pone.0291084)](https://doi.org/10.1371/journal.pone.0291084]{.underline}](https://doi.org/10.1371/journal.pone.0291084))
+
+Huang, Y., Fu, B., Peng, N., Ba, Y., Liu, X., & Zhang, S. (2022). RFID
+authentication system based on user biometric information. *Applied
+Sciences, 12*(24), 12865.
+\[\[[https://doi.org/10.3390/app122412865\]{.underline}\](https://doi.org/10.3390/app122412865)](https://doi.org/10.3390/app122412865]{.underline}](https://doi.org/10.3390/app122412865))
+
+Hussain, A. R., Yi, K. W., Halimi, S. N. R., & Abidin, S. M. F. S.
+(2025). Q-Fitness Gym System: An integrated web application for smart
+gym operations and member engagement. *International Journal of Research
+and Innovation in Social Science (IJRISS), 9*(10), 7393\--7407.
+\[\[[https://doi.org/10.47772/IJRISS.2025.910000602\]{.underline}\](https://doi.org/10.47772/IJRISS.2025.910000602)](https://doi.org/10.47772/IJRISS.2025.910000602]{.underline}](https://doi.org/10.47772/IJRISS.2025.910000602))
+
+International Organization for Standardization. (2023). *ISO/IEC
+25010:2023\-\--Systems and software engineering: Systems and software
+quality requirements and evaluation (SQuaRE)*. ISO.
+\[\[[https://www.iso.org/standard/35733.html\]{.underline}\](https://www.iso.org/standard/35733.html)](https://www.iso.org/standard/35733.html]{.underline}](https://www.iso.org/standard/35733.html))
+
+Jošt, G., & Taneski, V. (2025). State-of-the-art cross-platform mobile
+application development frameworks: A comparative study of market and
+developer trends. *Informatics, 12*(2), 45.
+\[\[[https://doi.org/10.3390/informatics12020045\]{.underline}\](https://doi.org/10.3390/informatics12020045)](https://doi.org/10.3390/informatics12020045]{.underline}](https://doi.org/10.3390/informatics12020045))
+
+Kolhe, P. R., & Sharma, A. (2021). A brief study of Laravel framework
+with PHP. *International Journal of Emerging Technologies and Innovative
+Research (JETIR), 8*(7), c656\--c661.
+\[\[[https://www.jetir.org/papers/JETIR2107356.pdf\]{.underline}\](https://www.jetir.org/papers/JETIR2107356.pdf)](https://www.jetir.org/papers/JETIR2107356.pdf]{.underline}](https://www.jetir.org/papers/JETIR2107356.pdf))
+
+National Commission for the Protection of Human Subjects of Biomedical
+and Behavioral Research. (1979). *The Belmont report: Ethical principles
+and guidelines for the protection of human subjects of research*. U.S.
+Department of Health and Human Services.
+\[\[[https://www.hhs.gov/ohrp/regulations-and-policy/belmont-report/index.html\]{.underline}\](https://www.hhs.gov/ohrp/regulations-and-policy/belmont-report/index.html)](https://www.hhs.gov/ohrp/regulations-and-policy/belmont-report/index.html]{.underline}](https://www.hhs.gov/ohrp/regulations-and-policy/belmont-report/index.html))
+
+Nugraha, U., & Rachman, M. A. N. (2024). Evaluation of Ixitask
+application quality based on ISO/IEC 25010:2023 in marketing division.
+In V. Mardiansyah & B. A. Prasetyo (Eds.), *Proceedings of the Widyatama
+International Conference on Engineering 2024 (WICOENG 2024)* (pp.
+139\--147). Atlantis Press.
+\[[https://doi.org/10.2991/978-94-6463-618-5_15\]{.underline}](https://doi.org/10.2991/978-94-6463-618-5_15]{.underline})
+
+Olipas, C. N. P. (2026). *Design and validation of an accessibility
+evaluation instrument based on the Web Content Accessibility Guidelines
+(WCAG)*. Unpublished manuscript
+
+Pleno, A. B. (2024). E-payment system readiness of micro business
+owners. *Journal of Social Entrepreneurship Theory and Practice, 3*(2),
+59\--73.
+\[[https://doi.org/10.31098/jsetp.v3i2.2800\]{.underline}](https://doi.org/10.31098/jsetp.v3i2.2800]{.underline})
+
+Republic of the Philippines. (2012). *Republic Act No. 10173: Data
+Privacy Act of 2012*. Official Gazette of the Philippines.
+\[\[[https://www.officialgazette.gov.ph/2012/08/15/republic-act-no-10173\]{.underline}\](https://www.officialgazette.gov.ph/2012/08/15/republic-act-no-10173)](https://www.officialgazette.gov.ph/2012/08/15/republic-act-no-10173]{.underline}](https://www.officialgazette.gov.ph/2012/08/15/republic-act-no-10173))
+
+Rojas, H., Renteria, R., Durán, V. M., Gutiérrez, Y. T., Cabrera, M. J.
+I., & Aminuddin, A. (2025). Mapping the evolution and future directions
+of ISO/IEC 25010: A bibliometric and thematic analysis. *Engineering,
+Technology & Applied Science Research, 15*(3), 22887\--22894.
+\[[https://doi.org/10.48084/etasr.11772\]{.underline}](https://doi.org/10.48084/etasr.11772]{.underline})
+
+Suryawanshi, A., Bokare, N., Bhadre, S., & Lahankar, R. (2024).
+Web-based gym management system using XAMPP and MySQL. *International
+Journal of Advanced Research in Computer Science, 15*(1), 88\--94.
+\[[https://www.ijarcs.info\]{.underline}](https://www.ijarcs.info]{.underline})
+
+Villanueva, K., Sevilla, M., & Verecio, C. (2025). QR code-based
+management system for Olympic Fitness Gym. *Asia Pacific Journal of
+Information Technology, 8*(2), 66\--75.
+
+**\[APPENDICES\]{.smallcaps}**
+
+**Appendix A**
+
+**Request Letter For Adviser**
+
+![D:\\Download\\docu.jpg](media/image9.jpg){width=\"4.7in\"
+height=\"7.229166666666667in\"}
+
+**Appendix B**
+
+**Survey Instrument for the Technical Assessment of the Developed Gym
+Management System**
+
+**Dear Respondents,**
+
+**Greetings of Peace!**
+
+The undersigned researchers are currently conducting a capstone project
+entitled **\"A Data-Driven Cross-Platform Web Application for Gym
+Membership, Cashless Payment, and Membership Analytics Management.\"**
+We sincerely invite you to participate in this research and greatly
+appreciate your time and cooperation.
+
+The primary purpose of this questionnaire is to evaluate the technical
+architecture and practical usability of the developed gym management
+system. The data gathered will be utilized to determine the system\'s
+compliance with ISO/IEC 25010:2023 software quality standards,
+specifically focusing on its functionality, performance efficiency,
+security, and overall user experience. Your feedback is crucial in
+assessing how effectively the system addresses the common problems
+encountered in manual gym operations, such as attendance tracking and
+payment processing.
+
+If you agree to participate, you will be asked to evaluate your
+experience with the application using the provided 5-point Likert scale.
+The questionnaire will take approximately **10\--15 minutes** to
+complete.
+
+Participation in this study is **entirely voluntary**. You are not
+required or obligated to answer the survey. You have the right to
+decline or withdraw from participation at any time without any penalty
+or consequence. If you wish to withdraw, you may exit the questionnaire
+at any point before submitting your responses. However, once your
+responses are submitted, they will be considered part of the study.
+
+There are **no direct risks** associated with your participation in this
+study. While there may be no immediate personal benefits, your responses
+will significantly contribute to refining a more secure, efficient, and
+transparent automated management system that can benefit the local
+fitness community.
+
+All information gathered will be treated with **strict confidentiality**
+in compliance with the Data Privacy Act of 2012 (R.A. 10173). Your
+responses will remain anonymous, and any data collected will be used
+solely for academic research purposes. The data will only be accessed by
+the researchers and will not be disclosed to any unauthorized
+individuals or organizations.
+
+It is important that you fully understand the purpose of this study and
+your rights as a participant. Should you have any questions,
+clarifications, or concerns, you may contact the researchers through our
+designated representative.
+
+Thank you very much for your valuable participation.
+
+**Sincerely,**
+
+Nestor Adrian L. Canlas
+
+Joffer George I. Escoto
+
+Keanne Andrei B. Madia
+
+Aldrich G. Calungcagin
+
+*(Researchers)*
+
+**I.  Respondent Profile**
+
+```{=html}
+<table>
+<colgroup>
+<col style="width: 42%" />
+<col style="width: 57%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td colspan="2"><p><strong>Direction:</strong> Please check or provide details where applicable.</p>
+<p> <strong>Panuto:</strong> I-tsek at ilagay ang tamang impormasyon kung kinakailangan.</p></td>
+</tr>
+<tr class="even">
+<td colspan="2"><strong>Name: </strong></td>
+</tr>
+<tr class="odd">
+<td><p><strong>Sex:       ☐</strong>Male</p>
+<p><strong>              ☐</strong>Female</p></td>
+<td><strong>Age:</strong></td>
+</tr>
+<tr class="even">
+<td><p><strong>You Are:</strong></p>
+<p><strong>              </strong></p>
+<p>☐IT Professional</p>
+<p>              ☐Web Developer</p>
+<p><strong>              </strong></p></td>
+<td><p><strong>Years of Experience in IT/Development:      </strong>  </p>
+<p>  ☐1-3 years</p>
+<p>         ☐4-6 years</p>
+<p>☐7+ years</p></td>
+</tr>
+</tbody>
+</table>
+```
+**FOR IT EXPERTS**
+
+**Instructions:** Please rate the system\'s accessibility on each item
+using the 5-point scale below: 5 \-- Highly Suitable \| 4 \-- Suitable
+\| 3 \-- Somewhat Suitable \| 2 \-- Unsuitable \| 1 \-- Highly
+Unsuitable
+
+Functional Suitability
+
+  ----------------------------------------------------------------------------------------------------------------------------- ----------------- ---------- ------------------- ------------ -------------------
+  Item Statements                                                                                                               Highly Suitable   Suitable   Somewhat Suitable   Unsuitable   Highly Unsuitable
+  The Bench-Z Fitness Gym Cross-platform App provides all the functions necessary to complete required tasks. (Completeness)                                                                  
+  The Bench-Z Fitness Gym Cross-platform App performs its functions accurately and correctly. (Correctness)                                                                                   
+  The Bench-Z Fitness Gym Cross-platform App\'s functions are appropriate to the actual needs of the users. (Appropriateness)                                                                 
+  ----------------------------------------------------------------------------------------------------------------------------- ----------------- ---------- ------------------- ------------ -------------------
+
+Performance Efficiency
+
+  ------------------------------------------------------------------------------------------------------------------------ ------------------ ----------- ---------------- ------------- --------------------
+  Item Statements                                                                                                          Highly Efficient   Efficient   Less Efficient   Inefficient   Highly Inefficient
+  The Bench-Z Fitness Gym Cross-platform App responds quickly when tasks are performed. (Time Behavior)                                                                                  
+  The Bench-Z Fitness Gym Cross-platform App uses computing resources efficiently. (Resource Utilization)                                                                                
+  The Bench-Z Fitness Gym Cross-platform App maintains acceptable performance even during high user activity. (Capacity)                                                                 
+  ------------------------------------------------------------------------------------------------------------------------ ------------------ ----------- ---------------- ------------- --------------------
+
+Compatibility
+
+  ---------------------------------------------------------------------------------------------------------------------------- ------------------- ------------ --------------------- ----------------- ----------------
+  Item Statements                                                                                                              Highly Compatible   Compatible   Somewhat Compatible   Less Compatible   Not Compatible
+  The Bench-Z Fitness Gym Cross-Platform App operates properly alongside other existing software systems. (Co-Existence)                                                                                
+  The Bench-Z Fitness Gym Cross-Platform App can effectively exchange data with other relevant platforms. (Interoperability)                                                                            
+  ---------------------------------------------------------------------------------------------------------------------------- ------------------- ------------ --------------------- ----------------- ----------------
+
+Interaction Capability
+
+  ------------------------------------------------------------------------------------------------------------------------------------ -------------------- ------------- ------------------ -------------------- -----------------
+  Item Statements                                                                                                                      Highly Interactive   Interactive   Less Interactive   Poorly Interactive   Non-Interactive
+  The Bench-Z Fitness Gym Cross-Platform App is easy to learn and use for first-time users. (Learnability)                                                                                                        
+  The Bench-Z Fitness Gym Cross-Platform App interface is inclusive and accessible to users with varying skill levels. (Inclusivity)                                                                              
+  The Bench-Z Fitness Gym Cross-Platform App design promotes active user engagement. (User Engagement)                                                                                                            
+  ------------------------------------------------------------------------------------------------------------------------------------ -------------------- ------------- ------------------ -------------------- -----------------
+
+Reliability
+
+  ------------------------------------------------------------------------------------------------------------------------ ----------------- ---------- ------------------- ------------ --------------
+  Item Statements                                                                                                          Highly Reliable   Reliable   Slightly Reliable   Unreliable   Non-Reliable
+  The Bench-Z Fitness Gym Cross-Platform App is available whenever it is needed. (Availability)                                                                                          
+  The Bench-Z Fitness Gym Cross-Platform App continues to operate despite minor errors or disruptions. (Fault Tolerance)                                                                 
+  The Bench-Z Fitness Gym Cross-Platform App can quickly recover from system failures. (Recoverability)                                                                                  
+  ------------------------------------------------------------------------------------------------------------------------ ----------------- ---------- ------------------- ------------ --------------
+
+Security
+
+  ---------------------------------------------------------------------------------------------------------------------------------- ----------------- ------------------- --------------- -------------------- -------------
+  Item Statements                                                                                                                    Strong Security   Adequate Security   Weak Security   Very Weak Security   No Security
+  The Bench-Z Fitness Gym Cross-Platform App adequately protects sensitive information from unauthorized access. (Confidentiality)                                                                              
+  The Bench-Z Fitness Gym Cross-Platform App ensures the integrity and accuracy of stored data. (Integrity)                                                                                                     
+  The Bench-Z Fitness Gym Cross-Platform App is resistant to unauthorized modification or security threats. (Resistance)                                                                                        
+  ---------------------------------------------------------------------------------------------------------------------------------- ----------------- ------------------- --------------- -------------------- -------------
+
+Maintainability
+
+  -------------------------------------------------------------------------------------------------------------------- --------------------- -------------- ------------------- --------------------- ------------------
+  Item Statements                                                                                                      Highly Maintainable   Maintainable   Less Maintainable   Hardly Maintainable   Not Maintainable
+  The Bench-Z Fitness Gym Cross-Platform App structure allows for easy modification or enhancement. (Modularity)                                                                                      
+  The Bench-Z Fitness Gym Cross-Platform App components can be reused or updated without major issues. (Reusability)                                                                                  
+  The Bench-Z Fitness Gym Cross-Platform App is easy to test and troubleshoot when problems arise. (Testability)                                                                                      
+  -------------------------------------------------------------------------------------------------------------------- --------------------- -------------- ------------------- --------------------- ------------------
+
+Flexibility
+
+  ------------------------------------------------------------------------------------------------------------------------ ----------------- ---------- --------------- ----------------- --------------
+  Item Statements                                                                                                          Highly Flexible   Flexible   Less Flexible   Hardly Flexible   Not Flexible
+  The Bench-Z Fitness Gym Cross-Platform App can be adapted to changing user or operational requirements. (Adaptability)                                                                  
+  The Bench-Z Fitness Gym Cross-Platform App can be installed or deployed with minimal difficulty. (Installability)                                                                       
+  The Bench-Z Fitness Gym Cross-Platform App can scale effectively as demand increases. (Scalability)                                                                                     
+  ------------------------------------------------------------------------------------------------------------------------ ----------------- ---------- --------------- ----------------- --------------
+
+Safety
+
+  ------------------------------------------------------------------------------------------------------------------- ------------- ------ --------------- -------- ---------------
+  Item Statements                                                                                                     Highly Safe   Safe   Slightly Safe   Unsafe   Highly Unsafe
+  The Bench-Z Fitness Gym Cross-Platform App operates within defined limits that prevent unsafe use.                                                                
+  The Bench-Z Fitness Gym Cross-Platform App includes safeguards that reduce the risk of user errors.                                                               
+  The Bench-Z Fitness Gym Cross-Platform App provides clear warnings when potentially unsafe actions are attempted.                                                 
+  ------------------------------------------------------------------------------------------------------------------- ------------- ------ --------------- -------- ---------------
+
+**Appendix C**
+
+**Survey Instrument for Assessing the User Experience of the Developed
+Gym Management System**
+
+**Dear Respondents,**
+
+**Greetings of Peace!**
+
+The undersigned researchers are currently conducting a capstone project
+entitled **\"A Data-Driven Cross-Platform Web Application for Gym
+Membership, Cashless Payment, and Membership Analytics Management.\"**
+We sincerely invite you to participate in this research and greatly
+appreciate your time and cooperation.
+
+The primary purpose of this questionnaire is to evaluate the technical
+architecture and practical usability of the developed gym management
+system. The data gathered will be utilized to determine the system\'s
+compliance with ISO/IEC 25010:2023 software quality standards,
+specifically focusing on its functionality, performance efficiency,
+security, and overall user experience. Your feedback is crucial in
+assessing how effectively the system addresses the common problems
+encountered in manual gym operations, such as attendance tracking and
+payment processing.
+
+If you agree to participate, you will be asked to evaluate your
+experience with the application using the provided 5-point Likert scale.
+The questionnaire will take approximately **10\--15 minutes** to
+complete.
+
+Participation in this study is **entirely voluntary**. You are not
+required or obligated to answer the survey. You have the right to
+decline or withdraw from participation at any time without any penalty
+or consequence. If you wish to withdraw, you may exit the questionnaire
+at any point before submitting your responses. However, once your
+responses are submitted, they will be considered part of the study.
+
+There are **no direct risks** associated with your participation in this
+study. While there may be no immediate personal benefits, your responses
+will significantly contribute to refining a more secure, efficient, and
+transparent automated management system that can benefit the local
+fitness community.
+
+All information gathered will be treated with **strict confidentiality**
+in compliance with the Data Privacy Act of 2012 (R.A. 10173). Your
+responses will remain anonymous, and any data collected will be used
+solely for academic research purposes. The data will only be accessed by
+the researchers and will not be disclosed to any unauthorized
+individuals or organizations.
+
+It is important that you fully understand the purpose of this study and
+your rights as a participant. Should you have any questions,
+clarifications, or concerns, you may contact the researchers through our
+designated representative.
+
+Thank you very much for your valuable participation.
+
+**Sincerely,**
+
+Nestor Adrian L. Canlas
+
+Joffer George I. Escoto
+
+Keanne Andrei B. Madia
+
+Aldrich G. Calungcagin
+
+*(Researchers)*
+
+**FOR END USERS**
+
+**Instructions:** Please rate the system\'s accessibility on each item
+using the 5-point scale below: 5 \-- Highly Suitable \| 4 \-- Suitable
+\| 3 \-- Somewhat Suitable \| 2 \-- Unsuitable \| 1 \-- Highly
+Unsuitable
+
+Functional Suitability
+
+  ------------------------------------------------------------------------------------------------------------------------- ----------------- ---------- ------------------- ------------ -------------------
+  Item Statements                                                                                                           Highly Suitable   Suitable   Somewhat Suitable   Unsuitable   Highly Unsuitable
+  Bench-Z Fitness Gym Cross-Platform App provides all the functions necessary to complete required tasks. (Completeness)                                                                  
+  Bench-Z Fitness Gym Cross-Platform App performs its functions accurately and correctly. (Correctness)                                                                                   
+  Bench-Z Fitness Gym Cross-Platform App\'s functions are appropriate to the actual needs of the users. (Appropriateness)                                                                 
+  ------------------------------------------------------------------------------------------------------------------------- ----------------- ---------- ------------------- ------------ -------------------
+
+Interaction Capability
+
+  -------------------------------------------------------------------------------------------------------------------------------- -------------------- ------------- ------------------ -------------------- -----------------
+  Item Statements                                                                                                                  Highly Interactive   Interactive   Less Interactive   Poorly Interactive   Non-Interactive
+  Bench-Z Fitness Gym Cross-Platform App is easy to learn and use for first-time users. (Learnability)                                                                                                        
+  Bench-Z Fitness Gym Cross-Platform App interface is inclusive and accessible to users with varying skill levels. (Inclusivity)                                                                              
+  Bench-Z Fitness Gym Cross-Platform App design promotes active user engagement. (User Engagement)                                                                                                            
+  -------------------------------------------------------------------------------------------------------------------------------- -------------------- ------------- ------------------ -------------------- -----------------
+
+Reliability
+
+  -------------------------------------------------------------------------------------------------------------------- ----------------- ---------- ------------------- ------------ --------------
+  Item Statements                                                                                                      Highly Reliable   Reliable   Slightly Reliable   Unreliable   Non-Reliable
+  Bench-Z Fitness Gym Cross-Platform App is available whenever it is needed. (Availability)                                                                                          
+  Bench-Z Fitness Gym Cross-Platform App continues to operate despite minor errors or disruptions. (Fault Tolerance)                                                                 
+  Bench-Z Fitness Gym Cross-Platform App can quickly recover from system failures. (Recoverability)                                                                                  
+  -------------------------------------------------------------------------------------------------------------------- ----------------- ---------- ------------------- ------------ --------------
+
+Security
+
+  ------------------------------------------------------------------------------------------------------------------------------ ----------------- ------------------- --------------- -------------------- -------------
+  Item Statements                                                                                                                Strong Security   Adequate Security   Weak Security   Very Weak Security   No Security
+  Bench-Z Fitness Gym Cross-Platform App adequately protects sensitive information from unauthorized access. (Confidentiality)                                                                              
+  Bench-Z Fitness Gym Cross-Platform App ensures the integrity and accuracy of stored data. (Integrity)                                                                                                     
+  Bench-Z Fitness Gym Cross-Platform App is resistant to unauthorized modification or security threats. (Resistance)                                                                                        
+  ------------------------------------------------------------------------------------------------------------------------------ ----------------- ------------------- --------------- -------------------- -------------
+
+**Appendix D**
+
+**WCAG-Based Accessibility Evaluation Instrument**
+
+**Instructions:** Please rate the system\'s accessibility on each item
+using the 5-point scale below: 5 \-- Highly Accessible \| 4 \--
+Accessible \| 3 \-- Moderately Accessible \| 2 \-- Slightly Accessible
+\| 1 \-- Not Accessible
+
+  ------------------------------------------------------------------------------------------ ------------------------- ------------------ ----------------------------- --------------------------- ----------------------
+  **Item Statements**                                                                        **5 Highly Accessible**   **4 Accessible**   **3 Moderately Accessible**   **2 Slightly Accessible**   **1 Not Accessible**
+  **A. Perceivable**                                                                                                                                                                                
+  1\. The developed system provides appropriate alternative text for all non-text content.                                                                                                          
+  2\. Informative images include meaningful descriptions.                                                                                                                                           
+  3\. Complex visuals (charts, infographics) are accompanied by textual explanations.                                                                                                               
+  4\. Video content includes captions or subtitles.                                                                                                                                                 
+  5\. Audio content provides transcripts.                                                                                                                                                           
+  6\. Multimedia elements have accessible alternatives.                                                                                                                                             
+  7\. Content structure (headings, lists, landmarks) is properly organized.                                                                                                                         
+  8\. The interface remains usable when zoomed up to 200%.                                                                                                                                          
+  9\. Content adapts to different screen sizes and orientations.                                                                                                                                    
+  10\. Text meets recommended color contrast standards.                                                                                                                                             
+  11\. Information is not conveyed by color alone.                                                                                                                                                  
+  12\. Text is readable, resizable, and clearly visible.                                                                                                                                            
+  **B. Operable**                                                                                                                                                                                   
+  1\. All functionalities can be accessed using a keyboard.                                                                                                                                         
+  2\. No keyboard traps are encountered.                                                                                                                                                            
+  3\. Navigation follows a logical tab sequence.                                                                                                                                                    
+  4\. Navigation menus are consistent across pages.                                                                                                                                                 
+  5\. Pages have clear and descriptive titles.                                                                                                                                                      
+  6\. Users can easily determine their location within the system.                                                                                                                                  
+  7\. Buttons and links are easy to identify and interact with.                                                                                                                                     
+  8\. Click/touch targets are appropriately sized.                                                                                                                                                  
+  9\. The system supports multiple input methods (mouse, keyboard, touch).                                                                                                                          
+  10\. Users can control or extend time limits.                                                                                                                                                     
+  11\. Moving or blinking content can be paused or stopped.                                                                                                                                         
+  12\. The system avoids flashing elements that may trigger seizures.                                                                                                                               
+  **C. Understandable**                                                                                                                                                                             
+  1\. Content is written in clear and simple language.                                                                                                                                              
+  2\. Instructions are easy to understand.                                                                                                                                                          
+  3\. Terminologies are appropriate for the target users.                                                                                                                                           
+  4\. System behavior is consistent across all pages.                                                                                                                                               
+  5\. Navigation and layout remain uniform.                                                                                                                                                         
+  6\. Actions produce expected and logical results.                                                                                                                                                 
+  7\. Forms include clear labels and instructions.                                                                                                                                                  
+  8\. Errors are clearly identified and explained.                                                                                                                                                  
+  9\. The system provides helpful suggestions for correcting errors.                                                                                                                                
+  **D. Robust**                                                                                                                                                                                     
+  1\. The system works across different browsers and devices.                                                                                                                                       
+  2\. Code structure follows web standards.                                                                                                                                                         
+  3\. The system remains functional under different environments.                                                                                                                                   
+  4\. The system is compatible with screen readers.                                                                                                                                                 
+  5\. ARIA roles and labels are properly implemented.                                                                                                                                               
+  6\. Dynamic content updates are properly communicated to assistive tools.                                                                                                                         
+  ------------------------------------------------------------------------------------------ ------------------------- ------------------ ----------------------------- --------------------------- ----------------------
+
+**Appendix E**
+
+**Proposed Use Case Diagram**
+
+![D:\\Download\\Untitled Diagram.drawio
+(3).png](media/image10.png){width=\"5.166666666666667in\"
+height=\"7.783333333333333in\"}
+
+**Appendix F**
+
+**Proposed Data Flow Diagram**
+
+I. Context Diagram
+
+![D:\\Download\\Context
+Diagram.jpg](media/image11.jpg){width=\"6.07051290463692in\"
+height=\"3.9743591426071743in\"}
+
+![D:\\Download\\Level1DFD.drawio
+(9).png](media/image12.png){width=\"5.330690069991251in\"
+height=\"8.131944444444445in\"}II. Level 1 Diagram
+
+III\. Level 2 Diagram
+
+Process 1 (Register Member)
+
+![D:\\Download\\process1.png](media/image13.png){width=\"6.28548009623797in\"
+height=\"4.083333333333333in\"}
+
+IV\. Level 2 Diagram
+
+Process 2 (Retrieve Plan & Compute Total)
+
+![D:\\Download\\process2.png](media/image14.png){width=\"6.22873031496063in\"
+height=\"3.923611111111111in\"}
+
+V. Level 2 Diagram
+
+Process 3 (Validate Access Credentials)
+
+![D:\\Download\\process3.png](media/image15.png){width=\"6.23673009623797in\"
+height=\"4.166666666666667in\"}
+
+VI\. Level 2 Diagram
+
+Process 4 (Authenticate Admin Session)
+
+![D:\\Download\\process4.png](media/image16.png){width=\"5.914583333333334in\"
+height=\"4.006944444444445in\"}
+
+**Appendix G**
+
+![](media/image17.png){width=\"6.413194444444445in\"
+height=\"3.7291666666666665in\"}**Proposed Class Diagram**
