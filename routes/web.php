@@ -47,6 +47,13 @@ Route::post('/register', [AuthController::class, 'registerUser']);
 Route::get('/login', [AuthController::class, 'displayLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'loginUser']);
 
+
+Route::get('/admin/mfa', [AuthController::class, 'showAdminMfa'])
+->name('admin.mfa.show');
+
+Route::post('/admin/mfa', [AuthController::class, 'verifyAdminMfa'])
+->name('admin.mfa.verify');
+
 //member  portal
 Route::get('/member/portal', [MemberPortalController::class, 'viewPortal'])
 ->name('member-portal');
