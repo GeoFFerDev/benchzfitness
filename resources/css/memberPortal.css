@@ -425,3 +425,179 @@ nav#mainNav img { max-height: 34px; }
     .qr-main { width: 100%; }
     .qr-main svg { width: 220px; height: 220px; }
 }
+
+/* Member profile + purchase pages */
+.member-page-shell {
+    width: min(820px, 100%);
+    margin: 0 auto;
+}
+
+.member-back-btn {
+    display: inline-flex;
+    margin-bottom: 10px;
+    color: var(--secondary-color);
+    font-weight: 700;
+}
+
+.member-card-panel {
+    border: 1px solid var(--member-line);
+    border-radius: 14px;
+    background: #fff;
+    padding: 16px;
+}
+
+.profile-header-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.profile-header-row img {
+    width: 78px;
+    height: 78px;
+    border-radius: 999px;
+    object-fit: cover;
+}
+
+.profile-header-row h1 {
+    font-family: var(--header-font);
+    font-size: 34px;
+    line-height: 1;
+}
+
+.profile-header-row p { color: #6b7280; }
+
+.profile-chip {
+    margin-top: 6px;
+    display: inline-flex;
+    border-radius: 999px;
+    border: 1px solid #f1d4da;
+    padding: 3px 10px;
+    font-size: 11px;
+    color: var(--secondary-color);
+    font-weight: 700;
+}
+
+.profile-detail-grid,
+.purchase-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.profile-detail-grid > div,
+.purchase-detail-grid > div {
+    border: 1px solid #edf0f7;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.profile-detail-grid h2,
+.purchase-detail-grid h2 {
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 11px;
+}
+
+.profile-detail-grid p,
+.purchase-detail-grid p { font-weight: 700; font-size: 15px; }
+
+.profile-action-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.profile-primary-btn,
+.profile-secondary-btn {
+    min-height: 42px;
+    border-radius: 10px;
+    padding: 0 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+}
+
+.profile-primary-btn {
+    background: linear-gradient(135deg, #ae1a16, #810e25);
+    color: #fff;
+}
+
+.profile-secondary-btn {
+    border: 1px solid #f0d4da;
+    background: #fff;
+    color: var(--secondary-color);
+}
+
+.profile-edit-panel h1,
+.purchase-panel h1 {
+    font-family: var(--header-font);
+    font-size: 34px;
+    font-weight: 400;
+    line-height: 1;
+}
+
+.panel-subtitle {
+    margin-top: 4px;
+    margin-bottom: 12px;
+    color: #6b7280;
+}
+
+.member-form-grid {
+    display: grid;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.member-form-grid label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #6b7280;
+    font-weight: 700;
+}
+
+.member-form-grid input {
+    min-height: 42px;
+    border-radius: 10px;
+    border: 1px solid var(--member-line);
+    padding: 10px 12px;
+}
+
+.purchase-plan-band {
+    min-height: 72px;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 12px;
+    color: #fff;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    background: linear-gradient(135deg, #ae1a16, #810e25);
+}
+
+.purchase-panel.plan-bronze .purchase-plan-band { background: linear-gradient(135deg, #c4975b, #8c6239); }
+.purchase-panel.plan-silver .purchase-plan-band { background: linear-gradient(135deg, #b8c4d3, #64748b); }
+.purchase-panel.plan-gold .purchase-plan-band { background: linear-gradient(135deg, #facc15, #ca8a04); }
+.purchase-panel.plan-platinum .purchase-plan-band { background: linear-gradient(135deg, #a78bfa, #6d28d9); }
+
+.purchase-description {
+    border: 1px solid #edf0f7;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 12px;
+    color: #4b5563;
+}
+
+@media (max-width: 768px) {
+    .profile-detail-grid,
+    .purchase-detail-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,9 +1,7 @@
 <?php
 
-use function Livewire\Volt\{state, on, uses};
+use function Livewire\Volt\{state, on};
 use App\Models\MembershipPlans;
-use Livewire\WithFileUploads;
-uses(WithFileUploads::class);
 
 $planOptions = ['Bronze', 'Silver', 'Gold', 'Platinum'];
 
@@ -17,8 +15,6 @@ state([
     'duration' => null,
     'price' => null,
     'description' => '',
-    'image' => null,
-    'old_image' => null,
 ]);
 
 on(['membershipPlanDelete' => function ($id) {
@@ -32,7 +28,6 @@ on(['membershipPlanDelete' => function ($id) {
 
 on(['membershipPlanEdit' => function ($id) {
     $this->resetValidation();
-    $this->reset(['image']);
     $this->mode = 'edit';
     $this->id = $id;
 
@@ -56,21 +51,14 @@ on(['membershipPlanCreate' => function () {
 
 $updatePlan = function () use ($planOptions) {
     $validatedData = $this->validate([
-        'name' => "required|in:" . implode(',', $this->planOptions) . "|unique:membership_plans,name,{$this->id}",
+        'name' => 'required|in:' . implode(',', $this->planOptions) . "|unique:membership_plans,name,{$this->id}",
         'tag' => 'required|string|max:100',
         'duration' => 'required|integer|min:1',
         'price' => 'required|numeric|min:0|max:1000000',
         'description' => 'nullable|string',
-        'image' => 'nullable|image|max:1024',
     ]);
 
-    $plan = MembershipPlans::findOrFail($this->id);
-
-    if ($this->image) {
-        $validatedData['image_path'] = $this->image->store('membership_plans', 'public');
-    }
-
-    $plan->update($validatedData);
+    MembershipPlans::findOrFail($this->id)->update($validatedData);
 
     $this->show = false;
     $this->js('window.location.reload()');
@@ -83,12 +71,7 @@ $storePlan = function () use ($planOptions) {
         'duration' => 'required|integer|min:1',
         'price' => 'required|numeric|min:0',
         'description' => 'nullable|string',
-        'image' => 'nullable|image|max:1024',
     ]);
-
-    if ($this->image) {
-        $validatedData['image_path'] = $this->image->store('membership_plans', 'public');
-    }
 
     MembershipPlans::create($validatedData);
 
@@ -97,8 +80,7 @@ $storePlan = function () use ($planOptions) {
 };
 
 $deletePlan = function () {
-    $plan = MembershipPlans::findOrFail($this->id);
-    $plan->delete();
+    MembershipPlans::findOrFail($this->id)->delete();
 
     $this->show = false;
     $this->js('window.location.reload()');
@@ -118,104 +100,16 @@ $deletePlan = function () {
                         <p>Are you sure you want to delete <b>{{ $name }}</b>? This action cannot be undone.</p>
 
                         <div class="modal-actions">
-                            <button wire:click="deletePlan" class="delete-from-btn">
-                                Yes, Delete Plan
-                            </button>
-                            <button wire:click="$set('show', false)" class="cancel-form-btn">
-                                Nevermind
-                            </button>
+                            <button wire:click="deletePlan" class="delete-from-btn">Yes, Delete Plan</button>
+                            <button wire:click="$set('show', false)" class="cancel-form-btn">Nevermind</button>
                         </div>
                     </div>
-                @elseif($mode == 'edit')
-                    <div class="modal-title">
-                        <h1>Edit Plan</h1>
-                    </div>
-
-                    <form wire:submit="updatePlan">
-                        <div class="input-wrap edit-file">
-                            <label for="image">Plan Image</label>
-                            <input type="file" wire:model="image" id="image" accept="image/*">
-                        </div>
-
-                        @if ($image)
-                            <div class="preview mt-2">
-                                <img src="{{ $image->temporaryUrl() }}" width="100">
-                            </div>
-                        @endif
-                        @error('image')
-                            <div class="error-message">{{ $message }}</div>
-                        @enderror
-
-                        <div class="input-wrap">
-                            <label for="name">Name <span>*</span></label>
-                            <select wire:model="name" id="name">
-                                <option value="">Select Plan</option>
-                                @foreach($this->planOptions as $planOption)
-                                    <option value="{{ $planOption }}">{{ $planOption }}</option>
-                                @endforeach
-                            </select>
-                            @error('name')
-                                <div class="error-message">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <div class="input-wrap">
-                            <label for="tag">Tag <span>*</span></label>
-                            <input type="text" wire:model="tag" id="tag">
-                            @error('tag')
-                                <div class="error-message">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <div class="input-wrap-two">
-                            <div class="input-wrap">
-                                <label for="duration">Duration (Day/s)<span>*</span></label>
-                                <input type="number" wire:model="duration" id="duration">
-                                @error('duration')
-                                    <div class="error-message">{{ $message }}</div>
-                                @enderror
-                            </div>
-
-                            <div class="input-wrap">
-                                <label for="price">Price <span>*</span></label>
-                                <input type="number" wire:model="price" id="price">
-                                @error('price')
-                                    <div class="error-message">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="input-wrap">
-                            <label for="description">Description</label>
-                            <textarea wire:model="description" id="description" rows="4"></textarea>
-                            @error('description')
-                                <div class="error-message">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <button type="submit" class="submit-form-btn">Save Changes</button>
-                        <button type="button" wire:click="$set('show', false)" class="cancel-form-btn">Cancel</button>
-                    </form>
                 @else
                     <div class="modal-title">
-                        <h1>Create Plan</h1>
+                        <h1>{{ $mode == 'edit' ? 'Edit Plan' : 'Create Plan' }}</h1>
                     </div>
 
-                    <form wire:submit="storePlan">
-                        <div class="input-wrap input-file">
-                            <label for="image">Plan Image</label>
-                            <input type="file" wire:model="image" id="image" accept="image/*">
-                        </div>
-
-                        @if ($image)
-                            <div class="preview mt-2">
-                                <img src="{{ $image->temporaryUrl() }}" width="100">
-                            </div>
-                        @endif
-                        @error('image')
-                            <div class="error-message">{{ $message }}</div>
-                        @enderror
-
+                    <form wire:submit="{{ $mode == 'edit' ? 'updatePlan' : 'storePlan' }}">
                         <div class="input-wrap">
                             <label for="name">Name <span>*</span></label>
                             <select wire:model="name" id="name">
@@ -224,43 +118,33 @@ $deletePlan = function () {
                                     <option value="{{ $planOption }}">{{ $planOption }}</option>
                                 @endforeach
                             </select>
-                            @error('name')
-                                <div class="error-message">{{ $message }}</div>
-                            @enderror
+                            @error('name') <div class="error-message">{{ $message }}</div> @enderror
                         </div>
 
                         <div class="input-wrap">
                             <label for="tag">Tag <span>*</span></label>
                             <input type="text" wire:model="tag" id="tag">
-                            @error('tag')
-                                <div class="error-message">{{ $message }}</div>
-                            @enderror
+                            @error('tag') <div class="error-message">{{ $message }}</div> @enderror
                         </div>
 
                         <div class="input-wrap-two">
                             <div class="input-wrap">
                                 <label for="duration">Duration (Day/s)<span>*</span></label>
                                 <input type="number" wire:model="duration" id="duration">
-                                @error('duration')
-                                    <div class="error-message">{{ $message }}</div>
-                                @enderror
+                                @error('duration') <div class="error-message">{{ $message }}</div> @enderror
                             </div>
 
                             <div class="input-wrap">
                                 <label for="price">Price <span>*</span></label>
                                 <input type="number" wire:model="price" id="price">
-                                @error('price')
-                                    <div class="error-message">{{ $message }}</div>
-                                @enderror
+                                @error('price') <div class="error-message">{{ $message }}</div> @enderror
                             </div>
                         </div>
 
                         <div class="input-wrap">
                             <label for="description">Description</label>
                             <textarea wire:model="description" id="description" rows="4"></textarea>
-                            @error('description')
-                                <div class="error-message">{{ $message }}</div>
-                            @enderror
+                            @error('description') <div class="error-message">{{ $message }}</div> @enderror
                         </div>
 
                         <button type="submit" class="submit-form-btn">Save Changes</button>

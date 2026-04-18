@@ -1,37 +1,34 @@
-@extends('layouts.app')
+@extends('layouts.member.member-layout')
 
-@section('title', 'Member Portal')
+@section('title', 'Membership Purchase')
 
-@vite('resources/css/memberPortal.css')
 @section('content')
+<section class="member-page-shell">
+    <a href="{{ url()->previous() }}" class="member-back-btn">← Back</a>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <a href="{{ url()->previous() }}">back</a>
-        <form action="{{ route('membership.purchase.store', $tier->id)}}" method="POST">
-        @csrf
-        <h1>Membership Tier Purchase</h1>
-        <br><br>
-        <h1>{{$tier->name}}</h1>
-        <br><br>
-        <h1>{{$tier->tag}}</h1>
-        <br><br>
-        <h1>{{$tier->duration}}</h1>
-        <br><br>
-        <h1>{{$tier->price}}</h1>
-        <br><br>
-        <h1>{{$tier->description}}</h1>
+    <article class="member-card-panel purchase-panel plan-{{ strtolower($tier->name) }}">
+        <div class="purchase-plan-band">{{ strtoupper($tier->name) }} PLAN</div>
 
-        <input type="submit" value="Proceed">
-    </form>
+        <h1>{{ $tier->name }}</h1>
+        <p class="panel-subtitle">{{ $tier->tag }}</p>
 
-</body>
-</html>
+        <div class="purchase-detail-grid">
+            <div>
+                <h2>Duration</h2>
+                <p>{{ $tier->duration }} {{ $tier->duration == 1 ? 'Session' : 'Days' }}</p>
+            </div>
+            <div>
+                <h2>Price</h2>
+                <p>₱{{ number_format($tier->price, 2) }}</p>
+            </div>
+        </div>
 
+        <div class="purchase-description">{{ $tier->description }}</div>
+
+        <form action="{{ route('membership.purchase.store', $tier->id) }}" method="POST">
+            @csrf
+            <button type="submit" class="profile-primary-btn">Proceed to Checkout</button>
+        </form>
+    </article>
+</section>
 @endsection

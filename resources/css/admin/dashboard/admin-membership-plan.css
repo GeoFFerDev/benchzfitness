@@ -72,12 +72,22 @@
     color: #6d28d9;
 }
 
-.membership-card > img {
-    width: 100%;
-    height: 92px;
-    object-fit: cover;
+
+.plan-band {
+    min-height: 74px;
+    display: grid;
+    place-items: center;
+    color: #fff;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    font-size: 12px;
+    background: linear-gradient(135deg, #ae1a16, #810e25);
 }
 
+.membership-card.plan-bronze .plan-band { background: linear-gradient(135deg, #c4975b, #8c6239); }
+.membership-card.plan-silver .plan-band { background: linear-gradient(135deg, #b8c4d3, #64748b); }
+.membership-card.plan-gold .plan-band { background: linear-gradient(135deg, #facc15, #ca8a04); }
+.membership-card.plan-platinum .plan-band { background: linear-gradient(135deg, #a78bfa, #6d28d9); }
 .membership-card-info {
     padding: 12px;
     display: grid;
