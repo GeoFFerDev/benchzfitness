@@ -1,37 +1,39 @@
 @extends('layouts.app')
 
-@section('title', 'Account Login')
+@section('title', $loginTitle ?? 'Login')
 @section('content')
+    <main class="auth-page">
+        <section class="auth-card">
+            <div class="brand-pill">Benchz Fitness</div>
+            <h1 class="header-title">{{ $loginTitle ?? 'Login' }}</h1>
+            <p class="auth-subtitle">Sign in to continue to your portal.</p>
 
+            <form action="{{ route('login.perform') }}" method="POST" class="auth-form">
+                @csrf
+                <input type="hidden" name="login_role" value="{{ $loginRole ?? 'member' }}">
 
-    <h1 class="header-title">
-        LOGIN
-    </h1>
-    
-    <form action="/login" method="POST">
-        @csrf
-        <label for="userName">Email</label>
-        <input type="text" name="email" id="userName">
-        @error('email')
-            <div class="error-box" >
-                {{ $message }}
-            </div>
-        @enderror
-        <br><br>
-        <label for="userPass">password</label>
-        <input type="password" name="password" id="userPass">
-        @error('password')
-            <div class="error-box" >
-                {{ $message }}
-            </div>
-        @enderror
-        <br><br>
-        <input type="submit" value="LOGIN">
+                <label for="userName">Email</label>
+                <input type="email" name="email" id="userName" value="{{ old('email') }}" placeholder="you@example.com" required>
+                @error('email')
+                    <div class="error-box">{{ $message }}</div>
+                @enderror
 
-        <div class="text-divider">Already a member?</div>
+                <label for="userPass">Password</label>
+                <input type="password" name="password" id="userPass" placeholder="Enter your password" required>
+                @error('password')
+                    <div class="error-box">{{ $message }}</div>
+                @enderror
 
-        <a href="{{route('register')}}" class="click-btn">REGISTER</a>
+                <input type="submit" value="Login">
+            </form>
 
-        
-    </form>
+            <div class="text-divider">Portal switch</div>
+            <a href="{{ $switchRoute ?? route('login.admin') }}" class="click-btn">{{ $switchLabel ?? 'Admin login' }}</a>
+
+            @if(($loginRole ?? 'member') === 'member')
+                <div class="text-divider">Don’t have an account yet?</div>
+                <a href="{{ route('register') }}" class="click-btn">Create account</a>
+            @endif
+        </section>
+    </main>
 @endsection
