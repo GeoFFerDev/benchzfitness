@@ -11,6 +11,7 @@
     border-radius: 12px;
     padding: 12px;
     background: #fff;
+    box-shadow: 0 8px 16px rgba(15, 23, 42, 0.04);
 }
 
 .member-stat-card h1 {
@@ -33,10 +34,17 @@
     border: 1px solid #edf0f7;
     border-radius: 14px;
     padding: 14px;
+    background: #fff;
 }
 
 .member-header {
     margin-bottom: 12px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.member-header .search-input {
+    max-width: 380px;
 }
 
 .member-table-wrapper {
@@ -65,6 +73,10 @@
     color: #6b7280;
 }
 
+.member-table tr:hover td {
+    background: #fff8fa;
+}
+
 .member-table td {
     border-bottom: 1px solid #f1f3f8;
     padding: 10px;
@@ -76,11 +88,11 @@
     height: 40px;
     border-radius: 999px;
     object-fit: cover;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.1);
 }
 
-.member-name-text {
-    font-weight: 700;
-}
+.member-name-text { font-weight: 700; }
 
 .member-email-text {
     color: #6b7280;
@@ -172,13 +184,11 @@
 }
 
 @media (max-width: 1024px) {
-    .member-stat-card-wrapper {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
+    .member-stat-card-wrapper { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 700px) {
-    .member-stat-card-wrapper {
-        grid-template-columns: 1fr;
-    }
+    .member-stat-card-wrapper { grid-template-columns: 1fr; }
+    .member-header { justify-content: stretch; }
+    .member-header .search-input { max-width: 100%; }
 }

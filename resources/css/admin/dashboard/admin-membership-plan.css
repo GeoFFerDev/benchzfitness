@@ -2,6 +2,7 @@
     border: 1px solid #edf0f7;
     border-radius: 14px;
     padding: 14px;
+    background: #fff;
 }
 
 .view-membership-header {
@@ -35,9 +36,40 @@
 
 .membership-card {
     border: 1px solid #edf0f7;
-    border-radius: 12px;
+    border-radius: 14px;
     background: #fff;
     overflow: hidden;
+    border-top: 6px solid var(--secondary-color);
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.05);
+}
+
+.membership-card.plan-bronze { border-top-color: #b08d57; }
+.membership-card.plan-silver { border-top-color: #94a3b8; }
+.membership-card.plan-gold { border-top-color: #eab308; }
+.membership-card.plan-platinum { border-top-color: #7c3aed; }
+
+.membership-card.plan-bronze .membership-card-info-tag {
+    border-color: #e8d4b2;
+    background: #fff9f1;
+    color: #8c6239;
+}
+
+.membership-card.plan-silver .membership-card-info-tag {
+    border-color: #d8e1ea;
+    background: #f7fafc;
+    color: #475569;
+}
+
+.membership-card.plan-gold .membership-card-info-tag {
+    border-color: #f8e69d;
+    background: #fffbed;
+    color: #a16207;
+}
+
+.membership-card.plan-platinum .membership-card-info-tag {
+    border-color: #dcc8ff;
+    background: #f8f3ff;
+    color: #6d28d9;
 }
 
 .membership-card > img {
@@ -67,9 +99,7 @@
     font-size: 12px;
 }
 
-.membership-card-info-duration img {
-    width: 14px;
-}
+.membership-card-info-duration img { width: 14px; }
 
 .membership-card-info-tag {
     width: fit-content;
@@ -97,9 +127,7 @@
     gap: 8px;
 }
 
-.delete-confirmation p {
-    font-size: 16px !important;
-}
+.delete-confirmation p { font-size: 16px !important; }
 
 .preview img {
     width: 120px;

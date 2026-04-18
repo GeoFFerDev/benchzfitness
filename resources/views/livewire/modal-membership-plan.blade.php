@@ -8,6 +8,7 @@ uses(WithFileUploads::class);
 $planOptions = ['Bronze', 'Silver', 'Gold', 'Platinum'];
 
 state([
+    'planOptions' => ['Bronze', 'Silver', 'Gold', 'Platinum'],
     'mode' => 'add',
     'show' => false,
     'id' => null,
@@ -55,7 +56,7 @@ on(['membershipPlanCreate' => function () {
 
 $updatePlan = function () use ($planOptions) {
     $validatedData = $this->validate([
-        'name' => "required|in:" . implode(',', $planOptions) . "|unique:membership_plans,name,{$this->id}",
+        'name' => "required|in:" . implode(',', $this->planOptions) . "|unique:membership_plans,name,{$this->id}",
         'tag' => 'required|string|max:100',
         'duration' => 'required|integer|min:1',
         'price' => 'required|numeric|min:0|max:1000000',
@@ -77,7 +78,7 @@ $updatePlan = function () use ($planOptions) {
 
 $storePlan = function () use ($planOptions) {
     $validatedData = $this->validate([
-        'name' => 'required|in:' . implode(',', $planOptions) . '|unique:membership_plans,name',
+        'name' => 'required|in:' . implode(',', $this->planOptions) . '|unique:membership_plans,name',
         'tag' => 'required|string|max:100',
         'duration' => 'required|integer|min:1',
         'price' => 'required|numeric|min:0',
@@ -149,7 +150,7 @@ $deletePlan = function () {
                             <label for="name">Name <span>*</span></label>
                             <select wire:model="name" id="name">
                                 <option value="">Select Plan</option>
-                                @foreach($planOptions as $planOption)
+                                @foreach($this->planOptions as $planOption)
                                     <option value="{{ $planOption }}">{{ $planOption }}</option>
                                 @endforeach
                             </select>
@@ -219,7 +220,7 @@ $deletePlan = function () {
                             <label for="name">Name <span>*</span></label>
                             <select wire:model="name" id="name">
                                 <option value="">Select Plan</option>
-                                @foreach($planOptions as $planOption)
+                                @foreach($this->planOptions as $planOption)
                                     <option value="{{ $planOption }}">{{ $planOption }}</option>
                                 @endforeach
                             </select>
